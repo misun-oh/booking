@@ -4,11 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Room List</title>
 </head>
 <body>
 <%@include file="/booking/header.jsp" %>
+
+
 <div class="container">
+
   <div class="room">
     <img src="/res/img/room.png" alt="객실 NO.1">
     <div class="room-content">
@@ -53,9 +56,10 @@
       <button class="btn" onclick="location.href='/view'">예약 하기</button>
     </div>
   </div>
+</div>
 
  
-  <%@include file="/common/pageing.jsp" %>
+<%@include file="/common/pageing.jsp" %>
 </div> 
 
 <%@include file="/booking/footer.jsp" %>

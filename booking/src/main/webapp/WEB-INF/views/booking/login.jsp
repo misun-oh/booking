@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>HOTEL | 로그인</title>
+  <title>내멋대로 HoTeL | 로그인</title>
   <style>
     :root{
       --brand-black:#111;
@@ -48,6 +48,13 @@
       color:#2b2b2b;
       font-weight:800;
     }
+    /* 브랜드 이미지 스타일 */
+	.brand-img {
+	  width: 350px;       /* 가로 크기 */
+	  height: 350px;      /* 세로 크기 */
+	  object-fit: cover;  /* 이미지 비율 유지하며 잘라내기 */
+	  display: block;
+	}
     .card{
       width:min(92vw,420px);
       margin-top:10px;
@@ -121,8 +128,10 @@
   <main class="wrap">
     <div class="stack">
       <div class="brand">
-        <small>Hotel as I like</small>
-        <h1>HOTEL</h1>
+        <!-- 추가된 이미지 -->
+  		<a href="/main"><img src="/res/img/hotel_logo500.jpg" alt="호텔 로고" class="brand-img" /></a>
+        <!--<small>Hotel as I like</small>
+        <h1>HOTEL</h1>-->
       </div>
 
       <section class="card">
@@ -147,7 +156,7 @@
           <span>|</span>
           <a href="#">비밀번호찾기</a>
           <span>|</span>
-          <a href="#">회원가입</a>
+          <a href="/register">회원가입</a>
         </div>
       </section>
     </div>

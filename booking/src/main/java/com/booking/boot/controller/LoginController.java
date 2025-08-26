@@ -20,6 +20,10 @@ public class LoginController {
 	private String booking_main() {
 		return "/booking/main";
 	}
+	@GetMapping("/main")
+	private String booking_mainget() {
+		return "/booking/main";
+	}
 	
 	@GetMapping("/list")
 	private String booking_list(Model model, SearchDto searchDto) {

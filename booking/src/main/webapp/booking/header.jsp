@@ -21,7 +21,7 @@
     }
     header {
       align: center;
-      padding: 30px 60px 20px;
+      padding: 30px 100px;
       background: #fff;
       border-bottom: 1px solid #eee;
     }
@@ -34,7 +34,7 @@
       margin-bottom: 20px;
     }
     .logo img {
-      width: 40px;
+      width: 350px;
     }
     .nav {
       display: flex;
@@ -49,7 +49,7 @@
     .user-menu {
     	position:absolute;
     	top:20px;
-    	right:20px;
+    	right:220px;
       	display: flex;
       	justify-content: flex-end;
       	gap : 10px;
@@ -204,15 +204,15 @@
 
   <!-- 헤더 -->
   <div class="user-menu">
-      <a href="#">로그인</a>
+      <a href="/login">로그인</a>
       <a href="/register">회원가입</a>
       <a href="#">마이페이지</a>
       <a href="#">예약조회</a>
   </div>
   <header>
     <div class="logo">
-      <img src="/res/img/hotel_logo.png" alt="로고" />
-      <strong>내맘대로</strong> HOTEL
+       <a href="/main"><img src="/res/img/hotel_logo2.jpg" alt="로고" /></a>
+     <!-- <strong>내맘대로</strong> HOTEL -->
     </div>
     
     <nav class="nav">
@@ -225,3 +225,5 @@
     </nav>
     
   </header>
+</html>
+</body>

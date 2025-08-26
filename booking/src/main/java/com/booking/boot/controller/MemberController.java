@@ -35,10 +35,13 @@ public class MemberController {
 	MemberService memberService;
 
 	
-	@GetMapping("/login")
-	private String booking_login() {
-		return "/booking/login";
-	}
+
+	
+	
+	
+	
+	
+	
 	
 	
 	@PostMapping("/member/edit")

@@ -128,7 +128,7 @@
       <section class="card">
         <div class="pill">아이디 / 패스워드</div>
 
-        <form action="#" method="post" autocomplete="on" novalidate>
+        <form action="/main" method="post" autocomplete="on">
           <div class="field">
             <label class="label" for="loginId">아이디</label>
             <input class="input" id="loginId" name="loginId" type="text" placeholder="아이디" required />
@@ -143,7 +143,7 @@
         </form>
 
         <div class="links" aria-label="보조 링크">
-          <a href="#">아이디찾기</a>
+          <a href="">아이디찾기</a>
           <span>|</span>
           <a href="#">비밀번호찾기</a>
           <span>|</span>

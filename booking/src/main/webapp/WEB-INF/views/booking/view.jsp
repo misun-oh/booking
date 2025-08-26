@@ -253,14 +253,14 @@
       const outStr = checkoutInput.value;
 
       if (!inStr || !outStr) {
-        priceEl.textContent = '총 금액(₩) : 0 원';
+        priceEl.textContent = 'Total 금액(₩) : 0 원';
         return;
       }
 
       const start = parseYMD(inStr);
       const end = parseYMD(outStr);
       if (!start || !end) {
-        priceEl.textContent = '총 금액(₩) : 0 원';
+        priceEl.textContent = 'Total 금액(₩) : 0 원';
         return;
       }
 

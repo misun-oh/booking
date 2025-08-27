@@ -5,11 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>ROOM INFO</title>
+
 </head>
 <body>
 <%@include file="/booking/header.jsp" %>
 
-<div class="container">
+<div class="container-fluid">
     
     
     <div id="carouselExampleCaptions" class="carousel slide">
@@ -17,26 +18,42 @@
 		  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
 		  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
 		  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+		  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+		  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
 		</div>
 		<div class="carousel-inner">
 		  <div class="carousel-item active">
-		    <img src="/res/img/city01.jpg" class="d-block w-100" alt="...">
+		    <img src="res/img/room1/main.jpg" class="d-block w-100" alt="...">
 		    <div class="carousel-caption d-none d-md-block">
-		      <h5>First slide label</h5>
+		      <h5>1 slide label</h5>
 		      <p>Some representative placeholder content for the first slide.</p>
 		    </div>
 		  </div>
 		  <div class="carousel-item">
 		    <img src="/res/img/city02.jpg" class="d-block w-100" alt="...">
 		    <div class="carousel-caption d-none d-md-block">
-		      <h5>Second slide label</h5>
+		      <h5>2 slide label</h5>
 		      <p>Some representative placeholder content for the second slide.</p>
 		    </div>
 		  </div>
 		  <div class="carousel-item">
-		    <img src="/res/img/city01.jpg" class="d-block w-100" alt="...">
+		    <img src="/res/img/city03.jpg" class="d-block w-100" alt="...">
 		    <div class="carousel-caption d-none d-md-block">
-		      <h5>Third slide label</h5>
+		      <h5>3 slide label</h5>
+		      <p>Some representative placeholder content for the third slide.</p>
+		    </div>
+		  </div>
+		   <div class="carousel-item">
+		    <img src="/res/img/city05.jpg" class="d-block w-100" alt="...">
+		    <div class="carousel-caption d-none d-md-block">
+		      <h5>4 slide label</h5>
+		      <p>Some representative placeholder content for the third slide.</p>
+		    </div>
+		  </div>
+		  <div class="carousel-item">
+		    <img src="/res/img/city04.jpg" class="d-block w-100" alt="...">
+		    <div class="carousel-caption d-none d-md-block">
+		      <h5>5 slide label</h5>
 		      <p>Some representative placeholder content for the third slide.</p>
 		    </div>
 		  </div>
@@ -103,6 +120,13 @@
       <button class="confirm-button">예약 확정(결제)</button>
     </div>
   </div>  
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
+</script>        
+
 
 <%@include file="/booking/footer.jsp" %>
 </body>

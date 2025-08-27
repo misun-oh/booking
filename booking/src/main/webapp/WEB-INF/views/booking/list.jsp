@@ -38,7 +38,7 @@
           머무시는 그 자체에 집중할 수 있도록 수영장과 뷰티풀한 세팅이 준비되어 있습니다.
         </p>
       </div>
-      <button class="btn" onclick="location.href='/view'">예약 하기</button>
+      <button class="btn" onclick="location.href='/view2'">예약 하기</button>
     </div>
   </div>
 
@@ -53,7 +53,7 @@
           머무시는 그 자체에 집중할 수 있도록 수영장과 뷰티풀한 세팅이 준비되어 있습니다.
         </p>
       </div>
-      <button class="btn" onclick="location.href='/view'">예약 하기</button>
+      <button class="btn" onclick="location.href='/view3'">예약 하기</button>
     </div>
   </div>
 </div>

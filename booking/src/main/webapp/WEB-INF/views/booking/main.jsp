@@ -9,8 +9,9 @@
   /* 배너 화면 영역 */
   .banner {
     position: relative;
-    width: 1920px;
-    height: 800px;
+    width: 100%;        /* 화면 전체 폭 */
+    max-width: 1920px;  /* 필요시 최대 폭 */
+
     overflow: hidden;
     margin: 0 auto;
     border: 1px solid #ccc; /* 확인용 */
@@ -19,14 +20,13 @@
   /* 슬라이드 컨테이너 */
   .slides {
     display: flex;
-    width: 9600px; /* 5장 이미지 폭 합 */
     transition: transform 1s ease;
   }
 
   /* 슬라이드 이미지 */
   .slides img {
-    width: 1920px; /* 화면 폭과 동일 */
-    height: 800px;
+    width: 100%;       /* 부모 폭에 맞춤 */
+
     object-fit: cover;
     flex-shrink: 0;
   }
@@ -74,7 +74,7 @@
 
 <div class="banner">
   <div class="slides">
-    <img src="res/img/banner3.jpg" alt="배너1">
+    <img src="res/img/banner1.jpg" alt="배너1">
     <img src="res/img/banner2.jpg" alt="배너2">
     <img src="res/img/banner3.jpg" alt="배너3">
     <img src="res/img/banner4.jpg" alt="배너4">
@@ -96,21 +96,24 @@
 </div>
 
 <script>
+  const banner = document.querySelector('.banner');
   const slides = document.querySelector('.slides');
   const indicators = document.querySelectorAll('.indicators div');
   const prevBtn = document.querySelector('.prev');
   const nextBtn = document.querySelector('.next');
+  const total = slides.children.length;
   let index = 0;
-  const total = 5;
-  const width = 1920; // 화면 노출 폭 기준
+  let width = slides.children[0].clientWidth; // 첫 이미지 실제 폭 기준
   let timer;
+
+  function updateWidth() {
+    width = slides.children[0].clientWidth; // 이미지 폭 갱신
+  }
 
   function showSlide(i) {
     index = i;
     slides.style.transform = `translateX(-${width * index}px)`;
-    indicators.forEach((dot, idx) => {
-      dot.classList.toggle('active', idx === index);
-    });
+    indicators.forEach((dot, idx) => dot.classList.toggle('active', idx === index));
   }
 
   function nextSlide() {
@@ -131,6 +134,7 @@
     clearInterval(timer);
   }
 
+  // 버튼 클릭 이벤트
   nextBtn.addEventListener('click', () => {
     nextSlide();
     stopAutoSlide();
@@ -143,6 +147,7 @@
     startAutoSlide();
   });
 
+  // 인디케이터 클릭
   indicators.forEach((dot, idx) => {
     dot.addEventListener('click', () => {
       showSlide(idx);
@@ -152,11 +157,11 @@
   });
 
   // 초기 실행
+  updateWidth();
   showSlide(0);
   startAutoSlide();
 
-  // 화면 크기 변경 시 현재 슬라이드 위치 보정
-  window.addEventListener('resize', () => showSlide(index));
+
 </script>
 
 <%@ include file="/booking/footer.jsp" %>

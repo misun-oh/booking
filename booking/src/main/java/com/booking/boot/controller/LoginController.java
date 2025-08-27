@@ -36,6 +36,38 @@ public class LoginController {
 		
 		return "/booking/view";
 	}
+
+	@GetMapping("/view2")
+	private String booking_view2(Model model) {
+		
+		return "/booking/view2";
+	}
+
+	@GetMapping("/view3")
+	private String booking_view3(Model model) {
+		
+		return "/booking/view3";
+	}
+
+	@GetMapping("/view4")
+	private String booking_view4(Model model) {
+		
+		return "/booking/view4";
+	}
+		
+	@GetMapping("/view5")
+	private String booking_view5(Model model) {
+		
+		return "/booking/view5";
+	}
+		
+	@GetMapping("/view6")
+	private String booking_view6(Model model) {
+		
+		return "/booking/view6";
+	}
+
+	
 	@GetMapping("/register")
 	private String booking_register(Model model) {
 		

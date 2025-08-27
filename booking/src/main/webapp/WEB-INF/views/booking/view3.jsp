@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>ROOM INFO</title>
 
-
 </head>
 <body>
 <%@include file="/booking/header.jsp" %>
@@ -24,35 +23,35 @@
 		</div>
 		<div class="carousel-inner">
 		  <div class="carousel-item active">
-		    <img src="res/img/room1/main.jpg" class="d-block w-100" alt="...">
+		    <img src="res/img/room3/main.jpg" class="d-block w-100" alt="...">
 		    <div class="carousel-caption d-none d-md-block">
-		      <h1>Main Room1</h1>
-		      <p>Hotel as I Like.</p>
+		      <h5>1 slide label</h5>
+		      <p>Some representative placeholder content for the first slide.</p>
 		    </div>
 		  </div>
 		  <div class="carousel-item">
-		    <img src="res/img/room1/sub_img1.jpg" class="d-block w-100" alt="...">
+		    <img src="res/img/room3/main.jpg" class="d-block w-100" alt="...">
 		    <div class="carousel-caption d-none d-md-block">
 		      <h5>2 slide label</h5>
 		      <p>Some representative placeholder content for the second slide.</p>
 		    </div>
 		  </div>
 		  <div class="carousel-item">
-		    <img src="res/img/room1/sub_img2.jpg" class="d-block w-100" alt="...">
+		    <img src="res/img/room3/main.jpg" class="d-block w-100" alt="...">
 		    <div class="carousel-caption d-none d-md-block">
 		      <h5>3 slide label</h5>
 		      <p>Some representative placeholder content for the third slide.</p>
 		    </div>
 		  </div>
 		   <div class="carousel-item">
-		    <img src="res/img/room1/sub_img3.jpg" class="d-block w-100" alt="...">
+		    <img src="res/img/room3/main.jpg" class="d-block w-100" alt="...">
 		    <div class="carousel-caption d-none d-md-block">
 		      <h5>4 slide label</h5>
 		      <p>Some representative placeholder content for the third slide.</p>
 		    </div>
 		  </div>
 		  <div class="carousel-item">
-		    <img src="res/img/room1/sub_img4.jpg" class="d-block w-100" alt="...">
+		    <img src="res/img/room3/main.jpg" class="d-block w-100" alt="...">
 		    <div class="carousel-caption d-none d-md-block">
 		      <h5>5 slide label</h5>
 		      <p>Some representative placeholder content for the third slide.</p>
@@ -69,60 +68,64 @@
 		</button>
 	</div>
     
-    <h1>디럭스 더블 (Deluxe Room)</h1>
+    <h1>디럭스 룸 (Deluxe Room)</h1>
 
-<!-- 객실 정보 + 가격 안내 -->
-<div class="container my-5">
-  <h3>객실정보</h3>
-  <ul>
-    <li>인원 : 기본 2인 / 최대 3인<br>8세이상 인원 추가시 추가비용 20,000원(현장결재)</li>
-    <li>구조 : 룸 1, 욕실 1, 화장실 1, 베란다, 퀸사이즈 침대 1</li>
-    <li>입실 PM14:00시작 / 퇴실 OM12:00 까지<br>24시간 체크인(24H Front desk)</li>
-    <li>미니바, 무선인터넷(Wi-Fi), 무료주차, 수영장, 에어컨, 시티뷰</li>
-    <li>어매니티 : 치약, 칫솔, 드라이어, 면봉세트, 가운x2, 타올x4, 비치타올x2, 전기포트, 물 500mlx2, 컵x2, 샴푸, 린스, 바디워시, 비누</li>
-  </ul>
-
-  <h3 class="mt-4">가격 안내</h3>
-  <table class="table table-bordered text-center">
-    <thead class="table-light">
-      <tr><th>구분</th><th>비수기</th><th>성수기</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>주중</td><td>90,000</td><td>180,000</td></tr>
-      <tr><td>금요일</td><td>110,000</td><td>200,000</td></tr>
-      <tr><td>주말</td><td>130,000</td><td>220,000</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- 예약 섹션 -->
-<div class="container mb-5">
-  <div class="card p-4 shadow-sm">
-    <h4 class="mb-3">숙박 예약</h4>
-    <div class="row g-3 align-items-center">
-      <div class="col-md-6">
-        <label for="checkin" class="form-label">체크인</label>
-        <input type="text" id="checkin" class="form-control" placeholder="날짜 선택">
-      </div>
-      <div class="col-md-6">
-        <label for="checkout" class="form-label">체크아웃</label>
-        <input type="text" id="checkout" class="form-control" placeholder="날짜 선택">
+    <div class="info">
+      <div>
+        <h3>객실정보</h3>
+        <ul>
+          <li>한실 구조, 침대룸, 화장실</li>
+          <li>기준 2인 / 최대 2인</li>
+          <li>건물: 기준층 / 복층구조</li>
+          <li>시설: TV, 에어컨, 냉장고, 전자렌지, 세면도구 등</li>
+          <li>입실: 오후 3시 / 퇴실: 오전 11시</li>
+        </ul>
       </div>
     </div>
-    <div class="mt-3 fw-bold" id="price-result">총 숙박: 0박 / 금액: 0원</div>
-    <button class="btn btn-primary mt-3">예약 확정(결제)</button>
-  </div>
-</div>
 
+    <h3>가격안내</h3>
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>비수기</th>
+          <th>성수기</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>주중</td>
+          <td>200,000</td>
+          <td>300,000</td>
+        </tr>
+        <tr>
+          <td>금요일</td>
+          <td>220,000</td>
+          <td>320,000</td>
+        </tr>
+        <tr>
+          <td>주말</td>
+          <td>240,000</td>
+          <td>340,000</td>
+        </tr>
+      </tbody>
+    </table>
 
+    <div class="booking">
+      <h2>숙박일정<br><small>(날짜 선택)</small></h2>
+      <button>입실</button>
+      <button>퇴실</button>
 
-
-
-
+      <div class="price-amount">금액(₩) : 220,000 원</div>
+      <button class="confirm-button">예약 확정(결제)</button>
+    </div>
+  </div>  
 
 
   
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>        
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
+</script>        
 
 
 <%@include file="/booking/footer.jsp" %>

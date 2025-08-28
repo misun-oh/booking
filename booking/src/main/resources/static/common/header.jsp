@@ -56,8 +56,8 @@ ${sessionScope.member }
             <%
 				} else {
             %> 
-            	<button id="loginBtn" type="button" class="btn btn-outline-light me-2">로그인</button>
-                <button id="signUpBtn" type="button" class="btn btn-warning">회원가입</button>
+            	<button id="loginBtn" type="button" class="btn btn-outline-light me-2">로그인!</button>
+                <button id="signUpBtn" type="button" class="btn btn-warning">회원가입!</button>
             <%	} %> 
             </div> </div> </div> 
         </header>

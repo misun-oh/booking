@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.booking.boot.Dto.PageDto;
 import com.booking.boot.Dto.ReDataDto;
@@ -38,7 +39,10 @@ public class LoginController {
 	ViewMapper mapper;
 	
 	@GetMapping("/view")
-	private String booking_view(Model model, int room_no) {
+	private String booking_view(Model model, Integer room_no) {
+		if(room_no == null) {
+			return "/booking/view";
+		}
 		System.out.println("room_no : "+room_no);
 		model.addAttribute("viewDto", mapper.getView(room_no));
 		return "/booking/view";
@@ -78,7 +82,7 @@ public class LoginController {
 	@GetMapping("/re_data")
 	private String booking_re_data(Model model, ReDataDto redata) {
 		System.out.println("redata: "+redata);
-		return "/booking/view6";
+		return "/booking/re_data";
 	}
 
 	

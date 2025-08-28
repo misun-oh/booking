@@ -1,12 +1,15 @@
 package com.booking.boot.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.booking.boot.Dto.PageDto;
+import com.booking.boot.Dto.ReDataDto;
 import com.booking.boot.Dto.SearchDto;
+import com.booking.boot.mapper.ViewMapper;
 
 
 @Controller
@@ -31,10 +34,15 @@ public class LoginController {
 		return "/booking/list";
 	}
 	
+	@Autowired
+	ViewMapper mapper;
+	
 	@GetMapping("/view")
-	private String booking_view(Model model) {
-		
+	private String booking_view(Model model, int room_no) {
+		System.out.println("room_no : "+room_no);
+		model.addAttribute("viewDto", mapper.getView(room_no));
 		return "/booking/view";
+		
 	}
 
 	@GetMapping("/view2")
@@ -64,6 +72,12 @@ public class LoginController {
 	@GetMapping("/view6")
 	private String booking_view6(Model model) {
 		
+		return "/booking/view6";
+	}
+	
+	@GetMapping("/re_data")
+	private String booking_re_data(Model model, ReDataDto redata) {
+		System.out.println("redata: "+redata);
 		return "/booking/view6";
 	}
 

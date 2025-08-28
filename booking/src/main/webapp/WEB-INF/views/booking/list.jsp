@@ -81,7 +81,7 @@
       <!-- info + button 묶음 -->
       <div class="info-row">
       	<div class="room-info">${room.room_info }</div>
-      	<button class="btn" onclick="location.href='/view'">예약 하기</button>
+      	<button class="btn" onclick="location.href='/view?room_no=${room.room_no}'">예약 하기</button>
       </div>
 
      </div>

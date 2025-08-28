@@ -1,5 +1,8 @@
 package com.booking.boot.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,13 +11,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.booking.boot.Dto.PageDto;
+import com.booking.boot.Dto.RoomDto;
 import com.booking.boot.Dto.ReDataDto;
 import com.booking.boot.Dto.SearchDto;
+import com.booking.boot.mapper.BookingMapper;
 import com.booking.boot.mapper.ViewMapper;
 
 
 @Controller
 public class LoginController {
+	
+	@Autowired
+	BookingMapper bookingMapper;
+	
 	@GetMapping("/login")
 	private String booking_login() {
 		return "/booking/login";
@@ -22,6 +31,7 @@ public class LoginController {
 	
 	@PostMapping("/main")
 	private String booking_main() {
+		
 		return "/booking/main";
 	}
 	@GetMapping("/main")
@@ -32,6 +42,9 @@ public class LoginController {
 	@GetMapping("/list")
 	private String booking_list(Model model, SearchDto searchDto) {
 		model.addAttribute("pageDto", new PageDto(searchDto, 100));
+		
+		List<RoomDto> list = bookingMapper.list();
+		model.addAttribute("list", list);
 		return "/booking/list";
 	}
 	

@@ -20,7 +20,7 @@
       background-color: #fff;
     }
     header {
-      align: center;
+      align: left;
       padding: 30px 100px;
       background: #fff;
       border-bottom: 1px solid #eee;

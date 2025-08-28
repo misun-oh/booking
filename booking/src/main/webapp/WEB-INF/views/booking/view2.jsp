@@ -12,9 +12,9 @@
 </head>
 <body>
 <%@ include file="/booking/header.jsp" %>
-<form action="/re_data" name="re_form">
-<div class="container-fluid">
 
+<div class="container-fluid">
+    
     
     <div id="carouselExampleCaptions" class="carousel slide">
 		<div class="carousel-indicators">
@@ -26,38 +26,38 @@
 		</div>
 		<div class="carousel-inner">
 		  <div class="carousel-item active">
-		    <img src="${viewDto.main_img }" class="d-block w-100" alt="...">
+		    <img src="res/img/room1/main.jpg" class="d-block w-100" alt="...">
 		    <div class="carousel-caption d-none d-md-block">
-		      <h1 style="font-size: 45px; font-weight: 900; opacity: 0.5;">${viewDto.room_name }</h1>
-		      <p style="font-size: 25px; font-weight: 200; opacity: 0.7;">${viewDto.room_info }</p>
+		      <h1>Main Room1</h1>
+		      <p>Hotel as I Like.</p>
 		    </div>
 		  </div>
 		  <div class="carousel-item">
-		    <img src="${viewDto.sub_img1 }" class="d-block w-100" alt="...">
+		    <img src="res/img/room1/sub_img1.jpg" class="d-block w-100" alt="...">
 		    <div class="carousel-caption d-none d-md-block">
-		      <h1 style="font-size: 45px; font-weight: 900; opacity: 0.5;">${viewDto.room_name }</h1>
-		      <p style="font-size: 25px; font-weight: 200; opacity: 0.7;">${viewDto.room_info }</p>
+		      <h5>2 slide label</h5>
+		      <p>Some representative placeholder content for the second slide.</p>
 		    </div>
 		  </div>
 		  <div class="carousel-item">
-		    <img src="${viewDto.sub_img2 }" class="d-block w-100" alt="...">
+		    <img src="res/img/room1/sub_img2.jpg" class="d-block w-100" alt="...">
 		    <div class="carousel-caption d-none d-md-block">
-		      <h1 style="font-size: 45px; font-weight: 900; opacity: 0.5;">${viewDto.room_name }</h1>
-		      <p style="font-size: 25px; font-weight: 200; opacity: 0.7;">${viewDto.room_info }</p>
+		      <h5>3 slide label</h5>
+		      <p>Some representative placeholder content for the third slide.</p>
 		    </div>
 		  </div>
 		   <div class="carousel-item">
-		    <img src="${viewDto.sub_img3 }" class="d-block w-100" alt="...">
+		    <img src="res/img/room1/sub_img3.jpg" class="d-block w-100" alt="...">
 		    <div class="carousel-caption d-none d-md-block">
-		      <h1 style="font-size: 45px; font-weight: 900; opacity: 0.5;">${viewDto.room_name }</h1>
-		      <p style="font-size: 25px; font-weight: 200; opacity: 0.7;">${viewDto.room_info }</p>
+		      <h5>4 slide label</h5>
+		      <p>Some representative placeholder content for the third slide.</p>
 		    </div>
 		  </div>
 		  <div class="carousel-item">
-		    <img src="${viewDto.sub_img4 }" class="d-block w-100" alt="...">
+		    <img src="res/img/room1/sub_img4.jpg" class="d-block w-100" alt="...">
 		    <div class="carousel-caption d-none d-md-block">
-		      <h1 style="font-size: 45px; font-weight: 900; opacity: 0.5;">${viewDto.room_name }</h1>
-		      <p style="font-size: 25px; font-weight: 200; opacity: 0.7;">${viewDto.room_info }</p>
+		      <h5>5 slide label</h5>
+		      <p>Some representative placeholder content for the third slide.</p>
 		    </div>
 		  </div>
 		</div>
@@ -74,28 +74,28 @@
 
 <div class="container my-4">
 
-  <h1></h1>
+  <h1>디럭스 더블 (Deluxe Room)</h1>
   
 	  <!-- 객실 정보 + 가격 안내 -->
 	<div class="container my-5">
-	  <h2>객실 정보</h2>
+	  <h3>객실정보</h3>
 	  <ul>
-	    <li>${viewDto.info1 }</li>
-	    <li>${viewDto.info2 }</li>
-	    <li>${viewDto.info3 }</li>
-	    <li>${viewDto.info4 }</li>
-	    <li>${viewDto.info5 }</li>
+	    <li>인원 : 기본 2인 / 최대 3인<br>8세이상 인원 추가시 추가비용 20,000원(현장결재)</li>
+	    <li>구조 : 룸 1, 욕실 1, 화장실 1, 베란다, 퀸사이즈 침대 1</li>
+	    <li>입실 PM14:00시작 / 퇴실 OM12:00 까지<br>24시간 체크인(24H Front desk)</li>
+	    <li>미니바, 무선인터넷(Wi-Fi), 무료주차, 수영장, 에어컨, 시티뷰</li>
+	    <li>어매니티 : 치약, 칫솔, 드라이어, 면봉세트, 가운x2, 타올x4, 비치타올x2, 전기포트, 물 500mlx2, 컵x2, 샴푸, 린스, 바디워시, 비누</li>
 	  </ul>
 	
-	  <h2>가격 안내</h2>
+	  <h3 class="mt-4">가격 안내</h3>
 	  <table class="table table-bordered text-center">
 	    <thead class="table-light">
 	      <tr><th>구분</th><th>비수기</th><th>성수기</th></tr>
 	    </thead>
 	    <tbody>
-	      <tr><td>주중</td><td>${viewDto.price1 }</td><td>${viewDto.price4 }</td></tr>
-	      <tr><td>금요일</td><td>${viewDto.price2 }</td><td>${viewDto.price5 }</td></tr>
-	      <tr><td>주말</td><td>${viewDto.price3 }</td><td>${viewDto.price6 }</td></tr>
+	      <tr><td>주중</td><td>90,000</td><td>180,000</td></tr>
+	      <tr><td>금요일</td><td>110,000</td><td>200,000</td></tr>
+	      <tr><td>주말</td><td>130,000</td><td>220,000</td></tr>
 	    </tbody>
 	  </table>
 	</div>
@@ -105,14 +105,6 @@
   <div class="card p-4 shadow-sm mb-5">
     <h4 class="mb-3">숙박 예약</h4>
     <div class="row g-3 align-items-center">
-	  <div class="col-md-6">
-	    <label for="name" class="form-label">예약자 이름</label>
-	    <input type="text" id="name" class="form-control" placeholder="이름 입력" name="name">
-	  </div>
-	  <div class="col-md-6">
-	    <label for="phone" class="form-label">전화번호</label>
-	    <input type="text" id="phone" class="form-control" placeholder="전화번호 입력">
-	  </div>
       <div class="col-md-6">
         <label for="checkin" class="form-label">체크인</label>
         <input type="text" id="checkin" class="form-control" placeholder="날짜 선택">
@@ -127,13 +119,12 @@
   </div>
 
 </div>
-</form>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 <script>
-
-const PRICE_PER_NIGHT = ${viewDto.price1 };
+const PRICE_PER_NIGHT = 200000;
 let checkinDate = null;
 let checkoutDate = null;
 
@@ -161,51 +152,29 @@ const fpOut = flatpickr("#checkout", {
 const reserveBtn = document.getElementById('reserveBtn');
 
 function updatePrice() {
-	  const priceEl = document.getElementById('price-result');
-	  const name = document.getElementById('name').value.trim();
-	  const phone = document.getElementById('phone').value.trim();
+  const priceEl = document.getElementById('price-result');
 
-	  if(checkinDate && checkoutDate){
-	    const diffTime = checkoutDate.getTime() - checkinDate.getTime();
-	    const nights = Math.floor(diffTime / (1000*60*60*24));
+  if(checkinDate && checkoutDate){
+    const diffTime = checkoutDate.getTime() - checkinDate.getTime();
+    const nights = Math.floor(diffTime / (1000*60*60*24));
 
-	    if(nights > 0 && name && phone){
-	      const totalPrice = nights * PRICE_PER_NIGHT;
-	      priceEl.textContent = `총 숙박: \${nights}박 / 금액: \${totalPrice}원`;
-	      reserveBtn.disabled = false;
-	    } else {
-	      priceEl.textContent = `총 숙박: 0박 / 금액: 0원`;
-	      reserveBtn.disabled = true;
-	    }
-	  } else {
-	    priceEl.textContent = `총 숙박: 0박 / 금액: 0원`;
-	    reserveBtn.disabled = true;
-	  }
-	}
-
-document.getElementById('name').addEventListener('input', updatePrice);
-document.getElementById('phone').addEventListener('input', updatePrice);
+    if(nights > 0){
+      priceEl.textContent = `총 숙박: \${nights}박 / 금액: \${nights*PRICE_PER_NIGHT}원`;
+      reserveBtn.disabled = false;
+    } else {
+      priceEl.textContent = `총 숙박: 0박 / 금액: 0원`;
+      reserveBtn.disabled = true;
+    }
+  } else {
+    priceEl.textContent = `총 숙박: 0박 / 금액: 0원`;
+    reserveBtn.disabled = true;
+  }
+}
 
 // 예약 버튼 클릭
 reserveBtn.addEventListener('click', function() {
-  const name = document.getElementById('name').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const nights = Math.floor((checkoutDate.getTime() - checkinDate.getTime()) / (1000*60*60*24));
-  const totalPrice = nights * PRICE_PER_NIGHT;
-
-  alert(
-    `예약자 이름: \${name}\n` +
-    `전화번호: \${phone}\n` +
-    `체크인: \${checkinDate.toISOString().slice(0,10)}\n` +
-    `체크아웃: \${checkoutDate.toISOString().slice(0,10)}\n` +
-    `총 숙박: \${nights}박 / 금액: \${totalPrice}원`
-  );
-  
-  re_form.submit();
-  
-  
+  alert(`예약이 확정되었습니다!\n체크인: ${checkinDate.toISOString().slice(0,10)}\n체크아웃: ${checkoutDate.toISOString().slice(0,10)}`);
 });
-
 </script>
 
 <%@ include file="/booking/footer.jsp" %>

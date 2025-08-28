@@ -83,8 +83,10 @@
       	<div class="room-info">${room.room_info }</div>
       	<button class="btn" onclick="location.href='/view'">예약 하기</button>
       </div>
+
      </div>
   </c:forEach> 
+
 </div>
 
 

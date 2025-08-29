@@ -220,7 +220,7 @@
       <a href="#">주변 관광지</a>
       <a href="/list">객실 목록</a>
       <a href="#">공지사항</a>
-      <a href="#">문의하기</a>
+      <a href="/qna">문의하기</a>
       <a href="#">Location</a>
     </nav>
     

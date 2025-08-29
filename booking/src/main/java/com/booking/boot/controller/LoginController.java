@@ -15,6 +15,7 @@ import com.booking.boot.Dto.RoomDto;
 import com.booking.boot.Dto.ReDataDto;
 import com.booking.boot.Dto.SearchDto;
 import com.booking.boot.mapper.BookingMapper;
+import com.booking.boot.mapper.ReDataMapper;
 import com.booking.boot.mapper.ViewMapper;
 
 
@@ -51,6 +52,9 @@ public class LoginController {
 	@Autowired
 	ViewMapper mapper;
 	
+	@Autowired
+	ReDataMapper redata01;
+	
 	@GetMapping("/view")
 	private String booking_view(Model model, Integer room_no) {
 		if(room_no == null) {
@@ -80,10 +84,10 @@ public class LoginController {
 		return "/booking/view4";
 	}
 		
-	@GetMapping("/view5")
+	@GetMapping("/qna")
 	private String booking_view5(Model model) {
 		
-		return "/booking/view5";
+		return "/booking/qna";
 	}
 		
 	@GetMapping("/view6")
@@ -95,6 +99,9 @@ public class LoginController {
 	@GetMapping("/re_data")
 	private String booking_re_data(Model model, ReDataDto redata) {
 		System.out.println("redata: "+redata);
+		int res = redata01.getView(redata);
+		System.out.println("res: "+res);
+		
 		return "/booking/re_data";
 	}
 

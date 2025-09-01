@@ -12,7 +12,7 @@
 </head>
 <body>
 <%@ include file="/booking/header.jsp" %>
-<form action="/re_data" name="re_form">
+
 <div class="container-fluid">
 
     
@@ -71,7 +71,7 @@
 		</button>
 	</div>
 </div>
-
+<form action="/re_data" name="re_form" method="post">
 <div class="container my-4">
 
   <h1></h1>
@@ -111,20 +111,23 @@
 	  </div>
 	  <div class="col-md-6">
 	    <label for="phone" class="form-label">전화번호</label>
-	    <input type="text" id="phone" class="form-control" placeholder="전화번호 입력">
+	    <input type="text" id="phone" class="form-control" placeholder="전화번호 입력" name="phone">
 	  </div>
       <div class="col-md-6">
         <label for="checkin" class="form-label">체크인</label>
-        <input type="text" id="checkin" class="form-control" placeholder="날짜 선택">
+        <input type="text" id="checkin" class="form-control" placeholder="날짜 선택" name="checkin">
       </div>
       <div class="col-md-6">
         <label for="checkout" class="form-label">체크아웃</label>
-        <input type="text" id="checkout" class="form-control" placeholder="날짜 선택">
+        <input type="text" id="checkout" class="form-control" placeholder="날짜 선택" name="checkout">
       </div>
     </div>
     <div class="mt-3 fw-bold" id="price-result">총 숙박: 0박 / 금액: 0원</div>
-    <button id="reserveBtn" class="btn btn-primary mt-3" disabled>예약 확정(결제)</button>
+    <input type="hidden" id="nights" name="nights">
+	<input type="hidden" id="totalPrice" name="price">
+        <button id="reserveBtn" class="btn btn-primary mt-3" disabled>예약 확정(결제)</button>
   </div>
+
 
 </div>
 </form>
@@ -172,9 +175,19 @@ function updatePrice() {
 	    if(nights > 0 && name && phone){
 	      const totalPrice = nights * PRICE_PER_NIGHT;
 	      priceEl.textContent = `총 숙박: \${nights}박 / 금액: \${totalPrice}원`;
+	      
+	      document.getElementById('nights').value = `\${nights}`;
+	      document.getElementById('totalPrice').value = `\${totalPrice}`;
+	      
+	      
 	      reserveBtn.disabled = false;
 	    } else {
 	      priceEl.textContent = `총 숙박: 0박 / 금액: 0원`;
+	      
+	      document.getElementById('nights').value = '';
+	      document.getElementById('totalPrice').value = '';
+	      
+	      
 	      reserveBtn.disabled = true;
 	    }
 	  } else {
@@ -201,7 +214,7 @@ reserveBtn.addEventListener('click', function() {
     `총 숙박: \${nights}박 / 금액: \${totalPrice}원`
   );
   
-  re_form.submit();
+ re_form.submit();
   
   
 });

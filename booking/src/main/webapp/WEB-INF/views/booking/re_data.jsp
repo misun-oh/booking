@@ -4,130 +4,170 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ROOM INFO</title>
+<title>예약 조회 페이지</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+  }
+  .form-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    padding-bottom: 25px;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .banner {
+    padding-bottom: 20px;   /* 하단 패딩 적용 */
+  }
+  
+  .banner img {
+    width: 100%;          /* 화면 너비에 맞게 */
+    max-width: 1920px;    /* 최대 크기 제한 */
+    height: auto;         /* 세로 비율 자동 조절 */
+    max-height: 250px;    /* 세로 최대치 설정 */
+    display: block;       /* 가운데 정렬 효과 */
+    margin: 0 auto;       /* 좌우 여백 자동 */
+    object-fit: cover;    /* 잘리는 경우에도 꽉 차게 */
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  input[type="text"], input[type="email"], input[type="password"], textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  textarea {
+    height: 200px;
+    resize: none;
+  }
+  .button-group {
+    text-align: right; /* 버튼을 우측 정렬 */
+    margin-top: 20px;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  button:hover {
+    opacity: 0.9;
+  }
+  .btn-edit {
+    background-color: #007BFF;
+  }
+  .btn-edit:hover {
+    background-color: #0069d9;
+  }
 
+  .flex-row {
+    display: flex;
+    gap: 10px; /* 입력창 사이 여백 */
+  }
+  .flex-row input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .btn-back {
+    background-color: #6c757d;
+  }
+  .btn-back:hover {
+    background-color: #5a6268;
+  }
+  
+</style>
 </head>
 <body>
-<%@include file="/booking/header.jsp" %>
+<%@ include file="/booking/header.jsp" %>
 
-<div class="container-fluid">
-    
-    
-    <div id="carouselExampleCaptions" class="carousel slide">
-		<div class="carousel-indicators">
-		  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-		  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-		  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-		  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-		  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
-		</div>
-		<div class="carousel-inner">
-		  <div class="carousel-item active">
-		    <img src="res/img/room6/main.jpg" class="d-block w-100" alt="...">
-		    <div class="carousel-caption d-none d-md-block">
-		      <h5>1 slide label</h5>
-		      <p>Some representative placeholder content for the first slide.</p>
-		    </div>
-		  </div>
-		  <div class="carousel-item">
-		    <img src="res/img/room6/sub_img1.jpg" class="d-block w-100" alt="...">
-		    <div class="carousel-caption d-none d-md-block">
-		      <h5>2 slide label</h5>
-		      <p>Some representative placeholder content for the second slide.</p>
-		    </div>
-		  </div>
-		  <div class="carousel-item">
-		    <img src="res/img/room6/sub_img2.jpg" class="d-block w-100" alt="...">
-		    <div class="carousel-caption d-none d-md-block">
-		      <h5>3 slide label</h5>
-		      <p>Some representative placeholder content for the third slide.</p>
-		    </div>
-		  </div>
-		   <div class="carousel-item">
-		    <img src="res/img/room6/sub_img3.jpg" class="d-block w-100" alt="...">
-		    <div class="carousel-caption d-none d-md-block">
-		      <h5>4 slide label</h5>
-		      <p>Some representative placeholder content for the third slide.</p>
-		    </div>
-		  </div>
-		  <div class="carousel-item">
-		    <img src="res/img/room6/sub_img4.jpg" class="d-block w-100" alt="...">
-		    <div class="carousel-caption d-none d-md-block">
-		      <h5>5 slide label</h5>
-		      <p>Some representative placeholder content for the third slide.</p>
-		    </div>
-		  </div>
-		</div>
-		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-		  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		  <span class="visually-hidden">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-		  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-		  <span class="visually-hidden">Next</span>
-		</button>
+  	<!-- 예약 확인 배너 -->
+	<div class="banner">
+	  <img src="res/img/reser.jpg" alt="예약 확인 배너">
 	</div>
-    
-    <h1>디럭스 룸 (Deluxe Room)</h1>
 
-    <div class="info">
-      <div>
-        <h3>객실정보</h3>
-        <ul>
-          <li>한실 구조, 침대룸, 화장실</li>
-          <li>기준 2인 / 최대 2인</li>
-          <li>건물: 기준층 / 복층구조</li>
-          <li>시설: TV, 에어컨, 냉장고, 전자렌지, 세면도구 등</li>
-          <li>입실: 오후 3시 / 퇴실: 오전 11시</li>
-        </ul>
-      </div>
-    </div>
-
-    <h3>가격안내</h3>
-    <table class="price-table">
-      <thead>
-        <tr>
-          <th>구분</th>
-          <th>비수기</th>
-          <th>성수기</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>주중</td>
-          <td>200,000</td>
-          <td>300,000</td>
-        </tr>
-        <tr>
-          <td>금요일</td>
-          <td>220,000</td>
-          <td>320,000</td>
-        </tr>
-        <tr>
-          <td>주말</td>
-          <td>240,000</td>
-          <td>340,000</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="booking">
-      <h2>숙박일정<br><small>(날짜 선택)</small></h2>
-      <button>입실</button>
-      <button>퇴실</button>
-
-      <div class="price-amount">금액(₩) : 220,000 원</div>
-      <button class="confirm-button">예약 확정(결제)</button>
-    </div>
-  </div>  
-
-
+  <div class="form-container">
   
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" 
-integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
-</script>        
 
+    <center><h2 style="font-size: 28px; font-weight: bold; color: #022703; margin-bottom: 15px;">예약 확인</h2></center>
+    <center>
+    <p style="font-size: 12px; font-weight: bold; color: #5c5c5c; margin-bottom: 15px;">
+    최소 하나 이상의 정보를 입력한 후 예약확인 버튼을 클릭해 주세요. ⓒ 2025 내맘대로 HOTEL</p>
+    </center>
+    
+    
+	<form action="/re_data" method="get">
+  <div class="form-group flex-row">
+    <div style="flex:1;">
+      <label for="number">예약 번호를 넣어 주세요.</label>
+      <input type="number" id="number" name="reid" value="${reid}">
+    </div>
+    <div class="button-group" style="align-self: flex-end;">
+      <button type="submit">예약 확인</button>
+    </div>
+  </div>
+</form>
 
-<%@include file="/booking/footer.jsp" %>
+<center><h2>예약 정보 확인</h2></center>
+
+<c:choose>
+  <c:when test="${reservation != null}">
+    <table style="width:60%; margin:20px auto; border-collapse:collapse; font-size:16px;">
+      <tr>
+        <th style="background:#d9f2d9; text-align:left; padding:8px; border:1px solid #ccc;">예약번호</th>
+        <td style="text-align:right; padding:8px; border:1px solid #ccc;">${reservation.reid}</td>
+      </tr>
+      <tr>
+        <th style="background:#d9f2d9; text-align:left; padding:8px; border:1px solid #ccc;">이름</th>
+        <td style="text-align:right; padding:8px; border:1px solid #ccc;">${reservation.name}</td>
+      </tr>
+      <tr>
+        <th style="background:#d9f2d9; text-align:left; padding:8px; border:1px solid #ccc;">전화</th>
+        <td style="text-align:right; padding:8px; border:1px solid #ccc;">${reservation.phone}</td>
+      </tr>
+      <tr>
+        <th style="background:#d9f2d9; text-align:left; padding:8px; border:1px solid #ccc;">체크인</th>
+        <td style="text-align:right; padding:8px; border:1px solid #ccc;">${reservation.checkin}</td>
+      </tr>
+      <tr>
+        <th style="background:#d9f2d9; text-align:left; padding:8px; border:1px solid #ccc;">체크아웃</th>
+        <td style="text-align:right; padding:8px; border:1px solid #ccc;">${reservation.checkout}</td>
+      </tr>
+      <tr>
+        <th style="background:#d9f2d9; text-align:left; padding:8px; border:1px solid #ccc;">숙박일수</th>
+        <td style="text-align:right; padding:8px; border:1px solid #ccc;">${reservation.nights} 일</td>
+      </tr>
+      <tr>
+        <th style="background:#d9f2d9; text-align:left; padding:8px; border:1px solid #ccc;">총금액</th>
+        <td style="text-align:right; padding:8px; border:1px solid #ccc;">${reservation.price} 원</td>
+      </tr>
+    </table>
+  </c:when>
+  <c:otherwise>
+    <p style="text-align:center; color:red; font-weight:bold;">
+      조회 결과가 없습니다.
+    </p>
+  </c:otherwise>
+</c:choose>
+   
+		  
+  </div>
+  
+<%@ include file="/booking/footer.jsp" %>
 </body>
 </html>

@@ -124,15 +124,69 @@ public class LoginController {
 		return "/booking/view6";
 	}
 	
-	@GetMapping("/re_data")
-	private String booking_re_data(Model model, ReDataDto redata) {
-		System.out.println("redata: "+redata);
-		int res = redata01.getView(redata);
-		System.out.println("res: "+res);
-		
-		return "/booking/re_data";
-	}
+    // 예약 등록
+    @PostMapping("/re_data")
+    public String insertReData(ReDataDto redata) {
+        // 필수값 체크
+        if (redata.getName().isEmpty() || redata.getPhone().isEmpty() 
+            || redata.getCheckin().isEmpty() || redata.getCheckout().isEmpty()) {
+            throw new IllegalArgumentException("예약 정보가 완전하지 않습니다.");
+        }
 
+        redata01.insertReData(redata);
+
+        // 등록 후 예약 번호로 조회 페이지로 이동
+        return "redirect:/re_data?reid=" + redata.getReid();
+    }
+        
+        // 예약 조회
+    @GetMapping("/re_data")
+    public String booking_re_data(Model model, ReDataDto redata) {
+        ReDataDto result = null;
+        System.out.println("받은 reid: " + redata.getReid());
+        if (redata.getReid() != null) {
+            result = redata01.findViewById(redata);
+        }
+
+        model.addAttribute("reservation", result);
+        model.addAttribute("reid", redata.getReid());
+
+        return "/booking/re_data";
+    }
+
+    
+    @Autowired
+    private ReDataMapper reDataMapper;
+
+    @GetMapping("/re_data2")
+    public String list(@RequestParam(defaultValue = "1") int page, Model model) {
+        int pageSize = 10; // 한 페이지에 보여줄 개수
+        int start = (page - 1) * pageSize;
+        int end = page * pageSize;
+
+        List<ReDataDto> list = reDataMapper.getList(start, end);
+        System.out.println(list); // 상세 출력
+        // ✅ 리스트 사이즈 출력 (여기!)
+        System.out.println("list size = " + list.size());
+        for (ReDataDto dto : list) {
+            System.out.println(dto); // 상세 출력
+        }
+        
+        int totalCount = reDataMapper.getTotalCount();
+        int totalPages = (int)Math.ceil((double)totalCount / pageSize);
+
+        model.addAttribute("list", list);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", totalPages);
+
+        return "booking/re_data2"; // JSP
+    }
+	
+
+
+	
+
+	
 	
 	@GetMapping("/register")
 	private String booking_register(Model model) {

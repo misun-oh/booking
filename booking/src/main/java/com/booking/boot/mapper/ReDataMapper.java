@@ -1,17 +1,49 @@
 package com.booking.boot.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import com.booking.boot.Dto.ReDataDto;
 
 public interface ReDataMapper {
-	@Insert("INSERT INTO RE_DATA (RE_ID, RE_NAME, RE_PHONE, RE_CHECKIN, RE_CHECKOUT, RE_NIGHTS, RE_PRICE) "
-			+ "VALUES (RE_SEQ.NEXTVAL, 'aa', 'sss',\r\n"
-			+ "  TO_DATE('2025-09-05', 'YYYY-MM-DD'),\r\n"
-			+ "  TO_DATE('2025-09-08', 'YYYY-MM-DD'),\r\n"
-			+ "  3, 600000)")
+	
+    // 예약 정보 등록
+    @Insert("INSERT INTO RE_DATA (RE_ID, RE_NAME, RE_PHONE, RE_CHECKIN, RE_CHECKOUT, RE_NIGHTS, RE_PRICE) "
+          + "VALUES (RE_SEQ.NEXTVAL, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, "
+          + "TO_DATE(#{checkin,jdbcType=VARCHAR}, 'YYYY-MM-DD'), "
+          + "TO_DATE(#{checkout,jdbcType=VARCHAR}, 'YYYY-MM-DD'), "
+          + "#{nights,jdbcType=INTEGER}, #{price,jdbcType=INTEGER})")
+    @Options(useGeneratedKeys = true, keyProperty = "reid", keyColumn = "RE_ID")
+    int insertReData(ReDataDto redata);
 
+    // 예약 번호로 조회
+    @Select("SELECT RE_ID as reid, RE_NAME as name, RE_PHONE as phone, "
+    	      + "TO_CHAR(RE_CHECKIN, 'YYYY-MM-DD') as checkin, "
+    	      + "TO_CHAR(RE_CHECKOUT, 'YYYY-MM-DD') as checkout, "
+    	      + "RE_NIGHTS as nights, RE_PRICE as price "
+    	      + "FROM RE_DATA WHERE RE_ID = #{reid}")
+    ReDataDto findViewById(ReDataDto redata);
 
-	int getView(@Param("redata")ReDataDto redata);
+	
+    // 전체 리스트 조회 (페이징 적용)
+    @Select("SELECT * FROM ( " +
+            "SELECT ROWNUM rn, a.* FROM ( " +
+            "SELECT * FROM RE_DATA ORDER BY RE_ID DESC" +
+            ") a " +
+            "WHERE ROWNUM <= #{end}" +
+            ") WHERE rn > #{start}")
+    List<ReDataDto> getList(@Param("start") int start, @Param("end") int end);
+
+    // 전체 데이터 개수
+    @Select("SELECT COUNT(*) FROM RE_DATA")
+    int getTotalCount();
+	
+	
+	
+	
+
 }

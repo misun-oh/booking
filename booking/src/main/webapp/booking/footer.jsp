@@ -114,7 +114,7 @@
       <h2 class="footer-logo">내맘대로 <span>HOTEL</span></h2>
       <p>주식회사 드림하우스</p>
       <p>주소 : 경기 성남시 수정구 수정로 167 (태평동)</p>
-      <p>대표 : 이상훈</p>
+      <p>대표 : President LEE</p>
       <p>전화 : 031-662-8282</p>
       <p>핸드폰 : 010-222-3333</p>
       <p><em>Contact for more information.</em></p>

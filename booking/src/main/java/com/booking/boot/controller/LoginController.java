@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.booking.boot.Dto.PageDto;
+import com.booking.boot.Dto.QnaDto;
 import com.booking.boot.Dto.RoomDto;
 import com.booking.boot.Dto.ReDataDto;
 import com.booking.boot.Dto.SearchDto;
 import com.booking.boot.mapper.BookingMapper;
+import com.booking.boot.mapper.MypageMapper;
 import com.booking.boot.mapper.ReDataMapper;
 import com.booking.boot.mapper.ViewMapper;
 
@@ -24,6 +26,8 @@ public class LoginController {
 	
 	@Autowired
 	BookingMapper bookingMapper;
+	
+	
 	
 	@GetMapping("/login")
 	private String booking_login() {
@@ -42,15 +46,30 @@ public class LoginController {
 	
 	@GetMapping("/list")
 	private String booking_list(Model model, SearchDto searchDto) {
-		model.addAttribute("pageDto", new PageDto(searchDto, 100));
+		model.addAttribute("pageDto", new PageDto(searchDto, bookingMapper.listCount()));
 		
-		List<RoomDto> list = bookingMapper.list();
+		List<RoomDto> list = bookingMapper.list(searchDto);
 		model.addAttribute("list", list);
 		return "/booking/list";
 	}
+
+	@GetMapping("/mypage")
+	private String mypage(Model model, SearchDto searchDto) {
+		
+		List<QnaDto> myPage = mapper2.myPage(searchDto);
+		System.out.println("myPage :" + myPage);
+		model.addAttribute("myPage", myPage);
+		PageDto pageDto = new PageDto(searchDto, mapper2.myPage2());
+		model.addAttribute("pageDto", pageDto);
+		return "/booking/mypage";
+	}
+	
 	
 	@Autowired
 	ViewMapper mapper;
+	
+	@Autowired
+	MypageMapper mapper2;
 	
 	@Autowired
 	ReDataMapper redata01;
@@ -83,11 +102,20 @@ public class LoginController {
 		
 		return "/booking/view4";
 	}
-		
+	
 	@GetMapping("/qna")
-	private String booking_view5(Model model) {
+	private String booking(Model model, QnaDto qna) {
 		
 		return "/booking/qna";
+	}
+	
+	@PostMapping("/qna")
+	private String booking_view5(Model model, QnaDto qna) {
+		System.out.println(qna);
+		bookingMapper.qnaIns(qna);
+		model.addAttribute("msg", "등록 되었시유");
+		model.addAttribute("url", "/list");
+		return "/common/msgbox";
 	}
 		
 	@GetMapping("/view6")

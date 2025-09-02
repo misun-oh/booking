@@ -109,7 +109,7 @@
     <p style="font-size: 10px; font-weight: bold; color: #5c5c5c; margin-bottom: 15px;">
     이용 중 궁금한 점이나 불편사항은 문의 게시판에 남겨주시면 신속히 답변드리겠습니다. ⓒ 2025 내맘대로 HOTEL</p>
     </center>
-    <form action="savePost.jsp" method="post">
+    <form action="/qna" method="post">
       
       <div class="form-group">
         <label for="title">제목</label>
@@ -138,8 +138,7 @@
       </div>
 
 		<div class="button-group">
-		  <button type="submit">저장</button>
-		  <button type="submit" formaction="editPost.jsp" class="btn-edit">수정</button>
+		  <button type="submit" class="btn-edit">저장</button>
 		  <button type="button" onclick="location.href='list.jsp'" class="btn-back">목록</button>
 		</div>
     </form>

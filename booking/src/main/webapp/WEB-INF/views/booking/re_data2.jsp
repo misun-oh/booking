@@ -96,13 +96,13 @@
   <tbody>
     <c:forEach var="reservation" items="${list}">
       <tr>
-        <td>${reservation.reid}</td>
-        <td>${reservation.name}</td>
-        <td>${reservation.phone}</td>
-        <td>${reservation.checkin}</td>
-        <td>${reservation.checkout}</td>
-        <td>${reservation.nights}</td>
-        <td><fmt:formatNumber value="${reservation.price}" type="number" /></td>
+        <td>${reservation.re_id}</td>
+        <td>${reservation.re_name}</td>
+        <td>${reservation.re_phone}</td>
+        <td>${reservation.re_checkin}</td>
+        <td>${reservation.re_checkout}</td>
+        <td>${reservation.re_nights}</td>
+        <td><fmt:formatNumber value="${reservation.re_price}" type="number" /></td>
       </tr>
     </c:forEach>
   </tbody>

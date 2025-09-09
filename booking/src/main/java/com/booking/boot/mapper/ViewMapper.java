@@ -6,6 +6,6 @@ import com.booking.boot.Dto.ViewDto;
 
 public interface ViewMapper {
 	
-	@Select("SELECT * FROM ROOM WHERE room_no=#{room_no}")
+	@Select("SELECT * FROM room WHERE room_no=#{room_no}")
 	ViewDto getView(int room_no);
 }

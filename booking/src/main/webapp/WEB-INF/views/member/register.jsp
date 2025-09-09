@@ -120,7 +120,7 @@
 	<div class="input-group mb-3 justify-content-md-center">
 		<!-- 저장버튼을 클릭 하면 /member/register_action -> 컨트롤러에서 데이터 수집 -->
 		<button id="saveBtn" type="submit" class="btn btn-primary">저장</button>
-        <button type="reset" class="btn btn-outline-secondary">초기화</button>
+        <button type="reset" class="btn btn-outline-secondary">초기화하소</button>
 	</div>  
 </form>
 </div>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
 
+import com.booking.boot.Dto.NoticeDto;
 import com.booking.boot.Dto.QnaDto;
 import com.booking.boot.Dto.SearchDto;
 
@@ -18,4 +19,5 @@ public interface MypageMapper {
 	
 	@Select("select count(*) from qna")
 	int  myPage2();
+
 }

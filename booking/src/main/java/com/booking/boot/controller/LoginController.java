@@ -44,6 +44,16 @@ public class LoginController {
 		return "/booking/main";
 	}
 	
+	@PostMapping("/main1")
+	private String edu_main() {
+		
+		return "/edu/main";
+	}
+	@GetMapping("/main1")
+	private String edu_mainget() {
+		return "/edu/main";
+	}
+	
 	@GetMapping("/list")
 	private String booking_list(Model model, SearchDto searchDto) {
 		model.addAttribute("pageDto", new PageDto(searchDto, bookingMapper.listCount()));

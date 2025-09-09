@@ -3,11 +3,14 @@ package com.booking.boot.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
 import com.booking.boot.Dto.PageDto;
 import com.booking.boot.Dto.SearchDto;
 import com.booking.boot.mapper.EducationMapper;
 
 import lombok.AllArgsConstructor;
+@Service
 @AllArgsConstructor
 public class EducationService {
 	

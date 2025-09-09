@@ -3,17 +3,17 @@ package com.booking.boot.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.booking.boot.Dto.NoticeDto;
 import com.booking.boot.Dto.PageDto;
 import com.booking.boot.Dto.QnaDto;
-import com.booking.boot.Dto.RoomDto;
 import com.booking.boot.Dto.ReDataDto;
+import com.booking.boot.Dto.RoomDto;
 import com.booking.boot.Dto.SearchDto;
 import com.booking.boot.mapper.BookingMapper;
 import com.booking.boot.mapper.MypageMapper;
@@ -53,26 +53,39 @@ public class LoginController {
 		return "/booking/list";
 	}
 
+	@Autowired
+	MypageMapper mapper2;
+
 	@GetMapping("/mypage")
 	private String mypage(Model model, SearchDto searchDto) {
 		
 		List<QnaDto> myPage = mapper2.myPage(searchDto);
 		System.out.println("myPage :" + myPage);
+
 		model.addAttribute("myPage", myPage);
 		PageDto pageDto = new PageDto(searchDto, mapper2.myPage2());
 		model.addAttribute("pageDto", pageDto);
 		return "/booking/mypage";
 	}
+
+	@GetMapping("/notice")
+	private String notice(Model model, SearchDto searchDto) {
+		
+		//공지사항 목록 
+		List<NoticeDto> noticeList = bookingMapper.noticeList(searchDto);
+		System.out.println("noticeList :" + noticeList);
+		
+		//페이징 처리
+		
+		PageDto pageDto = new PageDto(searchDto,bookingMapper.noticeCount());
+		model.addAttribute("noticeList", noticeList);
+		model.addAttribute("pageDto", pageDto);
+		return "/booking/notice";
+	}
 	
 	
 	@Autowired
 	ViewMapper mapper;
-	
-	@Autowired
-	MypageMapper mapper2;
-	
-	@Autowired
-	ReDataMapper redata01;
 	
 	@GetMapping("/view")
 	private String booking_view(Model model, Integer room_no) {
@@ -83,7 +96,11 @@ public class LoginController {
 		model.addAttribute("viewDto", mapper.getView(room_no));
 		return "/booking/view";
 		
+	
+	
 	}
+	@Autowired
+	ReDataMapper redata01;
 
 	@GetMapping("/view2")
 	private String booking_view2(Model model) {

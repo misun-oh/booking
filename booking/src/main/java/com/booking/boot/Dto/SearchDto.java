@@ -12,7 +12,7 @@ public class SearchDto {
 	// 페이징 처리를 위해 필요한 정보 
 	// 리스트 페이지를 조회 하기 위해 쿼리 실행시 필요한 정보
 	private int pageNo = 1; 	// 요청 페이지 번호
-	private int amount = 10; 	// 페이지당 게시물 수
+	private int amount = 5; 	// 페이지당 게시물 수
 	
 	// 검색에 필요한 정보
 	private String searchField = "";	// 검색필드

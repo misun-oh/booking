@@ -57,7 +57,7 @@
         <th>번호</th>
         <th>제목</th>
         <th>내용</th>
-        <th>상세보기</th>
+        <th>등록일</th>
       </tr>
     </thead>
     <tbody>
@@ -68,11 +68,7 @@
           <td style="max-width:400px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
             ${qna.content}
           </td>
-          <td>
-            <button class="btn" onclick="location.href='/mypageview?qna_id=${qna.qna_id}'">
-              상세 보기
-            </button>
-          </td>
+          <td>${qna.created_at}</td>
         </tr>
       </c:forEach>
     </tbody>

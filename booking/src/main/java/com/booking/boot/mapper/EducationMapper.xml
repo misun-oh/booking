@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.booking.boot.mapper.EducationMapper">
+  	<select id="getList" parameterType="com.booking.boot.Dto.SearchDto" resultType="com.booking.boot.Dto.CourseDto">
+  	
+  	</select>
+  </mapper>

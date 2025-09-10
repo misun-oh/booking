@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>리스트 등록(List registration)</title>
+<title>강의 등록(Course Registration)</title>
 
 <style>
 /* 컨테이너 고정 가로 1000px (반응형을 위해 max-width 포함) */
@@ -47,7 +47,7 @@ textarea { min-height:140px; resize:vertical; }
 <body>
 <%@include file="/edu/header.jsp" %>
   <div class="container">
-    <h1>리스트 등록(List registration)</h1>
+    <h1>강의 등록(Course Registration)</h1>
 
     <form id="productForm" novalidate>
       <div class="left">
@@ -70,7 +70,7 @@ textarea { min-height:140px; resize:vertical; }
 
       <div class="right">
         <div style="margin-bottom:14px;">
-          <label for="title">상품명 <span style="font-weight:400;color:#6b7280">(최대 100자)</span></label>
+          <label for="title">강사명 <span style="font-weight:400;color:#6b7280">(최대 100자)</span></label>
           <input id="title" type="text" maxlength="100" placeholder="상품명을 입력하세요" required />
           <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;">
             <div class="errors" id="titleError"></div>

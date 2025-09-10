@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.booking.boot.mapper.IntructorMapper">
+  	<select id="getList">
+  		select *
+  		from instructor
+  		
+  	</select>
+  	<select id="getTotalCount">
+  		select count(*)
+  		from instructor
+  	</select>
+  	<insert id="insert">
+  		insert into instructor (instructor_id, img, word, name, file_id) 
+  		values( #{instructor_id}, #{img}, #{word}, #{name}, #{file_id});
+  	</insert>
+  </mapper>

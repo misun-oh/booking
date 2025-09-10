@@ -89,7 +89,7 @@ input[type="text"], input[type="password"], input[type="email"], select
 	<div class="container">
 		<h2>회원 가입</h2>
 		<!-- 파일을 첨부하기 위해  enctype="multipart/form-data"을 지정 -->
-		<form action="/member/register_action" method="post"
+		<form action="/edu/register_action.jsp" method="post"
 			name="registerForm" id="rrrr" enctype="multipart/form-data">
 
 			<div class="input-group mb-3 mt-4">

@@ -79,8 +79,8 @@ textarea { min-height:140px; resize:vertical; }
         </div>
 
         <div style="margin-bottom:14px;">
-          <label for="desc">상품 설명 <span style="font-weight:400;color:#6b7280">(최대 200자)</span></label>
-          <textarea id="desc" maxlength="200" placeholder="상품 설명을 입력하세요"></textarea>
+          <label for="desc">자기소개 <span style="font-weight:400;color:#6b7280">(최대 200자)</span></label>
+          <textarea id="desc" maxlength="200" placeholder="자기소개를 입력하세요"></textarea>
           <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;">
             <div class="errors" id="descError"></div>
             <div class="counter" id="descCounter">0 / 200</div>

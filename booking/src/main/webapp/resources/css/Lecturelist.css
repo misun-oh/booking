@@ -1,0 +1,79 @@
+.container {
+        max-width: 100px;
+        max-height: 800px;
+        padding: 20px;
+    }
+
+    .button_box {
+      max-width: 740px;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 5px;
+    }
+
+    .download_btn {
+        height: 38px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background:#222;
+        color: #f5f7f5;
+        font-weight: bold;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    table tr th {
+      text-align: center;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      padding: 12px 0;
+    }
+
+    .Attend_class {
+        width: 200px;
+    }
+
+    .Attend_number {
+        width: 100px;
+    }
+
+    td {
+      border: 1px solid #ccc;
+      padding: 12px 0;
+      text-align: center;
+    }
+    
+     tbody tr td span {
+        color: red;
+    }
+    
+    .play_btn {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #222;
+      color: #f5f7f5;
+      height: 38px;
+      font-weight: bold;
+    }
+
+    .buttons_box1 {
+      max-width: 740px;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 5px;
+    }
+    
+    .buttons_box1 button {
+        margin: 5px;
+        height: 38px;
+        width: 58px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background:#222;
+        color: #f5f7f5;
+        font-weight: bold;
+    }

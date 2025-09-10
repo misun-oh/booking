@@ -238,6 +238,11 @@ public class LoginController {
 		return "/edu/input2";
 	}
 
+	@GetMapping("/Lecturelist")
+	private String edu_Lecturelist(Model model) {
+		
+		return "/edu/Lecturelist";
+	}
 	
 	
 	@GetMapping("/register")

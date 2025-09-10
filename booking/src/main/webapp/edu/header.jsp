@@ -204,24 +204,26 @@
 
   <!-- 헤더 -->
   <div class="user-menu">
-      <a href="/login">로그인</a>
-      <a href="/register">회원가입</a>
-      <a href="/mypage">마이페이지</a>
-      <a href="/re_data">예약조회</a>
+      <a href="/login1">로그인</a>
+      <a href="/register1">회원가입</a>
+      <a href="/mypage1">마이페이지</a>
+      <a href="/notice">공지사항</a>
+      <a href="/qna">문의사항</a>
   </div>
   <header>
     <div class="logo">
-       <a href="/main"><img src="/res/img/hotel_logo2.jpg" alt="로고" /></a>
-     <!-- <strong>내맘대로</strong> HOTEL -->
+       <a href="/main1"><img src="/res/imgs/logo2.jpg" alt="로고" /></a>
+     
     </div>
     
     <nav class="nav">
-      <a href="#">호텔 소개</a>
-      <a href="#">주변 관광지</a>
-      <a href="/list">객실 목록</a>
-      <a href="/notice">공지사항</a>
-      <a href="/qna">문의하기</a>
-      <a href="#">Location</a>
+      <a href="#">AI/CODING</a>
+      <a href="#">요리/취미</a>
+      <a href="#">운동/건강</a>
+      <a href="/list">언어 교육</a>
+      <a href="/notice">초등 교육</a>
+      <a href="/qna">중학 교육</a>
+      <a href="#">고등 교육</a>
     </nav>
     
   </header>

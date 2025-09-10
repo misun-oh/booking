@@ -34,6 +34,11 @@ public class LoginController {
 		return "/booking/login";
 	}
 	
+	@GetMapping("/login1")
+	private String edu_login() {
+		return "/edu/login";
+	}
+	
 	@PostMapping("/main")
 	private String booking_main() {
 		
@@ -115,7 +120,7 @@ public class LoginController {
 	@GetMapping("/view3")
 	private String booking_view2(Model model) {
 		
-		return "/booking/view2";
+		return "/edu/view2";
 	}
 
 	@GetMapping("/view2")
@@ -209,7 +214,17 @@ public class LoginController {
         return "booking/re_data2"; // JSP
     }
 	
-
+	@GetMapping("/register1")
+	private String edu_register(Model model) {
+		
+		return "/edu/register";
+	}
+	
+	@GetMapping("/mypage1")
+	private String edu_mypage(Model model) {
+		
+		return "/edu/mypage";
+	}
 
 	
 

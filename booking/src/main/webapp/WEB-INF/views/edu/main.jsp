@@ -80,11 +80,11 @@
 
 	<div class="banner">
 		<div class="slides">
-			<img src="res/img/banner1.jpg" alt="배너1"> <img
-				src="res/img/banner2.jpg" alt="배너2"> <img
-				src="res/img/banner3.jpg" alt="배너3"> <img
-				src="res/img/banner4.jpg" alt="배너4"> <img
-				src="res/img/banner5.jpg" alt="배너5">
+			<img src="res/imgs/banner1.jpg" alt="배너1"> <img
+				src="res/imgs/banner2.jpg" alt="배너2"> <img
+				src="res/imgs/banner3.jpg" alt="배너3"> <img
+				src="res/imgs/banner4.jpg" alt="배너4"> <img
+				src="res/imgs/banner5.jpg" alt="배너5">
 		</div>
 
 		<!-- 좌우 버튼 -->

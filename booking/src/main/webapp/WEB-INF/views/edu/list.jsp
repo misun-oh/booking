@@ -8,7 +8,7 @@
 <title>Room List</title>
 </head>
 <body>
-	<%@include file="/booking/header.jsp"%>
+	<%@include file="/edu/header.jsp"%>
 
 	<style>
 .container {
@@ -102,6 +102,6 @@
 	<%@include file="/common/search2.jsp"%>
 	</div>
 
-	<%@include file="/booking/footer.jsp"%>
+	<%@include file="/edu/footer.jsp"%>
 </body>
 </html>

@@ -84,7 +84,7 @@ input[type="text"], input[type="password"], input[type="email"], select
 </style>
 </head>
 <body>
-	<%@include file="/booking/header.jsp"%>
+	<%@include file="/edu/header.jsp"%>
 
 	<div class="container">
 		<h2>회원 가입</h2>
@@ -140,6 +140,6 @@ input[type="text"], input[type="password"], input[type="email"], select
 		</form>
 	</div>
 
-	<%@include file="/booking/footer.jsp"%>
+	<%@include file="/edu/footer.jsp"%>
 </body>
 </html>

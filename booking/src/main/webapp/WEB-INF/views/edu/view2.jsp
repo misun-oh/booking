@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>ROOM INFO</title>
+<title>강사 리스트</title>
+
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
@@ -15,17 +17,33 @@
 #cont_cont { margin-top: 50px; }
 .course-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .course-item { border: 1px solid #ddd; padding: 10px; border-radius: 8px; text-align: center; background: #fff; }
-.course-item img { width: 100%; height: 200px; object-fit: cover; border-radius: 6px; }
+.course-item img { 
+    width: 400px; 
+    height: 400px; 
+    object-fit: cover; 
+    border-radius: 6px; 
+    margin: 0 auto; /* 중앙 정렬 */
+    display: block;
+}
 .course-title { font-size: 16px; margin: 10px 0; }
 .course-price { font-size: 14px; color: #333; }
 </style>
+
+
+
+
 </head>
 <body>
+
 <%@ include file="/edu/header.jsp"%>
 <div class="container" id="cont_cont">
 
     <!-- 📌 카테고리 타이틀 -->
     <h2>${category.name}</h2>
+
+	
+	
+	
 
     <!-- 📌 서브 카테고리 메뉴 -->
     <div id="subCatList" class="mb-3">
@@ -34,13 +52,25 @@
         </c:forEach>
     </div>
 
+
     <!-- 📌 코스 목록 (4×3 그리드) -->
     <div class="course-grid">
+    
         <c:forEach var="course" items="${courseList}">
             <div class="course-item">
                 <a href="courseDetail.jsp?id=${course.course_id}">
-                    <img src="<c:out value='${empty course.img ? "https://placehold.co/300x200?text=No+Image" 
-                        : (course.img.startsWith("/uploads") ? course.img : "/uploads/courses/" += course.img)}'/>"
+                   <c:choose>
+    <c:when test="${empty course.img}">
+        <img src="https://placehold.co/400x400?text=No+Image" alt="${course.title}" />
+    </c:when>
+    <c:when test="${fn:startsWith(course.img, '/uploads')}">
+        <img src="${course.img}" alt="${course.title}" />
+    </c:when>
+    <c:otherwise>
+        <img src="/uploads/courses/${course.img}" alt="${course.title}" />
+    </c:otherwise>
+</c:choose>
+
                         alt="${course.title}"
                         onerror="this.src='https://placehold.co/300x200?text=No+Image';" />
                     <h4 class="course-title">${course.title}</h4>
@@ -74,5 +104,8 @@
     </nav>
 </div>
 <%@ include file="/edu/footer.jsp"%>
+
+	
+
 </body>
 </html>

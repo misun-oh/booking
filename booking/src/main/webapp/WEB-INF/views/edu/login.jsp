@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>내멋대로 HoTeL | 로그인</title>
+<title>내맘대로 E.D.U | 로그인</title>
 <style>
 :root {
 	--brand-black: #111;
@@ -187,7 +187,7 @@ body {
 		<div class="stack">
 			<div class="brand">
 				<!-- 추가된 이미지 -->
-				<a href="/main"><img src="/res/img/hotel_logo500.jpg"
+				<a href="/main"><img src="/res/imgs/logo1.jpg"
 					alt="호텔 로고" class="brand-img" /></a>
 				<!--<small>Hotel as I like</small>
         <h1>HOTEL</h1>-->

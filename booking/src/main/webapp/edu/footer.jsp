@@ -111,8 +111,8 @@
   <div class="footer-top">
     <!-- 왼쪽: 회사명 + 회사정보 -->
     <div class="footer-info">
-      <h2 class="footer-logo">내맘대로 <span>HOTEL</span></h2>
-      <p>주식회사 드림하우스</p>
+      <h2 class="footer-logo">내맘대로 <span>E.D.U</span></h2>
+      <p>주식회사 드림러닝</p>
       <p>주소 : 경기 성남시 수정구 수정로 167 (태평동)</p>
       <p>대표 : President LEE</p>
       <p>전화 : 031-662-8282</p>
@@ -122,10 +122,10 @@
 
     <!-- 오른쪽: SNS 아이콘 -->
     <div class="footer-sns">
-      <a href="#"><img src="res/img/insta.jpg" alt="Instagram"></a>
-      <a href="#"><img src="res/img/facebook.jpg" alt="Facebook"></a>
-      <a href="#"><img src="res/img/youtube.jpg" alt="YouTube"></a>
-      <a href="#"><img src="res/img/kakao.jpg" alt="Talk"></a>
+      <a href="#"><img src="res/imgs/insta.jpg" alt="Instagram"></a>
+      <a href="#"><img src="res/imgs/facebook.jpg" alt="Facebook"></a>
+      <a href="#"><img src="res/imgs/youtube.jpg" alt="YouTube"></a>
+      <a href="#"><img src="res/imgs/kakao.jpg" alt="Talk"></a>
     </div>
   </div>
 
@@ -134,11 +134,11 @@
   <!-- 하단 링크 -->
   <div class="footer-bottom">
     <div class="footer-copy">
-      <strong>내맘대로 호텔</strong> House as I like
+      <strong>내맘대로 E.D.U</strong> Video Education Platform
     </div>
     <nav class="footer-nav">
       <a href="#">HOME</a>
-      <a href="#">호텔소개</a>
+      <a href="#">사이트소개</a>
       <a href="#">개인정보취급방침</a>
       <a href="#">이용안내</a>
     </nav>

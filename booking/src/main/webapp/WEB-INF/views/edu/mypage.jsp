@@ -8,7 +8,7 @@
 <title>My page</title>
 </head>
 <body>
-	<%@include file="/booking/header.jsp"%>
+	<%@include file="/edu/header.jsp"%>
 
 	<style>
 .qna-table {
@@ -77,6 +77,6 @@
 	</div>
 	<%@include file="/common/search2.jsp"%>
 	<%@include file="/common/pageing.jsp"%>
-	<%@include file="/booking/footer.jsp"%>
+	<%@include file="/edu/footer.jsp"%>
 </body>
 </html>

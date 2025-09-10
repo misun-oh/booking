@@ -112,16 +112,16 @@ public class LoginController {
 	@Autowired
 	ReDataMapper redata01;
 
-	@GetMapping("/view2")
+	@GetMapping("/view3")
 	private String booking_view2(Model model) {
 		
 		return "/booking/view2";
 	}
 
-	@GetMapping("/view3")
-	private String booking_view3(Model model) {
+	@GetMapping("/view2")
+	private String edu_view2(Model model) {
 		
-		return "/booking/view3";
+		return "/edu/view2";
 	}
 
 	@GetMapping("/view4")

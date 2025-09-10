@@ -3,7 +3,78 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.booking.boot.mapper.EducationMapper">
-  	<select id="getList" parameterType="com.booking.boot.Dto.SearchDto" resultType="com.booking.boot.Dto.CourseDto">
-  	
-  	</select>
+  	 <select id="getCourses" parameterType="com.booking.boot.Dto.SearchDto" resultType="com.booking.boot.Dto.CourseDto">
+    SELECT 
+      c.course_id,
+      c.instructor_id,
+      c.title,
+      c.description,
+      c.created_at,
+      c.price,
+      c.level,
+      c.category_id,
+      -- 이미지: 첫 번째만 가져오기
+      (SELECT img 
+         FROM course_photos p 
+        WHERE c.course_id = p.course_id 
+          AND ROWNUM = 1) AS img
+    FROM courses c
+    <where>
+      <!-- 🔍 검색 조건 -->
+      <if test="searchField != null and searchField != '' and searchWord != null and searchWord != ''">
+        <foreach collection="searchField.split('/')" item="field" open="(" close=")" separator="OR">
+          ${field} LIKE '%' || #{searchWord} || '%'
+        </foreach>
+      </if>
+
+      <!-- 📌 카테고리 필터 -->
+      <if test="categoryId != null">
+        AND c.category_id IN (
+          SELECT category_id 
+          FROM categories
+          START WITH category_id = #{categoryId}
+          CONNECT BY PRIOR category_id = parent_id
+        )
+      </if>
+    </where>
+    ORDER BY c.created_at DESC
+    OFFSET (#{pageNo} - 1) * #{amount} ROWS 
+    FETCH NEXT #{amount} ROWS ONLY
+  </select>
+
+  <!-- 📌 전체 개수 (페이징용) -->
+  <select id="getTotalCount" parameterType="com.booking.boot.Dto.SearchDto" resultType="int">
+    SELECT COUNT(*)
+    FROM courses c
+    <where>
+      <if test="searchField != null and searchField != '' and searchWord != null and searchWord != ''">
+        <foreach collection="searchField.split('/')" item="field" open="(" close=")" separator="OR">
+          ${field} LIKE '%' || #{searchWord} || '%'
+        </foreach>
+      </if>
+
+      <if test="categoryId != null">
+        AND c.category_id IN (
+          SELECT category_id 
+          FROM categories
+          START WITH category_id = #{categoryId}
+          CONNECT BY PRIOR category_id = parent_id
+        )
+      </if>
+    </where>
+  </select>
+
+  <!-- 📌 서브 카테고리 목록 -->
+  <select id="getSubCategoryList" parameterType="int" resultType="com.booking.boot.Dto.CategoryDto">
+    SELECT 
+      category_id,
+      course_id,
+      name,
+      parent_id,
+      title
+    FROM categories
+    WHERE LEVEL BETWEEN 1 AND 2
+    START WITH category_id = #{categoryId}
+    CONNECT BY PRIOR category_id = parent_id
+  </select>
   </mapper>

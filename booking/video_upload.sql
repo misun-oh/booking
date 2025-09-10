@@ -1,0 +1,8 @@
+CREATE TABLE video_upload (
+	id int AUTO_INCREMENT PRIMARY KEY,
+	title VARCHAR(100),
+	description VARCHAR(200),
+	filename VARCHAR(255),
+	filename VARCHAR(500),
+	uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

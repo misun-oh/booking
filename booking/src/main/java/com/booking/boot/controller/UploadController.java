@@ -27,7 +27,7 @@ import com.booking.boot.Dto.UploadDto;
 import com.booking.boot.service.UploadService;
 
 @Controller
-@RequestMapping("/upload")
+//@RequestMapping("/upload")
 public class UploadController {
 
 	@Autowired

@@ -44,7 +44,7 @@
             </tbody>
         </table>
         <div class="buttons_box1">
-            <button>등록</button>
+            <button onclick="location.href='input'">등록</button>
             <button>수정</button>
             <button>삭제</button>
             <button>목록</button>

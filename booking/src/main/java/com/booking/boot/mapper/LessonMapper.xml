@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.booking.boot.mapper.LessonMapper">
+  	<select id="getList">
+  		select *
+  		from lesson
+  	</select>
+  	<select id="getTotalCount">
+  		select count(*)
+  		from lesson
+  	</select>
+  	<insert id="insert">
+  		insert into lesson ( lesson_title, lesson_order, lesson_detail, lesson_page, video_url)
+  		values (  #{lesson_title}, #{lesson_order}, #{lesson_detail}, #{lesson_page}, #{video_url})
+  	</insert>
+  </mapper>

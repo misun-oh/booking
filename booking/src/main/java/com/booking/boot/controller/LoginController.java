@@ -28,6 +28,11 @@ public class LoginController {
 	BookingMapper bookingMapper;
 	
 	
+	@GetMapping("/study")
+	private String edu_study(Model model) {
+		
+		return "/edu/study";
+	}
 	
 	@GetMapping("/login")
 	private String booking_login() {

@@ -207,8 +207,8 @@
       <a href="/login1">로그인</a>
       <a href="/register1">회원가입</a>
       <a href="/mypage1">마이페이지</a>
-      <a href="/notice">공지사항</a>
-      <a href="/qna">문의사항</a>
+      <a href="/input">강의 영상 등록</a>
+      <a href="/input2">강사 등록</a>
   </div>
   <header>
     <div class="logo">

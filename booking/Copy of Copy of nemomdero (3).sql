@@ -33,12 +33,11 @@ CREATE TABLE `category` (
 
 CREATE TABLE `enrollment` (
 	`enrollment_id`	BIGINT	NULL,
-	`user_id2`	BIGINT	NULL,
 	`course_id`	BIGINT	NULL,
 	`instructor_id`	BIGINT	NULL,
+	`user_id`	BIGINT	NULL,
 	`status`	ENUM('ongoing','completed','cancelled')	NULL	DEFAULT 'ongoing',
-	`enrolled_at`	TIMESTAMP	NULL,
-	`user_id`	BIGINT	NOT NULL
+	`enrolled_at`	TIMESTAMP	NULL
 );
 
 CREATE TABLE `lesson` (
@@ -60,7 +59,7 @@ CREATE TABLE `course` (
 	`price`	DECIMAL	NULL,
 	`level`	ENUM('beginner', 'intermediate', 'advanced')	NULL,
 	`img`	VARCHAR(255)	NULL,
-	`file_id`	VARCHAR(255)	NULL
+	`file_id`	INTEFER	NULL
 );
 
 ALTER TABLE `posts` ADD CONSTRAINT `PK_POSTS` PRIMARY KEY (
@@ -81,9 +80,9 @@ ALTER TABLE `category` ADD CONSTRAINT `PK_CATEGORY` PRIMARY KEY (
 
 ALTER TABLE `enrollment` ADD CONSTRAINT `PK_ENROLLMENT` PRIMARY KEY (
 	`enrollment_id`,
-	`user_id2`,
 	`course_id`,
-	`instructor_id`
+	`instructor_id`,
+	`user_id`
 );
 
 ALTER TABLE `lesson` ADD CONSTRAINT `PK_LESSON` PRIMARY KEY (
@@ -98,13 +97,6 @@ ALTER TABLE `course` ADD CONSTRAINT `PK_COURSE` PRIMARY KEY (
 	`instructor_id`
 );
 
-ALTER TABLE `enrollment` ADD CONSTRAINT `FK_user_TO_enrollment_1` FOREIGN KEY (
-	`user_id2`
-)
-REFERENCES `user` (
-	`user_id`
-);
-
 ALTER TABLE `enrollment` ADD CONSTRAINT `FK_course_TO_enrollment_1` FOREIGN KEY (
 	`course_id`
 )
@@ -117,6 +109,13 @@ ALTER TABLE `enrollment` ADD CONSTRAINT `FK_course_TO_enrollment_2` FOREIGN KEY 
 )
 REFERENCES `course` (
 	`instructor_id`
+);
+
+ALTER TABLE `enrollment` ADD CONSTRAINT `FK_user_TO_enrollment_1` FOREIGN KEY (
+	`user_id`
+)
+REFERENCES `user` (
+	`user_id`
 );
 
 ALTER TABLE `lesson` ADD CONSTRAINT `FK_course_TO_lesson_1` FOREIGN KEY (

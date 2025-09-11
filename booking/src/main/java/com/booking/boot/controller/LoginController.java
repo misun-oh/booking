@@ -64,6 +64,7 @@ public class LoginController {
 		return "/edu/main";
 	}
 	
+	
 	@GetMapping("/list")
 	private String booking_list(Model model, SearchDto searchDto) {
 		model.addAttribute("pageDto", new PageDto(searchDto, bookingMapper.listCount()));

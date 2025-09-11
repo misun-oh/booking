@@ -249,6 +249,24 @@ public class LoginController {
 		return "/edu/Lecturelist";
 	}
 	
+	@GetMapping("/wr_notice")
+	private String edu_wr_notice(Model model) {
+		
+		return "/edu/wr_notice";
+	}
+		
+	@GetMapping("/notice_edu")
+	private String edu_notice(Model model) {
+		
+		return "/edu/notice_edu";
+	}
+	
+	@GetMapping("/notice_re")
+	private String edu_notice_re(Model model) {
+		
+		return "/edu/notice_re";
+	}
+	
 	
 	@GetMapping("/register")
 	private String booking_register(Model model) {

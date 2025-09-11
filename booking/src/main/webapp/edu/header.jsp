@@ -209,6 +209,7 @@
       <a href="/mypage1">마이페이지</a>
       <a href="/input">강의 영상 등록</a>
       <a href="/input2">강사 등록</a>
+      <a href="/wr_notice">공지 등록</a>
   </div>
   <header>
     <div class="logo">
@@ -217,13 +218,14 @@
     </div>
     
     <nav class="nav">
-      <a href="#">AI/CODING</a>
+      <a href="/study">AI/CODING</a>
       <a href="#">요리/취미</a>
       <a href="#">운동/건강</a>
-      <a href="/list">언어 교육</a>
-      <a href="/notice">초등 교육</a>
+      <a href="/main1">언어 교육</a>
+      <a href="/notice_re">초등 교육</a>
       <a href="/qna">중학 교육</a>
       <a href="#">고등 교육</a>
+      <a href="notice_edu">공지사항</a>
     </nav>
     
   </header>

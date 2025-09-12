@@ -14,3 +14,12 @@ CREATE TABLE UPLOAD_FILE (
 
 -- 게시글별 첨부 조회/정렬 최적화 인덱스
 CREATE INDEX IX_UPLOAD_FILE ON UPLOAD_FILE (BOARD_ID, BOARD_SEQ);
+
+
+CREATE TABLE my_sequence (
+    name VARCHAR(50) PRIMARY KEY,
+    current_value BIGINT
+);
+
+-- 시퀀스 초기화
+INSERT INTO my_sequence (name, current_value) VALUES ('seq_test', 0);

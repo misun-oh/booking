@@ -1,13 +1,17 @@
 package com.booking.boot;
 
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.booking.boot.Dto.CategoryDto;
 import com.booking.boot.Dto.IntructorDto;
 import com.booking.boot.Dto.LessonDto;
 import com.booking.boot.entity.User;
+import com.booking.boot.mapper.CategoryMapper;
 import com.booking.boot.mapper.IntructorMapper;
 import com.booking.boot.mapper.UploadMapper;
 import com.booking.boot.mapper.LessonMapper;
@@ -22,9 +26,19 @@ class BootApplicationTests {
 	IntructorMapper mapper;
 	@Autowired
 	UploadMapper up2;
+	@Autowired
+	CategoryMapper cM;
 	
 	@Test
-	public void test2() {
+	public void test4() {
+		up2.updateSeq();
+		
+		List<CategoryDto> res = cM.getCategoryList();
+		System.out.println("****"+res);
+	}
+	
+	@Test
+	public void test3() {
 		up2.updateSeq();
 		
 		int res = up2.selectSeq();

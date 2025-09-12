@@ -7,10 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryDto {
-	
-    private int id;
-    private String name;
-    private Integer parent_id;
+public class CategoryDto2 {
 
+	private int category_id;
+	private int course_id;
+	private String name;
+	private int parent_id;
+	private String title;
 }

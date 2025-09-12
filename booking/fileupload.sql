@@ -16,6 +16,8 @@ CREATE TABLE UPLOAD_FILE (
 CREATE INDEX IX_UPLOAD_FILE ON UPLOAD_FILE (BOARD_ID, BOARD_SEQ);
 
 
+
+-----------------------------------------------------------------------------
 CREATE TABLE my_sequence (
     name VARCHAR(50) PRIMARY KEY,
     current_value BIGINT

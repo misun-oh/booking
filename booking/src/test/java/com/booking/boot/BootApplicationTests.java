@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.booking.boot.Dto.IntructorDto;
+import com.booking.boot.Dto.LessonDto;
 import com.booking.boot.entity.User;
 import com.booking.boot.mapper.IntructorMapper;
 import com.booking.boot.mapper.UploadMapper;
+import com.booking.boot.mapper.LessonMapper;
 import com.booking.boot.repository.UserRepository;
 
 @SpringBootTest
@@ -30,6 +32,23 @@ class BootApplicationTests {
 		
 	}
 	
+	@Autowired
+	LessonMapper lm;
+	
+	@Test
+	public void test2() {
+		LessonDto lesson = new LessonDto();
+		lesson.setLesson_id(1);
+		lesson.setLesson_title("title");
+		lesson.setLesson_page("page");
+		lesson.setLesson_order(4);
+		lesson.setLesson_detail("detail");
+		lesson.setVideo_url("url");
+		
+		int insert = lm.insert(lesson);
+		System.out.println(insert);
+		
+	}
 	
 	@Test
 	public void test() {

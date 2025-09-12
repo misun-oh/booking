@@ -49,7 +49,7 @@ textarea { min-height:140px; resize:vertical; }
   <div class="container">
     <h1>강의 등록(Course Registration)</h1>
 
-    <form id="productForm" novalidate  method ="post" action = "/intructor/register_action">
+    <form id="productForm" novalidate  method ="post" action = "/intructor/register_action" enctype="multipart/form-data">
       <div class="left">
         <div class="image-box">
           <img id="preview" class="image-preview" alt="이미지 미리보기" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='280'><rect width='100%' height='100%' fill='%23f3f4f6'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='Arial' font-size='18'>이미지를 여기에 업로드하세요</text></svg>">
@@ -57,7 +57,7 @@ textarea { min-height:140px; resize:vertical; }
           <div style="width:100%; display:flex; gap:8px; align-items:center; justify-content:space-between;">
             <div style="flex:1">
               <label for="imageInput">상품 이미지 (JPG/PNG, 최대 5MB)</label>
-              <input id="imageInput" name="img" type="file" accept="image/*" />
+              <input id="imageInput" name="file" data-field="img" type="file" accept="image/*" />
             </div>
             <div style="width:130px; text-align:right;">
               <div class="hint">권장 사이즈 500x500px(정사각 이미지)</div>
@@ -71,7 +71,7 @@ textarea { min-height:140px; resize:vertical; }
       <div class="right">
         <div style="margin-bottom:14px;">
           <label for="title">강사명 <span style="font-weight:400;color:#6b7280">(최대 100자)</span></label>
-          <input id="title" name="name" type="text" maxlength="100" placeholder="이름을 입력하세요" required />
+          <input id="title" name="name" data-field="name" type="text" maxlength="100" placeholder="이름을 입력하세요" required />
           <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;">
             <div class="errors" id="titleError"></div>
             <div class="counter" id="titleCounter">0 / 100</div>
@@ -80,7 +80,7 @@ textarea { min-height:140px; resize:vertical; }
 
         <div style="margin-bottom:14px;">
           <label for="desc">자기소개 <span style="font-weight:400;color:#6b7280">(최대 200자)</span></label>
-          <textarea id="desc" name="word" maxlength="200" placeholder="자기소개를 입력하세요"></textarea>
+          <textarea id="desc" name="word" data-field="word" maxlength="200" placeholder="자기소개를 입력하세요"></textarea>
           
           <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;">
             <div class="errors" id="descError"></div>

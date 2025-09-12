@@ -41,6 +41,7 @@
             font-size: 14px;
             color: #555;
         }
+        
     </style>
 <body>
 <%@ include file="/edu/header.jsp"%>

@@ -5,11 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.booking.boot.Dto.IntructorDto;
 import com.booking.boot.Dto.SearchDto;
 import com.booking.boot.mapper.IntructorMapper;
 import com.booking.boot.service.IntructorService;
+import com.booking.boot.service.UploadService;
 
 @Controller
 public class IntructorController {
@@ -17,15 +19,19 @@ public class IntructorController {
 	IntructorMapper intructorMapper;
 	@Autowired
 	IntructorService intructorService;
+	@Autowired
+	UploadService uploadService;
 	@GetMapping("/intructor/register")
 	private void register() {
 		
 	}
 	@PostMapping("/intructor/register_action")
-	private String register_action(Model model, IntructorDto intructor) {
+	private String register_action(Model model,  MultipartFile file) {
 		System.out.println("첨부파일이 잘 수집 되었는지 확인");
-		
-		System.out.println("intructor : " + intructor);
+		System.out.println(file.getOriginalFilename());
+		System.out.println(file.getName());
+		int res = uploadService.insertUpload(file, 0);
+		/*System.out.println("intructor : " + intructor);
 		int res = intructorMapper.insert(intructor);
 		
 		if(res>0) {
@@ -35,7 +41,7 @@ public class IntructorController {
 		}else {
 			model.addAttribute("msg", "등록 실패했습니다");
 			
-		}
+		}*/
 		return "/common/msgbox";
 	}
 	@GetMapping("/intructorlist")

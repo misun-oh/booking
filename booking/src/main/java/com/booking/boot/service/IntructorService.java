@@ -31,4 +31,22 @@ public class IntructorService {
 		model.addAttribute("list", list);
 		model.addAttribute("pageDto", pageDto);
 	}
+	
+	public boolean insertIntructor(IntructorDto intructor, MultipartFile file ) {
+		int res = 0;
+		
+		try {
+			if(!file.isEmpty()) {
+				int file_id = uploadService.getSeq();
+				int file_upload_res = uploadService.insertUpload(file, file_id);
+				
+				intructor.setImg(file_id+"");
+			}
+			res = intructorMapper.insert(intructor);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res > 0 ? true:false;
+	}
 }

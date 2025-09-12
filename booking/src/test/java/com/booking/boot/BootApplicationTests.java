@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.booking.boot.Dto.IntructorDto;
 import com.booking.boot.entity.User;
 import com.booking.boot.mapper.IntructorMapper;
+import com.booking.boot.mapper.UploadMapper;
 import com.booking.boot.repository.UserRepository;
 
 @SpringBootTest
@@ -17,6 +18,18 @@ class BootApplicationTests {
 	UserRepository userRepository;
 	@Autowired
 	IntructorMapper mapper;
+	@Autowired
+	UploadMapper up2;
+	
+	@Test
+	public void test2() {
+		up2.updateSeq();
+		
+		int res = up2.selectSeq();
+		System.out.println(res);
+		
+	}
+	
 	
 	@Test
 	public void test() {

@@ -2,6 +2,9 @@ package com.booking.boot.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+
 import com.booking.boot.Dto.SearchDto;
 import com.booking.boot.Dto.UploadDto;
 
@@ -18,4 +21,19 @@ public interface UploadMapper {
 	UploadDto getFile(UploadDto dto);
 	
 	int getSeq();
+	
+	
+	
+	@Update("""
+			 UPDATE my_sequence
+			 SET current_value = LAST_INSERT_ID(current_value + 1)
+			 WHERE name = 'seq_test'
+    """)
+	int updateSeq();
+	
+	
+    @Select("SELECT LAST_INSERT_ID()")
+    int selectSeq();
+	
+
 }

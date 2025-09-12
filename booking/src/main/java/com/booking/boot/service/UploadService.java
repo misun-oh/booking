@@ -31,7 +31,9 @@ public class UploadService {
 	private String uploadRoot; 
 	
 	public int getSeq() {
-		return uploadMapper.getSeq();
+		uploadMapper.updateSeq();
+		return uploadMapper.selectSeq();
+		
 	}
 	
 	// 파일유틸을 만들기

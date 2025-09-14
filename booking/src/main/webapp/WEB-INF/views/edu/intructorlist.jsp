@@ -49,13 +49,14 @@
 <div class="grid-container">
     <c:forEach var="instructor" items="${list}">
         <div class="item">
-            <img src="${instructor.img}" alt="${instructor.name} 이미지">
+            <img src="/download/${instructor.file_id}/${instructor.attach_idx}" alt="${instructor.name} 이미지">
             <h3>${instructor.name}</h3>
             <p>${instructor.word}</p>
         </div>
     </c:forEach>
 </div>
-
+<%@include file="/common/pageing.jsp"%>
+<%@include file="/common/search2.jsp"%>
 
 <%@ include file="/edu/footer.jsp"%>
 </body>

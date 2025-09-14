@@ -26,22 +26,23 @@ public class IntructorController {
 		
 	}
 	@PostMapping("/intructor/register_action")
-	private String register_action(Model model,  MultipartFile file) {
+	private String register_action(Model model,  MultipartFile file, IntructorDto intructorDto) {
 		System.out.println("첨부파일이 잘 수집 되었는지 확인");
 		System.out.println(file.getOriginalFilename());
+		int seq = uploadService.getSeq();
 		System.out.println(file.getName());
-		int res = uploadService.insertUpload(file, 0);
-		/*System.out.println("intructor : " + intructor);
-		int res = intructorMapper.insert(intructor);
+		int res = uploadService.insertUpload(file, seq);
+		System.out.println("intructor : " + intructorDto);
+		int res1 = intructorMapper.insert(intructorDto);
 		
-		if(res>0) {
+		if(res1>0) {
 			
 			model.addAttribute("msg", "등록되었습니다");
 			
 		}else {
 			model.addAttribute("msg", "등록 실패했습니다");
 			
-		}*/
+		}
 		return "/common/msgbox";
 	}
 	@GetMapping("/intructorlist")

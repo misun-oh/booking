@@ -115,7 +115,7 @@ public class UploadController {
 			// file_id, attach_idx를 이용해서 1건에 대한 파일정보를 조회
 			dto = uploadService.getFile(dto);
 			
-			Path path = Paths.get("D:/dev/upload/" + dto.getStored_name()); // 서버에 저장된 파일의 위치
+			Path path = Paths.get("C:/dev/upload/" + dto.getStored_name()); // 서버에 저장된 파일의 위치
 			String oname = dto.getOrig_name();
 			
 			//headers.set(Content-Type, "text/html; charset=UTF-8");

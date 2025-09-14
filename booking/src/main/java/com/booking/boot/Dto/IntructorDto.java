@@ -12,5 +12,7 @@ public class IntructorDto {
 	private String img;
 	private String word;
 	private String name;
-	private Integer file_id;
+	private int file_id;
+	private int attach_idx   ;
+	
 }

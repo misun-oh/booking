@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.booking.boot.Dto.IntructorDto;
 import com.booking.boot.Dto.LessonDto;
+import com.booking.boot.Dto.UploadDto;
 import com.booking.boot.entity.User;
 import com.booking.boot.mapper.IntructorMapper;
 import com.booking.boot.mapper.UploadMapper;

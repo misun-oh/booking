@@ -5,16 +5,18 @@
   
   <mapper namespace="com.booking.boot.mapper.IntructorMapper">
   	<select id="getList">
-  		select *
-  		from instructor
+  		SELECT * FROM edudb.instructor
+		join upload_file
+		using (file_id)
   		
   	</select>
   	<select id="getTotalCount">
-  		select count(*)
-  		from instructor
+  		SELECT count(*) FROM edudb.instructor
+		join upload_file
+		using (file_id)
   	</select>
   	<insert id="insert">
-  		insert into instructor (instructor_id, img, word, name, file_id) 
-  		values( #{instructor_id}, #{img}, #{word}, #{name}, #{file_id});
+  		insert into instructor (instructor_id, img, word, name, file_id)
+		values(#{instructor_id}, #{img}, #{word}, #{name}, #{file_id})
   	</insert>
   </mapper>

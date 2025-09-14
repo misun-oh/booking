@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.booking.boot.Dto.IntructorDto;
 import com.booking.boot.Dto.PageDto;
 import com.booking.boot.Dto.SearchDto;
+import com.booking.boot.Dto.UploadDto;
 import com.booking.boot.mapper.IntructorMapper;
 import com.booking.boot.mapper.UploadMapper;
 
@@ -32,7 +33,7 @@ public class IntructorService {
 		model.addAttribute("pageDto", pageDto);
 	}
 	
-	public boolean insertIntructor(IntructorDto intructor, MultipartFile file ) {
+	public boolean insertIntructor(IntructorDto intructorDto, MultipartFile file ) {
 		int res = 0;
 		
 		try {
@@ -40,9 +41,10 @@ public class IntructorService {
 				int file_id = uploadService.getSeq();
 				int file_upload_res = uploadService.insertUpload(file, file_id);
 				
-				intructor.setImg(file_id+"");
+				intructorDto.setImg(file_id+"");
+				
 			}
-			res = intructorMapper.insert(intructor);
+			res = intructorMapper.insert(intructorDto);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

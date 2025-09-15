@@ -25,3 +25,16 @@ CREATE TABLE my_sequence (
 
 -- 시퀀스 초기화
 INSERT INTO my_sequence (name, current_value) VALUES ('seq_test', 0);
+
+
+
+-- 인스트럭터 새 테이블
+CREATE TABLE `instructor` (
+  `instructor_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `img` varchar(255) DEFAULT NULL,
+  `word` varchar(300) DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `file_id` int(11) NOT NULL,
+  `category_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`instructor_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci

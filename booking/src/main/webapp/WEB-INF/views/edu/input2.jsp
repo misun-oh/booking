@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>강의 등록(Course Registration)</title>
+<title>강사 등록(Course Registration)</title>
 
 <style>
 /* 컨테이너 고정 가로 1000px (반응형을 위해 max-width 포함) */
-body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:#f6f7fb; padding:30px; }
+body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:#f6f7fb;}
 .container { width:1000px; max-width:100%; margin:0 auto; background:#fff; border-radius:12px; box-shadow:0 6px 18px rgba(20,20,40,0.06); padding:28px; }
 h1 { margin:0 0 18px; font-size:20px; }
 
@@ -47,7 +47,7 @@ textarea { min-height:140px; resize:vertical; }
 <body>
 <%@include file="/edu/header.jsp" %>
   <div class="container">
-    <h1>강의 등록(Course Registration)</h1>
+    <h1>강사 등록(Course Registration)</h1>
 
     <form id="productForm" novalidate  method ="post" action = "/intructor/register_action" enctype="multipart/form-data">
       <div class="left">

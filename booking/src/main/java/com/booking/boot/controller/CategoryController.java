@@ -19,11 +19,11 @@ public class CategoryController {
 	
 
 	  
-   @GetMapping("/header2")  // URL 매핑
+   @GetMapping("/header")  // URL 매핑
    public String header(Model model) {
         List<CategoryDto> list = cM.getCategoryList();
         model.addAttribute("categoryList", list);  // ★ JSP에서 사용할 수 있도록 전달
-        return "/edu/header2";  // /WEB-INF/views/header.jsp 로 이동
+        return "/edu/header";  
     }
    
 

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CategoryDto {
 	
-    private int id;
+    private int category_id;
     private String name;
     private Integer parent_id;
 

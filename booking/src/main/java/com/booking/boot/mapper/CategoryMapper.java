@@ -12,6 +12,6 @@ public interface CategoryMapper {
 
 	
 	
-	@Select("SELECT * FROM category ORDER BY parent_id, id")
+	@Select("SELECT * FROM category ORDER BY parent_id, category_id")
 	List<CategoryDto> getCategoryList();
 }

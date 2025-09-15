@@ -45,12 +45,14 @@
   <ul class="main-menu">
     <c:forEach var="main" items="${categoryList}">
       <c:if test="${main.parent_id == null}">
-        <li>${main.name}
+        <li>
+          <a href="/intructorlist?cateId=${main.id}">${main.name}</a>
           <ul class="sub-menu">
             <c:forEach var="sub" items="${categoryList}">
-      
               <c:if test="${sub.parent_id eq main.id}">
-                <li>${sub.name}</li>
+                <li>
+                  <a href="/intructorlist?cateId=${sub.id}">${sub.name}</a>
+                </li>
               </c:if>
             </c:forEach>
           </ul>

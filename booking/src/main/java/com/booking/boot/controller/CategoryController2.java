@@ -20,14 +20,16 @@ public class CategoryController2 {
 	
 	@GetMapping("/category/select")
 	public String showCategory(Model model) {
-		List<CategoryDto2> topCategory = mapper.selectCategory();
+		List<CategoryDto2> topCategory = mapper.selectCategory(null);
+		System.out.println("topCategory =" + topCategory);
 		model.addAttribute("categoryList", topCategory);
 		return "/edu/categorySelect";
 	}
 	@GetMapping("/category/sub")
 	@ResponseBody
-	public List<CategoryDto2> getSubCategories(@RequestParam("parentId") int parentId) {
-	    return mapper.findByParentId(parentId);
+	public List<CategoryDto2> getSubCategories(@RequestParam("parent_id") int parent_id) {
+		System.out.println("paren_id " + parent_id);
+	    return mapper.findByParentId(parent_id);
 	}
 
 }

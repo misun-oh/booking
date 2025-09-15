@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.booking.boot.Dto.CategoryDto;
+import com.booking.boot.Dto.CategoryDto2;
 import com.booking.boot.Dto.IntructorDto;
 import com.booking.boot.Dto.LessonDto;
 import com.booking.boot.Dto.UploadDto;
 import com.booking.boot.entity.User;
+import com.booking.boot.mapper.Category2Mapper;
 import com.booking.boot.mapper.CategoryMapper;
 import com.booking.boot.mapper.IntructorMapper;
 import com.booking.boot.mapper.UploadMapper;
@@ -29,6 +31,9 @@ class BootApplicationTests {
 	UploadMapper up2;
 	@Autowired
 	CategoryMapper cM;
+	@Autowired
+	Category2Mapper cat2;
+	
 	
 	@Test
 	public void test4() {

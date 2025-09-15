@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,14 +83,17 @@ textarea { min-height:140px; resize:vertical; }
 		<select class="form-select form-select-lg mb-3" aria-label="Large select example" id="parentCategory" name="category_id">
 		    <option selected disabled>카테고리를 선택하세요</option>
 		    <c:forEach var="cat" items="${categoryList}">
-		        <option value="${cat.id}">${cat.name}</option>
+		    <c:if test="${cat.parent_id == null}">
+		        <option value="${cat.category_id}">${cat.name}</option>
+		    </c:if>
 		    </c:forEach>
 		</select>
 
 		<!-- 하위 카테고리 -->
 		<select id="childCategory" class="form-select form-select-lg mb-3" name="sub_category_id">
-		    <option selected disabled>하위 카테고리를 선택하세요</option>
+    		<option selected disabled>하위 카테고리를 선택하세요</option>
 		</select>
+
 		
         <div style="margin-bottom:14px;">
           <label for="desc">자기소개 <span style="font-weight:400;color:#6b7280">(최대 200자)</span></label>
@@ -109,7 +114,40 @@ textarea { min-height:140px; resize:vertical; }
       </div>
     </form>
   </div>
+	<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const parentSelect = document.getElementById('parentCategory');
+    const childSelect = document.getElementById('childCategory');
 
+    parentSelect.addEventListener('change', function () {
+        const parent_id = this.value;
+
+        // 자식 셀렉트 초기화
+        childSelect.innerHTML = '<option selected disabled>하위 카테고리를 선택하세요</option>';
+
+        // AJAX 요청
+        fetch('/category/sub?parent_id=' + parent_id)
+            .then(response => response.json())
+            .then(data => {
+                if (data.length === 0) {
+                    childSelect.innerHTML += '<option disabled>하위 카테고리가 없습니다</option>';
+                    return;
+                }
+
+                data.forEach(cat => {
+                    const option = document.createElement('option');
+                    option.value = cat.id;
+                    option.textContent = cat.name;
+                    childSelect.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('하위 카테고리 로드 실패:', error);
+            });
+    });
+});
+</script>
+	
   <script>
     const imageInput = document.getElementById('imageInput');
     const preview = document.getElementById('preview');

@@ -16,8 +16,8 @@
 		using (file_id)
   	</select>
   	<insert id="insert">
-  		insert into instructor ( img, word, name, file_id)
-		values(#{img}, #{word}, #{name}, #{file_id})
+  		insert into instructor ( img, word, name, file_id, category_id)
+		values(#{img}, #{word}, #{name}, #{file_id}, #{category_id})
   	</insert>
   	<select id="findById" parameterType="int" resultType="com.booking.boot.Dto.IntructorDto">
         SELECT *

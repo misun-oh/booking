@@ -14,5 +14,6 @@ public class IntructorDto {
 	private String name;
 	private int file_id;
 	private int attach_idx   ;
+	private int category_id;
 	
 }

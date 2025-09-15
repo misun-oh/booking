@@ -48,15 +48,35 @@
 
 <div class="grid-container">
     <c:forEach var="instructor" items="${list}">
+    <a href="/intructor/detail?id=${instructor.instructor_id }" style="text-decoration: none; color: inherit;">
         <div class="item">
             <img src="/download/${instructor.file_id}/${instructor.attach_idx}" alt="${instructor.name} 이미지">
             <h3>${instructor.name}</h3>
             <p>${instructor.word}</p>
         </div>
+        </a>
     </c:forEach>
 </div>
-<%@include file="/common/pageing.jsp"%>
-<%@include file="/common/search2.jsp"%>
+
+
+	<c:if test="${pageDto == null }">
+		<h6>pageDto is null - pageDto 데이터가 없으면 블럭을 그릴수 없어요</h6>
+	</c:if>
+
+<p>
+	<form class="row g-3" name="searchForm">
+		<input type="hidden" name="pageNo" value="${pageDto.pageNo }"><br>
+		<div class="row g-3 justify-content-between">
+		    <div class="col-auto">
+		      <label for="inputPassword6" class="col-form-label">총 건수 : ${pageDto.totalItems }</label>
+		    </div>
+		    <div class="col-auto">
+			    
+		    </div>
+    	</div>
+    </form>
+</p>
+
 
 <%@ include file="/edu/footer.jsp"%>
 </body>

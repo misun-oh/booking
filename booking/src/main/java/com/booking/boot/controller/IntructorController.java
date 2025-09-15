@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.booking.boot.Dto.IntructorDto;
@@ -32,6 +33,7 @@ public class IntructorController {
 		int seq = uploadService.getSeq();
 		System.out.println(file.getName());
 		int res = uploadService.insertUpload(file, seq);
+		intructorDto.setFile_id(seq);
 		System.out.println("intructor : " + intructorDto);
 		int res1 = intructorMapper.insert(intructorDto);
 		
@@ -50,4 +52,17 @@ public class IntructorController {
 		intructorService.getList(model, search);
 		return  "/edu/intructorlist";
 	}
+	@GetMapping("/intructor/detail")
+	public String detail(@RequestParam("id") int id, Model model) {
+	    IntructorDto dto = intructorMapper.findById(id);
+
+	    if (dto == null) {
+	        model.addAttribute("msg", "해당 강사를 찾을 수 없습니다.");
+	        return "/common/msgbox";
+	    }
+
+	    model.addAttribute("intructor", dto);
+	    return "/edu/detail";
+	}
+
 }

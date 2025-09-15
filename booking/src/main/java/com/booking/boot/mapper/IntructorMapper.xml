@@ -16,7 +16,14 @@
 		using (file_id)
   	</select>
   	<insert id="insert">
-  		insert into instructor (instructor_id, img, word, name, file_id)
-		values(#{instructor_id}, #{img}, #{word}, #{name}, #{file_id})
+  		insert into instructor ( img, word, name, file_id)
+		values(#{img}, #{word}, #{name}, #{file_id})
   	</insert>
+  	<select id="findById" parameterType="int" resultType="com.booking.boot.Dto.IntructorDto">
+        SELECT *
+        FROM instructor
+        WHERE instructor_id = #{instructor_id}
+    </select>
+    
+    
   </mapper>

@@ -1,5 +1,7 @@
 package com.booking.boot.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,13 +47,15 @@ public class IntructorController {
 			model.addAttribute("msg", "등록 실패했습니다");
 			
 		}
-		return "/common/msgbox";
+		return "/common/msgbox2";
 	}
 	@GetMapping("/intructorlist")
-	public String getList(Model model, SearchDto search) {
-		intructorService.getList(model, search);
-		return  "/edu/intructorlist";
+	public String intructorList(@RequestParam("cateId") int cateId, Model model) {
+	    List<IntructorDto> list = intructorService.getListByMainCategory(cateId);
+	    model.addAttribute("list", list); // 리스트를 "list"라는 이름으로 JSP에 넘김
+	    return "/edu/intructorlist";
 	}
+
 	@GetMapping("/intructor/detail")
 	public String detail(@RequestParam("id") int id, Model model) {
 	    IntructorDto dto = intructorMapper.findById(id);

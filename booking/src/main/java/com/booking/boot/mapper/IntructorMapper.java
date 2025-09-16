@@ -15,5 +15,5 @@ public interface IntructorMapper {
 	int getTotalCount(SearchDto searchDto);
 	int insert(IntructorDto intructorDto); 
 	IntructorDto findById(@Param("instructor_id") int instructor_id);
-	
+	List<IntructorDto> selectByMainCategory(@Param("cateId") int cateId);
 }

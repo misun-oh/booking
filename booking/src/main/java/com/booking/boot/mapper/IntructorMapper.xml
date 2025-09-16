@@ -24,6 +24,9 @@
         FROM instructor
         WHERE instructor_id = #{instructor_id}
     </select>
-    
+    <select id="selectByMainCategory" resultType="com.booking.boot.Dto.IntructorDto">
+    SELECT * FROM instructor
+    WHERE category_id = #{cateId} 
+	</select>
     
   </mapper>

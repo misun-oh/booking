@@ -45,7 +45,9 @@
     </style>
 <body>
 <%@ include file="/edu/header.jsp"%>
-
+<c:if test="${empty list}">
+    <p>해당 카테고리에 등록된 강사가 없습니다.</p>
+</c:if>
 <div class="grid-container">
     <c:forEach var="instructor" items="${list}">
     <a href="/intructor/detail?id=${instructor.instructor_id }" style="text-decoration: none; color: inherit;">

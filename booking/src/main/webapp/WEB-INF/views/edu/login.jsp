@@ -196,16 +196,16 @@ body {
 			<section class="card">
 				<div class="pill">아이디 / 패스워드</div>
 
-				<form action="/main" method="post" autocomplete="on">
+				<form action="/eduLogin" method="post" autocomplete="on">
 					<div class="field">
 						<label class="label" for="loginId">아이디</label> <input
-							class="input" id="loginId" name="loginId" type="text"
+							class="input" id="loginId" name="user_id" type="text"
 							placeholder="아이디" required />
 					</div>
 
 					<div class="field">
 						<label class="label" for="loginPw">패스워드</label> <input
-							class="input" id="loginPw" name="loginPw" type="password"
+							class="input" id="loginPw" name="password" type="password"
 							placeholder="패스워드" required />
 					</div>
 

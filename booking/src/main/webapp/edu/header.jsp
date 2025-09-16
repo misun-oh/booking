@@ -88,12 +88,26 @@
   </style>
 </head>
 <body>
+
+${loginMember }
   <!-- 헤더 -->
   <div class="user-menu">
+  <c:if test="${loginMember ne null}">
+  	${loginMember.user_id  }님 환영합니다.
+  	
+      <a href="/edulogout">로그아웃</a>
+      <a href="/mypage1">마이페이지</a>
+	  <!-- 권한체크 -->
+	  <c:if test='${loginMember.hasRole("ADMIN") || loginMember.hasRole("PARTNER")}'>
+	      <a href="/input">강의 영상 등록</a>
+	      <a href="/input2">강사 등록</a>
+	  </c:if>
+  </c:if>
+  <c:if test="${loginMember eq null}">
       <a href="/login1">로그인</a>
       <a href="/register1">회원가입</a>
-      <a href="/mypage1">마이페이지</a>
-      <a href="/input">강의 영상 등록</a>
+  </c:if>
+  	  <a href="/input">강의 영상 등록</a>
       <a href="/input2">강사 등록</a>
       <a href="/wr_notice">공지 등록</a>
   </div>

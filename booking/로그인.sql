@@ -21,6 +21,15 @@ CREATE TABLE `roles` (
   PRIMARY KEY (`ROLE_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
+-- 권한 테이블
+insert into roles (role_id, role_name, description)
+values (1, 'admin', '시스템 관리자( 전체 권한 보유)');
+insert into roles (role_id, role_name, description)
+values (2, 'user', '일반 사용자( 예약 기능 이용)');
+insert into roles (role_id, role_name, description)
+values (3, 'partner', '플렛폼 제휴 사업자(예약 및 매장 운영 권한)');
+
+
 -- 멤버에 권한부여하는 테이블
 CREATE TABLE `member_roles` (
   `USER_ID` varchar(50) NOT NULL,

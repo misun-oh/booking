@@ -24,6 +24,19 @@
         FROM instructor
         WHERE instructor_id = #{instructor_id}
     </select>
-    
-    
+    <select id="selectByMainCategory" resultType="com.booking.boot.Dto.IntructorDto">
+    SELECT * FROM instructor
+    WHERE category_id = #{cateId} 
+	</select>
+	<select id="getInstructorsByMainCategory" parameterType="int" resultType="com.booking.boot.Dto.IntructorDto">
+    SELECT *
+    FROM instructor
+    WHERE category_id = #{categoryId}
+       OR category_id IN (
+           SELECT category_id
+           FROM category
+           WHERE parent_id = #{categoryId}
+       )
+    ORDER BY instructor_id DESC
+  </select>    
   </mapper>

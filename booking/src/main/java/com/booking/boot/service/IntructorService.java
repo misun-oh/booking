@@ -51,4 +51,8 @@ public class IntructorService {
 		}
 		return res > 0 ? true:false;
 	}
+	public List<IntructorDto> getListByMainCategory(int cateId) {
+	    return intructorMapper.selectByMainCategory(cateId);
+	}
+
 }

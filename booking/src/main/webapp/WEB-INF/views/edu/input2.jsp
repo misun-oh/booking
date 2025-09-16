@@ -80,7 +80,7 @@ textarea { min-height:140px; resize:vertical; }
           </div>
         </div>
 		
-		<select class="form-select form-select-lg mb-3" aria-label="Large select example" id="parentCategory" name="category_id">
+		<select class="form-select form-select-lg mb-3" aria-label="Large select example" id="parentCategory" name="parent_id">
 		    <option selected disabled>카테고리를 선택하세요</option>
 		    <c:forEach var="cat" items="${categoryList}">
 		    <c:if test="${cat.parent_id == null}">
@@ -90,7 +90,7 @@ textarea { min-height:140px; resize:vertical; }
 		</select>
 
 		<!-- 하위 카테고리 -->
-		<select id="childCategory" class="form-select form-select-lg mb-3" name="sub_category_id">
+		<select id="childCategory" class="form-select form-select-lg mb-3" name="category_id">
     		<option selected disabled>하위 카테고리를 선택하세요</option>
 		</select>
 
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 data.forEach(cat => {
                     const option = document.createElement('option');
-                    option.value = cat.id;
+                    option.value = cat.category_id;
                     option.textContent = cat.name;
                     childSelect.appendChild(option);
                 });

@@ -45,7 +45,9 @@
     </style>
 <body>
 <%@ include file="/edu/header.jsp"%>
-
+<c:if test="${empty list}">
+    <p>해당 카테고리에 등록된 강사가 없습니다.</p>
+</c:if>
 <div class="grid-container">
     <c:forEach var="instructor" items="${list}">
     <a href="/intructor/detail?id=${instructor.instructor_id }" style="text-decoration: none; color: inherit;">
@@ -59,23 +61,6 @@
 </div>
 
 
-	<c:if test="${pageDto == null }">
-		<h6>pageDto is null - pageDto 데이터가 없으면 블럭을 그릴수 없어요</h6>
-	</c:if>
-
-<p>
-	<form class="row g-3" name="searchForm">
-		<input type="hidden" name="pageNo" value="${pageDto.pageNo }"><br>
-		<div class="row g-3 justify-content-between">
-		    <div class="col-auto">
-		      <label for="inputPassword6" class="col-form-label">총 건수 : ${pageDto.totalItems }</label>
-		    </div>
-		    <div class="col-auto">
-			    
-		    </div>
-    	</div>
-    </form>
-</p>
 
 
 <%@ include file="/edu/footer.jsp"%>

@@ -8,36 +8,9 @@
     String name = request.getParameter("name");
     String word = request.getParameter("word");
 
-    // Multipart 요청에서 파일 추출
-    Part filePart = request.getPart("img"); // name="img"와 일치해야 함
 
-    if(filePart == null || filePart.getSize() == 0) {
-%>
-        <script>
-            alert('이미지 파일이 전송되지 않았습니다.');
-            history.back();
-        </script>
-<%
-        return;
-    }
-
-    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-
-    // 저장 폴더 (웹루트/upload)
-    String uploadDir = application.getRealPath("/") + "uploads";
-    File uploadFolder = new File(uploadDir);
-    if (!uploadFolder.exists()) uploadFolder.mkdirs();
-
-    // 중복 방지용 이름
-    String savedFileName = System.currentTimeMillis() + "_" + fileName;
-    String uploadPath = uploadDir + File.separator + savedFileName;
-
-    // 파일 저장
-    filePart.write(uploadPath);
-
-    String imagePath = "uploads/" + savedFileName;
-
-    // DB 연결 정보
+ 
+      // DB 연결 정보
     String dbUrl = "jdbc:mysql://localhost:3306/course_db?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
     String dbUser = "root";
     String dbPass = "1234"; // 본인 비밀번호
@@ -49,11 +22,10 @@
         Class.forName("com.mysql.cj.jdbc.Driver");
         conn = DriverManager.getConnection(dbUrl, dbUser, dbPass);
 
-        String sql = "INSERT INTO instructor (name, word, img) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO instructor (name, word) VALUES (?, ?)";
         pstmt = conn.prepareStatement(sql);
         pstmt.setString(1, name);
         pstmt.setString(2, word);
-        pstmt.setString(3, imagePath);
 
         int rows = pstmt.executeUpdate();
 

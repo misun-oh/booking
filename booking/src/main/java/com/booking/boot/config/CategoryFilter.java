@@ -29,7 +29,7 @@ public class CategoryFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         List<CategoryDto> list = cM.getCategoryList();
         req.setAttribute("categoryList", list);  // ★ JSP에서 사용할 수 있도록 전달
-        System.out.println(list);
+        //System.out.println(list);
 
         // 다음 필터 또는 컨트롤러 호출
         chain.doFilter(request, response);

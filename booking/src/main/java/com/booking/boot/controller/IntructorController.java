@@ -51,8 +51,9 @@ public class IntructorController {
 	}
 	@GetMapping("/intructorlist")
 	public String intructorList(@RequestParam("cateId") int cateId, Model model) {
-	    List<IntructorDto> list = intructorService.getListByMainCategory(cateId);
-	    model.addAttribute("list", list); // 리스트를 "list"라는 이름으로 JSP에 넘김
+		List<IntructorDto> list = intructorMapper.getInstructorsByMainCategory(cateId);
+	    model.addAttribute("list", list);
+	    model.addAttribute("cateId", cateId);
 	    return "/edu/intructorlist";
 	}
 

@@ -16,4 +16,5 @@ public interface IntructorMapper {
 	int insert(IntructorDto intructorDto); 
 	IntructorDto findById(@Param("instructor_id") int instructor_id);
 	List<IntructorDto> selectByMainCategory(@Param("cateId") int cateId);
+	List<IntructorDto> getInstructorsByMainCategory(int categoryId);
 }

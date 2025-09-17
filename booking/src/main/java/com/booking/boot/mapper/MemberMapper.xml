@@ -52,7 +52,7 @@
 	<!-- 권한 목록 조회 -->
 	<select id="getRoles">
 		SELECT 	ROLE_NAME
-		  FROM 	MEMBER M, MEMBER_ROLES MR, ROLES R
+		  FROM 	EDUDB.MEMBER M, MEMBER_ROLES MR, ROLES R
 		 WHERE 	M.USER_ID = MR.USER_ID
 		   AND 	MR.ROLE_ID = R.ROLE_ID
 		   AND 	M.USER_ID = #{user_id}

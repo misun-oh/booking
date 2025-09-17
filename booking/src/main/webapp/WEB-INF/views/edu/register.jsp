@@ -127,10 +127,6 @@ input[type="text"], input[type="password"], input[type="email"], select
 					aria-label="Recipient's username" aria-describedby="button-addon2"
 					name="phone_number">
 			</div>
-			<div class="input-group mb-3">
-				<input type="file" class="form-control" id="inputGroupFile01"
-					name="file">
-			</div>
 
 			<div class="input-group mb-3 justify-content-md-center">
 				<!-- 저장버튼을 클릭 하면 /member/register_action -> 컨트롤러에서 데이터 수집 -->

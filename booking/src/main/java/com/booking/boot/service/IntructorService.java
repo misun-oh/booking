@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.booking.boot.Dto.IntructorDto;
+import com.booking.boot.Dto.InstructorDto;
 import com.booking.boot.Dto.PageDto;
 import com.booking.boot.Dto.SearchDto;
 import com.booking.boot.Dto.UploadDto;
@@ -23,7 +23,7 @@ public class IntructorService {
 	UploadService uploadService;
 	
 	public void getList(Model model, SearchDto searchDto) {
-		List<IntructorDto> list = intructorMapper.getList(searchDto);
+		List<InstructorDto> list = intructorMapper.getList(searchDto);
 		System.out.println("list : " + list);
 		int totalCnt = intructorMapper.getTotalCount(searchDto);
 		
@@ -33,7 +33,7 @@ public class IntructorService {
 		model.addAttribute("pageDto", pageDto);
 	}
 	
-	public boolean insertIntructor(IntructorDto intructorDto, MultipartFile file ) {
+	public boolean insertIntructor(InstructorDto instructorDto, MultipartFile file ) {
 		int res = 0;
 		
 		try {
@@ -41,17 +41,17 @@ public class IntructorService {
 				int file_id = uploadService.getSeq();
 				int file_upload_res = uploadService.insertUpload(file, file_id);
 				
-				intructorDto.setImg(file_id+"");
+				instructorDto.setImg(file_id+"");
 				
 			}
-			res = intructorMapper.insert(intructorDto);
+			res = intructorMapper.insert(instructorDto);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return res > 0 ? true:false;
 	}
-	public List<IntructorDto> getListByMainCategory(int cateId) {
+	public List<InstructorDto> getListByMainCategory(int cateId) {
 	    return intructorMapper.selectByMainCategory(cateId);
 	}
 

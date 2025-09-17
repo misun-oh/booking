@@ -6,6 +6,14 @@
 <meta charset="UTF-8">
 <title>내맘대로 EDU</title>
 <style>
+
+/* 헤더 맨 위에 그리기*/
+header {
+  position: relative;  /* 필요시 fixed도 가능 */
+  z-index: 1000;       /* 배너보다 높은 값 */
+}
+
+
 /* 배너 화면 영역 */
 .banner {
 	position: relative;
@@ -76,7 +84,7 @@
 </head>
 <body>
 
-	<%@ include file="/edu/header.jsp"%>
+<%@ include file="/edu/header.jsp"%>
 
 	<div class="banner">
 		<div class="slides">

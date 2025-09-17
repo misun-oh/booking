@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.booking.boot.Dto.IntructorDto;
+import com.booking.boot.Dto.InstructorDto;
 import com.booking.boot.Dto.SearchDto;
 import com.booking.boot.mapper.IntructorMapper;
 import com.booking.boot.service.IntructorService;
@@ -29,15 +29,15 @@ public class IntructorController {
 		
 	}
 	@PostMapping("/intructor/register_action")
-	private String register_action(Model model,  MultipartFile file, IntructorDto intructorDto) {
+	private String register_action(Model model,  MultipartFile file, InstructorDto instructorDto) {
 		System.out.println("첨부파일이 잘 수집 되었는지 확인");
 		System.out.println(file.getOriginalFilename());
 		int seq = uploadService.getSeq();
 		System.out.println(file.getName());
 		int res = uploadService.insertUpload(file, seq);
-		intructorDto.setFile_id(seq);
-		System.out.println("intructor : " + intructorDto);
-		int res1 = intructorMapper.insert(intructorDto);
+		instructorDto.setFile_id(seq);
+		System.out.println("intructor : " + instructorDto);
+		int res1 = intructorMapper.insert(instructorDto);
 		
 		if(res1>0) {
 			
@@ -51,7 +51,7 @@ public class IntructorController {
 	}
 	@GetMapping("/intructorlist")
 	public String intructorList(@RequestParam("cateId") int cateId, Model model) {
-		List<IntructorDto> list = intructorMapper.getInstructorsByMainCategory(cateId);
+		List<InstructorDto> list = intructorMapper.getInstructorsByMainCategory(cateId);
 	    model.addAttribute("list", list);
 	    model.addAttribute("cateId", cateId);
 	    return "/edu/intructorlist";
@@ -59,14 +59,14 @@ public class IntructorController {
 
 	@GetMapping("/intructor/detail")
 	public String detail(@RequestParam("id") int id, Model model) {
-	    IntructorDto dto = intructorMapper.findById(id);
+	    InstructorDto dto = intructorMapper.findById(id);
 
 	    if (dto == null) {
 	        model.addAttribute("msg", "해당 강사를 찾을 수 없습니다.");
 	        return "/common/msgbox";
 	    }
 
-	    model.addAttribute("intructor", dto);
+	    model.addAttribute("instructor", dto);
 	    return "/edu/detail";
 	}
 

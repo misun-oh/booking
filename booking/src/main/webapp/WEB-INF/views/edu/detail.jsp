@@ -5,94 +5,162 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${intructor.name} | 강사 상세보기</title>
+<title>${instructor.name} | 강사 상세보기</title>
 <style>
     body {
-        font-family: 'Segoe UI', sans-serif;
-        background-color: #f9fafb;
-        margin: 0;
-        padding: 0;
+      font-family: 'Noto Sans KR', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #333;
     }
 
     .container {
-        max-width: 900px;
-        margin: 40px auto;
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-        padding: 32px;
-        display: flex;
-        flex-direction: row;
-        gap: 40px;
-        align-items: flex-start;
+      display: flex;
+      max-width: 1200px;
+      margin: 40px auto;
+      gap: 40px;
     }
 
-    .image-box img {
-        width: 100%;
-        max-width: 360px;
-        border-radius: 12px;
-        object-fit: cover;
-        background-color: #f3f4f6;
+    /* 상품 이미지 */
+    .product-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      background: #fafafa;
+      padding: 20px;
+    }
+    .product-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
     }
 
-    .info {
-        flex: 1;
+    /* 상품 정보 */
+    .product-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
 
-    .info h2 {
-        margin-top: 0;
-        font-size: 26px;
-        font-weight: 700;
-        color: #111827;
+    .title {
+      font-size: 20px;
+      font-weight: 600;
     }
 
-    .info p {
-        font-size: 16px;
-        color: #374151;
-        line-height: 1.6;
+    .price {
+      font-size: 24px;
+      font-weight: bold;
+      color: #000;
     }
 
-    .info .category {
-        margin-top: 20px;
-        font-size: 14px;
-        color: #6b7280;
-        background: #f3f4f6;
-        padding: 6px 12px;
-        display: inline-block;
-        border-radius: 8px;
+    .label {
+      font-weight: bold;
+      margin-right: 10px;
     }
 
-    @media (max-width: 768px) {
-        .container {
-            flex-direction: column;
-            padding: 24px;
-        }
-
-        .image-box img {
-            max-width: 100%;
-        }
+    .options select, .options button {
+      padding: 8px;
+      font-size: 14px;
+      margin-top: 5px;
     }
-</style>
+
+    .color-options {
+      display: flex;
+      gap: 8px;
+      margin-top: 5px;
+    }
+    .color-box {
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+    .order-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .order-box input {
+      width: 50px;
+      text-align: center;
+      padding: 5px;
+    }
+    .buy-btn {
+      flex: 1;
+      padding: 12px;
+      background: #222;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    .buy-btn:hover {
+      background: #000;
+    }
+     .hidden {
+    display: none;
+  }
+  </style>
 </head>
 <body>
 
 <%@ include file="/edu/header.jsp" %>
 
 <div class="container">
-    <div class="image-box">
-        <img src="/download/${intructor.file_id}/${intructor.attach_idx}" alt="${intructor.name} 강사 이미지">
-    </div>
-    <div class="info">
-        <h2>${intructor.name} 강사</h2>
-        <p>${intructor.word}</p>
 
-        <c:if test="${not empty intructor.category_name}">
-            <div class="category">카테고리: ${intructor.category_name}</div>
-        </c:if>
-        <c:if test="${empty intructor.category_name}">
-            <div class="category">카테고리 ID: ${intructor.category_id}</div>
-        </c:if>
+  <!-- 강사 이미지 -->
+  <div class="product-image">
+    <img src="/download/${instructor.file_id}/${instructor.attach_idx}" alt="${instructor.name} 강사 이미지">
+  </div>
+
+  <!-- 강사 정보 -->
+  <div class="product-info">
+    <div class="title">${instructor.name} 강사</div>
+    <div class="price">${instructor.word}</div>
+
+   
+    <c:if test="${empty intructor.category_id}">
+      <div><span class="label">카테고리 ID</span> ${instructor.category_id}</div>
+    </c:if>
+
+    
+
+    
+
+    <div class="order-box">
+      
+      <button class="buy-btn" onclick="subscribe()">구독하기</button>
     </div>
+    
+    <!-- 숨겨진 영상 영역 -->
+    <div id="video-section" class="hidden" style="margin-top: 20px;">
+      <h3>강의 영상</h3>
+      <video width="640" height="360" controls>
+        <source src="/video/sample.mp4" type="video/mp4">
+        해당 브라우저는 video 태그를 지원하지 않습니다.
+      </video>
+    </div>
+   
+    <script type="text/javascript">
+    	function subscribe() {
+			alert("구독 하셨습니다")
+			
+			 // 숨겨진 영상 보이게 하기
+	        document.getElementById("video-section").classList.remove("hidden");
+		}
+    </script>
+  </div>
+
 </div>
 
 <%@ include file="/edu/footer.jsp" %>

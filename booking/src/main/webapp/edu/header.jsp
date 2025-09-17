@@ -20,6 +20,7 @@
     }
 
     header {
+    
       padding: 30px 100px;
       background: #fff;
       border-bottom: 1px solid #eee;
@@ -97,7 +98,7 @@
   </style>
 </head>
 <body>
-
+<header>
 ${loginMember }
   <!-- 헤더 -->
   <div class="user-menu">
@@ -121,7 +122,7 @@ ${loginMember }
       <a href="/wr_notice">공지 등록</a>
   </div>
 
-  <header>
+  
     <div class="logo">
        <a href="/main1"><img src="/res/imgs/logo2.jpg" alt="로고" /></a>
     </div>

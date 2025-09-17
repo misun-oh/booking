@@ -274,6 +274,12 @@ public class LoginController {
 		return "/edu/test";
 	}
 	
+	@GetMapping("/reg")
+	private String reg(Model model) {
+		
+		return "/edu/reg";
+	}
+	
 	
 	
 	@GetMapping("/register")

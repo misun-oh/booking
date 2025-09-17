@@ -7,6 +7,12 @@
 <title>리스트 등록(List registration)</title>
 
   <style>
+  
+  	header {
+	  position: relative;  /* 필요시 fixed도 가능 */
+	  z-index: 1000;       /* 배너보다 높은 값 */
+	}
+	  
     body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:#f6f7fb;}
     .container { width:1000px; max-width:100%; margin:0 auto; background:#fff; border-radius:12px; box-shadow:0 6px 18px rgba(20,20,40,0.06); padding:28px; }
     h1 { margin:0 0 18px; font-size:20px; }

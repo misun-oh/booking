@@ -58,9 +58,9 @@
 	}
 	    
     .main-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+	    list-style: none;
+	    padding: 0;
+	    margin: 0;
 	}
 	
 	.main-menu > li {
@@ -73,9 +73,12 @@
 	    display: none;  /* 기본 숨김 */
 	    position: absolute;
 	    list-style: none;
-	    padding: 0;
-	    margin: 0;
+	    min-width: 150px;   /* 최소 너비 */
+	    max-width: 250px;   /* 필요시 최대 너비 */
+	    padding: 10px;      /* 내부 여백 */
 	    background: #f5f5f5;
+	    border: 1px solid #ddd;
+	    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 	}
 	
 	.main-menu > li:hover .sub-menu {
@@ -83,7 +86,13 @@
 	}
 	
 	.sub-menu > li {
-	    padding: 5px 10px;
+	    padding: 12px 15px;   /* 항목 크기 */
+	    font-size: 14px;      /* 글자 크기 */
+	    line-height: 1.5;     /* 줄 간격 */
+	    cursor: pointer;
+	}
+	.sub-menu > li:hover {
+	    background: orange;     /* 마우스 오버 효과 */
 	}
   </style>
 </head>

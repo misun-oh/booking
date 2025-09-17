@@ -268,6 +268,13 @@ public class LoginController {
 		return "/edu/notice_re";
 	}
 	
+	@GetMapping("/test")
+	private String test01(Model model) {
+		
+		return "/edu/test";
+	}
+	
+	
 	
 	@GetMapping("/register")
 	private String booking_register(Model model) {

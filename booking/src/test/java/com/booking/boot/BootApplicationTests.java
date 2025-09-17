@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.booking.boot.Dto.CategoryDto;
 import com.booking.boot.Dto.CategoryDto2;
-import com.booking.boot.Dto.IntructorDto;
+import com.booking.boot.Dto.InstructorDto;
 import com.booking.boot.Dto.LessonDto;
 import com.booking.boot.Dto.UploadDto;
 import com.booking.boot.entity.User;
@@ -72,7 +72,7 @@ class BootApplicationTests {
 	
 	@Test
 	public void test() {
-		IntructorDto intructorDto = new IntructorDto();
+		InstructorDto intructorDto = new InstructorDto();
 		intructorDto.setName("name");
 		intructorDto.setWord("word");
 		

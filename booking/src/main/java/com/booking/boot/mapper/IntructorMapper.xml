@@ -19,16 +19,16 @@
   		insert into instructor ( img, word, name, file_id, category_id)
 		values(#{img}, #{word}, #{name}, #{file_id}, #{category_id})
   	</insert>
-  	<select id="findById" parameterType="int" resultType="com.booking.boot.Dto.IntructorDto">
+  	<select id="findById" parameterType="int" resultType="com.booking.boot.Dto.InstructorDto">
         SELECT *
         FROM instructor
         WHERE instructor_id = #{instructor_id}
     </select>
-    <select id="selectByMainCategory" resultType="com.booking.boot.Dto.IntructorDto">
+    <select id="selectByMainCategory" resultType="com.booking.boot.Dto.InstructorDto">
     SELECT * FROM instructor
     WHERE category_id = #{cateId} 
 	</select>
-	<select id="getInstructorsByMainCategory" parameterType="int" resultType="com.booking.boot.Dto.IntructorDto">
+	<select id="getInstructorsByMainCategory" parameterType="int" resultType="com.booking.boot.Dto.InstructorDto">
     SELECT *
     FROM instructor
     WHERE category_id = #{categoryId}

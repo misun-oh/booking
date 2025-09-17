@@ -8,14 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.booking.boot.Dto.CategoryDto;
-<<<<<<< HEAD
-import com.booking.boot.Dto.IntructorDto;
-=======
+
 import com.booking.boot.Dto.CategoryDto2;
 import com.booking.boot.Dto.InstructorDto;
 import com.booking.boot.Dto.LessonDto;
 import com.booking.boot.Dto.UploadDto;
->>>>>>> branch 'main' of https://github.com/misun-oh/booking.git
+
 import com.booking.boot.entity.User;
 import com.booking.boot.mapper.Category2Mapper;
 import com.booking.boot.mapper.CategoryMapper;

@@ -243,13 +243,7 @@ public class LoginController {
 		
 		return "/edu/input2";
 	}
-
-	@GetMapping("/Lecturelist")
-	private String edu_Lecturelist(Model model) {
 		
-		return "/edu/Lecturelist";
-	}
-	
 	@GetMapping("/wr_notice")
 	private String edu_wr_notice(Model model) {
 		

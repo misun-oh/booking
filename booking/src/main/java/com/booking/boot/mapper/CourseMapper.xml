@@ -7,10 +7,22 @@
   	<insert id="insertCourse">
   		insert into course(
         instructor_id, title, description,
-        created_at, price, level, category_id, img
+        created_at, price, level, category_id, img, file_id
     ) VALUES (
         #{instructor_id}, #{title}, #{description},
-        CURRENT_TIMESTAMP, #{price}, #{level}, #{category_id}, #{img}
+        CURRENT_TIMESTAMP, #{price}, #{level}, #{category_id}, #{img}, #{file_id}
     )
   	</insert>
+  	<select id="getList">
+  		SELECT * 
+  		from edudb.course
+  		join upload_file
+  		using(file_id)
+  	</select>
+  	<select id="getTotalCount">
+  		SELECT count (*) 
+  		from edudb.course
+  		join upload_file
+  		using(file_id)
+  	</select>
   </mapper>

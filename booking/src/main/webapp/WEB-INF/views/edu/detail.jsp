@@ -133,10 +133,6 @@
       <div><span class="label">카테고리 ID</span> ${instructor.category_id}</div>
     </c:if>
 
-    
-
-    
-
     <div class="order-box">
       
       <button class="buy-btn" onclick="subscribe()">구독하기</button>
@@ -152,11 +148,18 @@
     </div>
    
     <script type="text/javascript">
+  var isLogein = <c:out value="${isLogein}" default="false" />;
+      console.log("JSP: isLogein 값 ->", isLogein);
     	function subscribe() {
+    		 console.log("버튼 클릭 시 isLogein:", isLogein);
+    		if(isLogein === true || isLogein === 'true'){
 			alert("구독 하셨습니다")
-			
 			 // 숨겨진 영상 보이게 하기
 	        document.getElementById("video-section").classList.remove("hidden");
+    		}else{
+    			 alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
+    		      window.location.href = "/login1";
+    		}
 		}
     </script>
   </div>

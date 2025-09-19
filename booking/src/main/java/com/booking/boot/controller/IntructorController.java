@@ -10,11 +10,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.booking.boot.Dto.CourseDto;
+import com.booking.boot.Dto.CourseLevel;
 import com.booking.boot.Dto.InstructorDto;
 import com.booking.boot.Dto.SearchDto;
 import com.booking.boot.mapper.IntructorMapper;
 import com.booking.boot.service.IntructorService;
 import com.booking.boot.service.UploadService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class IntructorController {
@@ -58,7 +62,7 @@ public class IntructorController {
 	}
 
 	@GetMapping("/intructor/detail")
-	public String detail(@RequestParam("id") int id, Model model) {
+	public String detail(@RequestParam("id") int id, Model model, HttpSession session) {
 	    InstructorDto dto = intructorMapper.findById(id);
 
 	    if (dto == null) {
@@ -67,7 +71,12 @@ public class IntructorController {
 	    }
 
 	    model.addAttribute("instructor", dto);
+	    boolean isLogein = session.getAttribute("loginMember") != null;
+	    System.out.println("detail 컨트롤러: isLogein = " + isLogein);
+	    model.addAttribute("isLogein", isLogein);
 	    return "/edu/detail";
 	}
+	
+	
 
 }

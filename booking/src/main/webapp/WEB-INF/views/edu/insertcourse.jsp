@@ -56,8 +56,8 @@ textarea { min-height:140px; resize:vertical; }
       <img id="preview" class="image-preview" alt="이미지 미리보기" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='280'><rect width='100%' height='100%' fill='%23f3f4f6'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='Arial' font-size='18'>이미지를 여기에 업로드하세요</text></svg>">
       <div style="width:100%; display:flex; gap:8px; align-items:center; justify-content:space-between;">
         <div style="flex:1">
-          <label for="imageInput">강좌 이미지 (JPG/PNG, 최대 5MB)</label>
-          <input id="imageInput" name="img" data-field="img" type="file" accept="image/*" />
+          <label for="file">강좌 이미지 (JPG/PNG, 최대 5MB)</label>
+          <input id="file" name="file" data-field="img" type="file" accept="image/*" />
         </div>
         <div style="width:130px; text-align:right;">
           <div class="hint">권장 사이즈 500x500px(정사각 이미지)</div>

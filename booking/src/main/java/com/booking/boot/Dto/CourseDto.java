@@ -18,7 +18,7 @@ public class CourseDto {
 	private String description;
 	private Timestamp created_at;
 	private BigDecimal price;
-	private int level;
+	private CourseLevel level;
 	private int category_id;
 	private String img;
 }

@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>강사 등록(Course Registration)</title>
+<title>강좌 등록(Course Registration)</title>
 
 <style>
 /* 컨테이너 고정 가로 1000px (반응형을 위해 max-width 포함) */
@@ -47,72 +46,82 @@ textarea { min-height:140px; resize:vertical; }
 
 </head>
 <body>
-<%@include file="/edu/header.jsp" %>
-  <div class="container">
-    <h1>강사 등록(Instructor Registration)</h1>
+<%@ include file="/edu/header.jsp" %>
+ <div class="container">
+    <h1>강좌 등록(Course Registration)</h1>
 
-    <form id="productForm" novalidate  method ="post" action = "/intructor/register_action" enctype="multipart/form-data">
-      <div class="left">
-        <div class="image-box">
-          <img id="preview" class="image-preview" alt="이미지 미리보기" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='280'><rect width='100%' height='100%' fill='%23f3f4f6'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='Arial' font-size='18'>이미지를 여기에 업로드하세요</text></svg>">
-
-          <div style="width:100%; display:flex; gap:8px; align-items:center; justify-content:space-between;">
-            <div style="flex:1">
-              <label for="imageInput">상품 이미지 (JPG/PNG, 최대 5MB)</label>
-              <input id="imageInput" name="file" data-field="img" type="file" accept="image/*" />
-            </div>
-            <div style="width:130px; text-align:right;">
-              <div class="hint">권장 사이즈 500x500px(정사각 이미지)</div>
-            </div>
-          </div>
-
-          <div class="errors" id="imgError" aria-live="polite"></div>
+    <form id="productForm" novalidate method="post" action="/course/register_action" enctype="multipart/form-data">
+  <div class="left">
+    <div class="image-box">
+      <img id="preview" class="image-preview" alt="이미지 미리보기" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='280'><rect width='100%' height='100%' fill='%23f3f4f6'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='Arial' font-size='18'>이미지를 여기에 업로드하세요</text></svg>">
+      <div style="width:100%; display:flex; gap:8px; align-items:center; justify-content:space-between;">
+        <div style="flex:1">
+          <label for="imageInput">강좌 이미지 (JPG/PNG, 최대 5MB)</label>
+          <input id="imageInput" name="img" data-field="img" type="file" accept="image/*" />
+        </div>
+        <div style="width:130px; text-align:right;">
+          <div class="hint">권장 사이즈 500x500px(정사각 이미지)</div>
         </div>
       </div>
+      <div class="errors" id="imgError" aria-live="polite"></div>
+    </div>
+  </div>
 
-      <div class="right">
-        <div style="margin-bottom:14px;">
-          <label for="title">강사명 <span style="font-weight:400;color:#6b7280">(최대 100자)</span></label>
-          <input id="title" name="name" data-field="name" type="text" maxlength="100" placeholder="이름을 입력하세요" required />
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;">
-            <div class="errors" id="titleError"></div>
-            <div class="counter" id="titleCounter">0 / 100</div>
-          </div>
-        </div>
-		
-		<select class="form-select form-select-lg mb-3" aria-label="Large select example" id="parentCategory" name="parent_id">
-		    <option selected disabled>카테고리를 선택하세요</option>
-		    <c:forEach var="cat" items="${categoryList}">
-		    <c:if test="${cat.parent_id == null}">
-		        <option value="${cat.category_id}">${cat.name}</option>
-		    </c:if>
-		    </c:forEach>
-		</select>
-
-		<!-- 하위 카테고리 -->
-		<select id="childCategory" class="form-select form-select-lg mb-3" name="category_id">
-    		<option selected disabled>하위 카테고리를 선택하세요</option>
-		</select>
-
-		
-        <div style="margin-bottom:14px;">
-          <label for="desc">자기소개 <span style="font-weight:400;color:#6b7280">(최대 200자)</span></label>
-          <textarea id="desc" name="word" data-field="word" maxlength="200" placeholder="자기소개를 입력하세요"></textarea>
-          
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;">
-            <div class="errors" id="descError"></div>
-            <div class="counter" id="descCounter">0 / 200</div>
-          </div>
-        </div>
-
-        <div style="display:flex; gap:8px; margin-top:10px;">
-          <button type="submit" class="btn btn-primary">저장</button>
-          <button type="button" id="resetBtn" class="btn btn-ghost">초기화</button>
-        </div>
-
-        <div id="formMsg" aria-live="polite"></div>
+  <div class="right">
+    <div style="margin-bottom:14px;">
+      <label for="title">강좌명 <span style="font-weight:400;color:#6b7280">(최대 100자)</span></label>
+      <input id="title" name="title" data-field="title" type="text" maxlength="100" placeholder="강좌명을 입력하세요" required />
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;">
+        <div class="errors" id="titleError"></div>
+        <div class="counter" id="titleCounter">0 / 100</div>
       </div>
-    </form>
+    </div>
+
+    <select class="form-select form-select-lg mb-3" aria-label="Large select example" id="parentCategory" name="parent_id">
+      <option selected disabled>카테고리를 선택하세요</option>
+      <c:forEach var="cat" items="${categoryList}">
+        <c:if test="${cat.parent_id == null}">
+          <option value="${cat.category_id}">${cat.name}</option>
+        </c:if>
+      </c:forEach>
+    </select>
+
+    <select id="childCategory" class="form-select form-select-lg mb-3" name="category_id" required>
+      <option selected disabled>하위 카테고리를 선택하세요</option>
+    </select>
+
+    <div style="margin-bottom:14px;">
+      <label for="desc">강좌설명 <span style="font-weight:400;color:#6b7280">(최대 200자)</span></label>
+      <textarea id="desc" name="description" data-field="description" maxlength="200" placeholder="강좌설명을 입력하세요"></textarea>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;">
+        <div class="errors" id="descError"></div>
+        <div class="counter" id="descCounter">0 / 200</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:14px;">
+      <label for="price">가격 (원)</label>
+      <input id="price" name="price" type="number" min="0" step="100" placeholder="가격을 입력하세요" />
+    </div>
+
+    <div style="margin-bottom:14px;">
+      <label for="level">난이도(Level)</label>
+      <select id="level" name="level" required>
+        <option value="" disabled selected>난이도를 선택하세요</option>
+        <option value="BEGINNER">초급</option>
+        <option value="INTERMEDIATE">중급</option>
+        <option value="ADVANCED">고급</option>
+      </select>
+    </div>
+
+    <div style="display:flex; gap:8px; margin-top:10px;">
+      <button type="submit" class="btn btn-primary">저장</button>
+      <button type="button" id="resetBtn" class="btn btn-ghost">초기화</button>
+    </div>
+
+    <div id="formMsg" aria-live="polite"></div>
+  </div>
+</form>
   </div>
 	<script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -254,9 +263,6 @@ document.addEventListener('DOMContentLoaded', function () {
       formMsg.textContent = '';
     });
   </script>
-    
-
-
-<%@include file="/edu/footer.jsp" %>
+<%@ include file="/edu/footer.jsp" %>
 </body>
 </html>

@@ -20,7 +20,10 @@ CREATE TABLE `instructor` (
 	`img`	VARCHAR(255)	NULL,
 	`word`	VARCHAR(300)	NULL,
 	`name`	VARCHAR(100)	NULL,
-	`file_id`	INT	NULL
+	`file_id`	INT	NULL,
+	`category_id`	bigint	NULL,
+	`price`	decimal	NULL,
+	`level`	ENUM('beginner', 'intermediate', 'advanced')	NULL
 );
 
 CREATE TABLE `category` (
@@ -36,7 +39,10 @@ CREATE TABLE `enrollment` (
 	`course_id`	BIGINT	NULL,
 	`user_id`	BIGINT	NULL,
 	`status`	ENUM('ongoing','completed','cancelled')	NULL	DEFAULT 'ongoing',
-	`enrolled_at`	TIMESTAMP	NULL
+	`enrolled_at`	TIMESTAMP	NULL,
+	`instructor_id`	bigint	NULL,
+	`level`	ENUM('beginner', 'intermediate', 'advanced')	NULL,
+	`price`	decimal	NULL
 );
 
 CREATE TABLE `lesson` (

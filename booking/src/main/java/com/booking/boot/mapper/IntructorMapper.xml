@@ -16,13 +16,16 @@
 		using (file_id)
   	</select>
   	<insert id="insert">
-  		insert into instructor ( img, word, name, file_id, category_id)
-		values(#{img}, #{word}, #{name}, #{file_id}, #{category_id})
+  		insert into instructor ( img, word, name, file_id, category_id, price, level)
+		values(#{img}, #{word}, #{name}, #{file_id}, #{category_id}, #{price}, #{level})
   	</insert>
   	<select id="findById" parameterType="int" resultType="com.booking.boot.Dto.InstructorDto">
-        SELECT *
-        FROM instructor
-        WHERE instructor_id = #{instructor_id}
+        SELECT 
+	    i.*, 
+	    c.name AS categoryName
+		  FROM instructor i
+		  LEFT JOIN category c ON i.category_id = c.category_id
+		  WHERE i.instructor_id = #{instructor_id}
     </select>
     <select id="selectByMainCategory" resultType="com.booking.boot.Dto.InstructorDto">
     SELECT * FROM instructor

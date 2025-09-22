@@ -25,4 +25,24 @@
   		join upload_file
   		using(file_id)
   	</select>
+  	<select id="getInstructorsByMainCategory" parameterType="int" resultType="com.booking.boot.Dto.CourseDto">
+    SELECT *
+    FROM course
+    WHERE category_id = #{categoryId}
+       OR category_id IN (
+           SELECT category_id
+           FROM category
+           WHERE parent_id = #{categoryId}
+       )
+    ORDER BY instructor_id DESC
+  </select>    
+  	<select id="findById" parameterType="int" resultType="com.booking.boot.Dto.CourseDto">
+        SELECT *
+        FROM course
+        WHERE instructor_id = #{instructor_id}
+    </select>
+    <select id="selectByMainCategory" resultType="com.booking.boot.Dto.CourseDto">
+    SELECT * FROM course
+    WHERE category_id = #{cateId} 
+	</select>
   </mapper>

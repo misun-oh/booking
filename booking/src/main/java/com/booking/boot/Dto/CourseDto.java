@@ -21,4 +21,6 @@ public class CourseDto {
 	private CourseLevel level;
 	private int category_id;
 	private String img;
+	private int file_id;
+	private int attach_idx   ;
 }

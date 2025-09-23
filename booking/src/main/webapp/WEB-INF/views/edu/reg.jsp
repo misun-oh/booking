@@ -37,8 +37,8 @@
 <body>
 <%@include file="/edu/header.jsp" %>
   <div class="btn-container">
-    <button class="img-btn btn1" onclick="location.href='/page1'"></button>
-    <button class="img-btn btn2" onclick="location.href='/page2'"></button>
+    <button class="img-btn btn1" onclick="location.href='/register'"></button>
+    <button class="img-btn btn2" onclick="location.href='/register2'"></button>
   </div>
   
 	<br>

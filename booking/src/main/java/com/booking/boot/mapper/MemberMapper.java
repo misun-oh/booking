@@ -18,7 +18,7 @@ public interface MemberMapper {
 	
 	int updateMember(MemberDto member);
 	
-	@Select("select * from edudb.member m where m.username=#{user_id}")
+	@Select("select * from edudb.member m where m.user_id=#{user_id}")
 	MemberDto getMember(MemberDto member);
 	
 	int insertRole(MemberDto member);

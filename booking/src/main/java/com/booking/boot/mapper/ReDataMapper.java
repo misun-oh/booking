@@ -22,20 +22,18 @@ public interface ReDataMapper {
 
     // 예약 번호로 조회
     @Select("SELECT RE_ID as reid, RE_NAME as name, RE_PHONE as phone, "
-    	      + "TO_CHAR(RE_CHECKIN, 'YYYY-MM-DD') as checkin, "
-    	      + "TO_CHAR(RE_CHECKOUT, 'YYYY-MM-DD') as checkout, "
+    	      + "DATE_FORMAT(RE_CHECKIN, '%Y-%m-%d') as checkin, "
+    	      + "DATE_FORMAT(RE_CHECKOUT, '%Y-%m-%d') as checkout, "
     	      + "RE_NIGHTS as nights, RE_PRICE as price "
     	      + "FROM RE_DATA WHERE RE_ID = #{reid}")
     ReDataDto findViewById(ReDataDto redata);
 
 	
     // 전체 리스트 조회 (페이징 적용)
-    @Select("SELECT * FROM ( " +
-            "SELECT ROWNUM rn, a.* FROM ( " +
-            "SELECT * FROM RE_DATA ORDER BY RE_ID DESC" +
-            ") a " +
-            "WHERE ROWNUM <= #{end}" +
-            ") WHERE rn > #{start}")
+    @Select("SELECT * " +
+            "FROM RE_DATA " +
+            "ORDER BY RE_ID DESC " +
+            "LIMIT #{start}, #{end}")
     List<ReDataDto> getList(@Param("start") int start, @Param("end") int end);
 
     // 전체 데이터 개수

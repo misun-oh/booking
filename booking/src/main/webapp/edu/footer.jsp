@@ -122,10 +122,10 @@
 
     <!-- 오른쪽: SNS 아이콘 -->
     <div class="footer-sns">
-      <a href="#"><img src="res/imgs/insta.jpg" alt="Instagram"></a>
-      <a href="#"><img src="res/imgs/facebook.jpg" alt="Facebook"></a>
-      <a href="#"><img src="res/imgs/youtube.jpg" alt="YouTube"></a>
-      <a href="#"><img src="res/imgs/kakao.jpg" alt="Talk"></a>
+      <a href="#"><img src="/res/imgs/insta.jpg" alt="Instagram"></a>
+      <a href="#"><img src="/res/imgs/facebook.jpg" alt="Facebook"></a>
+      <a href="#"><img src="/res/imgs/youtube.jpg" alt="YouTube"></a>
+      <a href="#"><img src="/res/imgs/kakao.jpg" alt="Talk"></a>
     </div>
   </div>
 

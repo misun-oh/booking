@@ -103,7 +103,7 @@ ${loginMember }
   <!-- 헤더 -->
   <div class="user-menu">
   <c:if test="${loginMember ne null}">
-  	${loginMember.user_id  }님 환영합니다.
+  	${loginMember.username  }님 환영합니다.
   	
       <a href="/edulogout">로그아웃</a>
       <a href="/mypage1">마이페이지</a>
@@ -114,17 +114,18 @@ ${loginMember }
 	  </c:if>
   </c:if>
   <c:if test="${loginMember eq null}">
-      <a href="/login1">로그인</a>
-      <a href="/register1">회원가입</a>
+      <a href="/login">로그인</a>
+      <a href="/register">회원가입</a>
   </c:if>
   	  <a href="/input">강의 영상 등록</a>
       <a href="/input2">강사 등록</a>
       <a href="/wr_notice">공지 등록</a>
+      <a href="/test2">관리자 홈</a>
   </div>
 
   
     <div class="logo">
-       <a href="/main1"><img src="/res/imgs/logo2.jpg" alt="로고" /></a>
+       <a href="/main"><img src="/res/imgs/logo2.jpg" alt="로고" /></a>
     </div>
   
   
@@ -137,6 +138,7 @@ ${loginMember }
 	          <ul class="sub-menu">
 	            <c:forEach var="sub" items="${categoryList}">
 	              <c:if test="${sub.parent_id eq main.category_id}">
+	             
 	                <li>
 	                  <a href="/intructorlist?cateId=${sub.category_id}">${sub.name}</a>
 	                </li>

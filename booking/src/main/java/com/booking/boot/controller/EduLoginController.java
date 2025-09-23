@@ -41,7 +41,7 @@ public class EduLoginController {
 		if(loginMember != null
 				 && loginMember.getPassword().equals(member.getPassword())) {
 			session.setAttribute("loginMember", loginMember);
-			return "redirect:/main1";
+			return "redirect:/main";
 			
 		} else {
 			model.addAttribute("msg", "로그인 실패");

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>일반 회원 가입</title>
+<title>강사 회원 가입</title>
 <style type="text/css">
 h2 {
 	text-align: center;
@@ -87,7 +87,7 @@ input[type="text"], input[type="password"], input[type="email"], select
 	<%@include file="/edu/header.jsp"%>
 <br>
 	<div class="container">
-		<h2>일반 회원 가입</h2>
+		<h2>강사 회원 가입</h2>
 		<!-- 파일을 첨부하기 위해  enctype="multipart/form-data"을 지정 -->
 		<form action="/member/register_action" method="post"
 			name="registerForm" id="rrrr" enctype="multipart/form-data">

@@ -59,12 +59,15 @@
 <body>
 <%@include file="/edu/header.jsp" %>
 
-    <header>관리자 Home</header>
+    <center>
+    <img alt="" src="관리자 아이콘">
+    <header style="font-size: 24px; font-weight: bold;">관리자 Home</header>
+    </center>
     <div class="container">
         <div class="card">
-            <h2>QNA 게시판</h2>
-            <p>신규 문의 내용을 확인합니다.</p>
-            <a href="/admin/qna" class="btn">바로가기</a>
+            <h2>공지 사항</h2>
+            <p>공지된 내용을 확인합니다.</p>
+            <a href="/wr_notice" class="btn">공지 사항 등록</a>
         </div>
         <div class="card">
             <h2>회원가입 리스트</h2>

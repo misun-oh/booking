@@ -1,6 +1,9 @@
 package com.booking.boot.controller;
 
+import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,12 +11,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.booking.boot.Dto.CourseDto;
+
 //import com.booking.boot.Dto.CourseLevel;
+
+import com.booking.boot.Dto.CourseLevel;
+import com.booking.boot.Dto.EnrollmentDto;
+import com.booking.boot.Dto.EnrollmentStatus;
+
 import com.booking.boot.Dto.InstructorDto;
+import com.booking.boot.Dto.MemberDto;
 import com.booking.boot.Dto.SearchDto;
+import com.booking.boot.mapper.EnrollmentMapper;
 import com.booking.boot.mapper.IntructorMapper;
 import com.booking.boot.service.IntructorService;
 import com.booking.boot.service.UploadService;
@@ -28,6 +40,8 @@ public class IntructorController {
 	IntructorService intructorService;
 	@Autowired
 	UploadService uploadService;
+	@Autowired
+	EnrollmentMapper enrollmentMapper;
 	@GetMapping("/intructor/register")
 	private void register() {
 		
@@ -64,7 +78,7 @@ public class IntructorController {
 	@GetMapping("/intructor/detail")
 	public String detail(@RequestParam("id") int id, Model model, HttpSession session) {
 	    InstructorDto dto = intructorMapper.findById(id);
-
+	    System.out.println("dto : " +dto);
 	    if (dto == null) {
 	        model.addAttribute("msg", "해당 강사를 찾을 수 없습니다.");
 	        return "/common/msgbox";
@@ -76,7 +90,46 @@ public class IntructorController {
 	    model.addAttribute("isLogein", isLogein);
 	    return "/edu/detail";
 	}
-	
-	
+	@PostMapping("/subscribe")
+	@ResponseBody
+	public Map<String, Object> subscribe(@RequestParam("instructor_id") int instructor_id, HttpSession session) {
+		
+		Map<String, Object> result = new HashMap<>();
+		MemberDto loginMember = (MemberDto) session.getAttribute("loginMember");
+		System.out.println("loginMember : " + loginMember);
+		if(loginMember == null) {
+			result.put("success", false);
+			result.put("msg", "로그인이 필요합니다");
+			result.put("redirect", "/login1");
+			
+			return result;
+		}
+		 InstructorDto instructor = intructorService.getInstructorById(instructor_id);
+		    if(instructor == null) {
+		        result.put("success", false);
+		        result.put("msg", "존재하지 않는 강사입니다.");
+		        return result;
+		    }
+		EnrollmentDto dto = new EnrollmentDto();
+		dto.setUser_id(Integer.parseInt(loginMember.getUser_id()));
+		dto.setInstructor_id(instructor_id);
+		dto.setStatus(EnrollmentStatus.ONGOING);
+		dto.setEnrolled_at(LocalDateTime.now().withNano(0));
+		
+		dto.setLevel(instructor.getLevel());
+	    dto.setPrice(instructor.getPrice());
+		
+		enrollmentMapper.insertEnrollment(dto);
+		
+		result.put("success", true);
+		result.put("msg", "구독이 완료되었습니다");
+		result.put("redirect", "/intructor/detail?id=" + instructor_id);
+		
+		return result;
+	}
+	@GetMapping("/inserttest")
+	private String unsert_test() {
+		return "/edu/inserttest";
+	}
 
 }

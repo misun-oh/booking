@@ -13,24 +13,30 @@
 
 	<!-- 업데이트 -->
 	<update id="updateMember">
+
 		UPDATE 	member 
+
 		SET		PASSWORD=#{password}, EMAIL=#{email}, PHONE_NUMBER=#{phone_number} 
 		WHERE 	USER_ID=#{user_id}
 	</update>
 	
 	<!-- 권한 추가 -->
 	<insert id="insertRole">
+
 		INSERT INTO member_roles VALUES (#{user_id}, 2, sysdate)
+
 	</insert>
 	
 	<!-- 사용자 등록 -->
 	<insert id="insertMember">
+
 		INSERT INTO member (
+
 		    USER_ID, USERNAME, PASSWORD, EMAIL, PHONE_NUMBER,
 		    PROFILE_IMAGE_URL, CREATED_AT, LAST_LOGIN_AT, LOGIN_FAIL_COUNT, ACCOUNT_LOCKED
 		) VALUES (
 		    #{user_id}, #{username}, #{password}, #{email}, #{phone_number},
-		    #{profile_image_url}, sysdate, null, 0, 'N'
+		    #{profile_image_url}, sysdate(), null, 0, 'N'
 		)
 	</insert>
 	
@@ -44,7 +50,7 @@
 	<select id="login">
 		select USER_ID, USERNAME, EMAIL, PHONE_NUMBER, PROFILE_IMAGE_URL
 				, CREATED_AT, LAST_LOGIN_AT, LOGIN_FAIL_COUNT, ACCOUNT_LOCKED 
-		from member
+		from `member`
 		where user_id = #{member.user_id}
 		and password = #{member.password}
 	</select>
@@ -59,40 +65,40 @@
 	</select>
 	
 	<update id="update_fail_count">
-		update member 
+		update `member` 
 		set LOGIN_FAIL_COUNT = LOGIN_FAIL_COUNT + 1 
 		    , ACCOUNT_LOCKED = case when login_fail_count >= 4 then 'Y' else 'N' end
 		where user_id = #{user_id}
 	</update>
 	
 	<!-- 가입일 내림차순 정렬 후 페이징 처리 -->
-	<select id="getList">
-		select * 
-		from member
+	<select id="getList" parameterType="com.booking.boot.Dto.SearchDto" resultType="com.booking.boot.Dto.MemberDto">
+		select * from `member`
+		
 		<where>
 			<if test="searchField != '' and searchWord != ''">
 				<!-- 필드인 경우 문자열 처리를 하지 않기 위해서 ${}로 감싸 준다 
 				${searchField} like '%' || #{searchWord} || '%'
 				-->
 				<foreach collection="searchField.split('/')" item="field" open="(" close=")" separator="or">
-	  				${field} like '%'||#{searchWord}||'%'  					
+	  				${field} LIKE CONCAT('%', #{searchWord}, '%')  					
   				</foreach>
 			</if>
 		</where>
 		
 		ORDER BY created_at DESC 
-	  	OFFSET (#{pageNo} - 1) * #{amount} ROWS FETCH NEXT #{amount} ROWS ONLY
+	  	LIMIT #{offset}, #{amount}
 	</select>
 	
-	<select id="totalCnt">
-		select count(*) from member
+	<select id="totalCnt" parameterType="com.booking.boot.Dto.SearchDto" resultType="int">
+		select count(*) from `member`
 		<where>
 			<if test="searchField != '' and searchWord != ''">
 				<!-- 필드인 경우 문자열 처리를 하지 않기 위해서 ${}로 감싸 준다 
 				${searchField} like '%' || #{searchWord} || '%'
 				-->
 				<foreach collection="searchField.split('/')" item="field" open="(" close=")" separator="or">
-	  				${field} like '%'||#{searchWord}||'%'  					
+	  				${field} LIKE CONCAT('%', #{searchWord}, '%')  					
   				</foreach>
 			</if>
 		</where>
@@ -100,13 +106,15 @@
 	
 	
 	<select id="checkId">
-		select count(*) from member where user_id = #{user_id}
+		select count(*) from `member` where user_id = #{user_id}
 	</select>
 	
 	<!-- 추상메서드 -->
 	<update id="updateAccountLock">
 		<!-- 만약 N이면 Y로, Y이면 N으로 -->
+
 		UPDATE member SET ACCOUNT_LOCKED=#{account_locked} WHERE USER_ID=#{user_id}
+
 	</update>
 	
 </mapper> 

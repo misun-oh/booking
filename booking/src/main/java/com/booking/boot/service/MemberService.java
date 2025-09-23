@@ -61,7 +61,7 @@ public class MemberService {
 		
 		try {
 			// 첨부된 파일이 있으면 파일을 추가하고 memberDto에 file_id를 입력
-			if(!file.isEmpty()) {
+			if(file != null && !file.isEmpty()) {
 				// 파일업로드
 				int file_id = uploadService.getSeq();
 				int file_upload_res = uploadService.insertUpload(file, file_id);
@@ -111,7 +111,7 @@ public class MemberService {
 	// 수집된 파라메터를 이용하여 로그인 처리를 진행
 	// model : 데이터 저장 - 화면에 전달
 	// memberDto : 요청파라메터 
-	public boolean login(Model model, MemberDto member){
+	public MemberDto login(MemberDto member){
 		// 인증 : ID/PW가 일치하는 사용자가 있는지 조회
 		// 사용자가 있으면 MemberDto객체를 반환, 없으면 null을 반환
 		MemberDto loginMember = memberMapper.login(member);
@@ -119,8 +119,8 @@ public class MemberService {
 		if(loginMember != null) {
 			if("Y".equals(loginMember.getAccount_locked())) {
 				// 로그인 실패로 계정이 잠긴 상태
-				model.addAttribute("msg", "계정이 잠긴 상태 입니다. 관리자에게 문의해주세요.");
-				return false;
+				//model.addAttribute("msg", "계정이 잠긴 상태 입니다. 관리자에게 문의해주세요.");
+				return null;
 			}
 			
 			// ✨사용자의 권한✨을 조회 해서 MemberDto의 roles 필드에 추가 
@@ -129,19 +129,19 @@ public class MemberService {
 			
 			// 로그인 성공
 			// 로그인 실패 카운트 초기화
-			int res = memberMapper.update_fail_count_reset(member);
+			memberMapper.update_fail_count_reset(member);
 			System.out.println("로그인 성공");
-			model.addAttribute("msg", "로그인 성공");
+			//model.addAttribute("msg", "로그인 성공");
 			// 로그인한 사용자의 정보
-			model.addAttribute("member", loginMember);
-			return true;
+			//model.addAttribute("member", loginMember);
+			return loginMember;
 		} else {
 			// 로그인 실패
 			System.out.println("로그인 실패");
 			// 로그인 실패 카운트 증가및 5회 이상시 계정 잠금
-			int res = memberMapper.update_fail_count(member);
-			model.addAttribute("msg", "아이디 비밀번호를 확인해주세요");
-			return false;
+			memberMapper.update_fail_count(member);
+			//model.addAttribute("msg", "아이디 비밀번호를 확인해주세요");
+			return null;
 		}
 	}
 

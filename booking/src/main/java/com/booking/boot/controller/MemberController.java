@@ -102,14 +102,20 @@ public class MemberController {
 
 	// 등록 처리
 	// 첨부파일 등록 / 다운로드 
-	@PostMapping("member/register_action")
+	@PostMapping("/member/register_action")
 	private String register_action(Model model, MemberDto member,  MultipartFile file) {
 		System.out.println("첨부파일이 잘 수집 되었는지 확인");
-		System.out.println("file : " + file.getOriginalFilename());
+		
+		System.out.println("member : " + member);
+		if(file != null && !file.isEmpty()) {
+			System.out.println("file : " + file.getOriginalFilename());
+			
+		}else {
+			System.out.println("첨부파일이 없습니다");
+		}
 		// 파라메터 수집 확인
 		// null : 필드와 일치하는 name속성이 없는경우
 		// '' : 입력을 안한것
-		System.out.println("member : " + member);
 		
 		// 데이터베이스에 등록
 		boolean res = memberService.insertMember(member, file);
@@ -123,6 +129,8 @@ public class MemberController {
 		} else {
 			// 등록실패 - 메세지 처리후 이전페이지
 			model.addAttribute("msg", "등록중 예외가 발생하였습니다.");
+			
+			
 		}
 		return "/common/msgbox";
 		
@@ -159,7 +167,7 @@ public class MemberController {
 		System.out.println("user_pw : " + user_pw);
 		session.setAttribute("user_id", user_id);
 
-		return "member/main";
+		return "/member/main";
 	}
 	
 	// 요청경로와 페이지경로가 다른경우
@@ -170,13 +178,15 @@ public class MemberController {
 		System.out.println("memberdto =========================== " + member);
 		// 로그인 처리
 		// 화면전환
-		boolean res = memberService.login(model, member);
+		MemberDto loginMember = memberService.login(member);
 		
-		if(res) {
-			session.setAttribute("user_id", member.getUser_id());
-			// 세션에 멤버 객체 저장
-			session.setAttribute("member", model.getAttribute("member"));
+		if(loginMember != null) {
 			
+			//MemberDto loginMember = memberService.login(member);
+			session.setAttribute("user_id", loginMember.getUser_id());
+			// 세션에 멤버 객체 저장
+			session.setAttribute("member", loginMember);
+			System.out.println("로그인된 사용자: " + session.getAttribute("member"));
 			// 로그인 성공
 			// 세션에 저장 -> main으로 이동
 			//return "redirect:member/main";

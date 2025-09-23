@@ -89,8 +89,12 @@ input[type="text"], input[type="password"], input[type="email"], select
 	<div class="container">
 		<h2>회원 가입</h2>
 		<!-- 파일을 첨부하기 위해  enctype="multipart/form-data"을 지정 -->
-		<form action="/edu/register_action.jsp" method="post"
+		<form action="/member/register_action" method="post"
 			name="registerForm" id="rrrr" enctype="multipart/form-data">
+
+			<div class="input-group mb-3">
+    			<input type="file" class="form-control" name="file" accept="image/*">
+			</div>
 
 			<div class="input-group mb-3 mt-4">
 				<input type="text" class="form-control" placeholder="아이디"
@@ -102,7 +106,7 @@ input[type="text"], input[type="password"], input[type="email"], select
 			</div>
 
 			<div class="input-group mb-3">
-				<input type="text" class="form-control is-invalied"
+				<input type="password" class="form-control is-invalied"
 					placeholder="비밀번호" name="password" data-field="password">
 				<div class="invalid-feedback"></div>
 			</div>

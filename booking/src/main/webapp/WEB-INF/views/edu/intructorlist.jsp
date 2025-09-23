@@ -55,6 +55,7 @@
             <img src="/download/${instructor.file_id}/${instructor.attach_idx}" alt="${instructor.name} 이미지">
             <h3>${instructor.name}</h3>
             <p>${instructor.word}</p>
+            <p>${instructor.price} 원</p>
         </div>
         </a>
     </c:forEach>

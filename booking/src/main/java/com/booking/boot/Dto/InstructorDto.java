@@ -1,5 +1,7 @@
 package com.booking.boot.Dto;
 
+import java.math.BigDecimal;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,5 +17,7 @@ public class InstructorDto {
 	private int file_id;
 	private int attach_idx   ;
 	private int category_id;
-	
+	private BigDecimal price;
+	private String categoryName;
+	private CourseLevel level;
 }

@@ -2,7 +2,7 @@ package com.booking.boot.Dto;
 
 public enum EnrollmentStatus {
 
-	ongoing,
-	completed,
-	canceld
+	ONGOING,
+	COMPLETED,
+	CANCLED
 }

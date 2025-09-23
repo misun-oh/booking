@@ -105,6 +105,21 @@ textarea { min-height:140px; resize:vertical; }
           </div>
         </div>
 
+			<div style="margin-bottom:14px;">
+		      <label for="price">가격 (원)</label>
+		      <input id="price" name="price" type="number" min="0" step="100" placeholder="가격을 입력하세요" />
+		    </div>
+		    
+		    <div style="margin-bottom:14px;">
+		      <label for="level">난이도(Level)</label>
+		      <select id="level" name="level" required>
+		        <option value="" disabled selected>난이도를 선택하세요</option>
+		        <option value="beginner">초급</option>
+		        <option value="intermediate">중급</option>
+		        <option value="advanced">고급</option>
+		      </select>
+		    </div>
+
         <div style="display:flex; gap:8px; margin-top:10px;">
           <button type="submit" class="btn btn-primary">저장</button>
           <button type="button" id="resetBtn" class="btn btn-ghost">초기화</button>

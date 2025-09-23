@@ -114,9 +114,9 @@ textarea { min-height:140px; resize:vertical; }
 		      <label for="level">난이도(Level)</label>
 		      <select id="level" name="level" required>
 		        <option value="" disabled selected>난이도를 선택하세요</option>
-		        <option value="BEGINNER">초급</option>
-		        <option value="INTERMEDIATE">중급</option>
-		        <option value="ADVANCED">고급</option>
+		        <option value="beginner">초급</option>
+		        <option value="intermediate">중급</option>
+		        <option value="advanced">고급</option>
 		      </select>
 		    </div>
 

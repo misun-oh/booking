@@ -67,5 +67,8 @@ public class SearchDto {
 		
 		return where;
 	}
+	public int getOffset() {
+        return (pageNo - 1) * amount;
+    }
 	
 }

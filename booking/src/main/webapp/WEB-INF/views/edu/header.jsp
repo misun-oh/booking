@@ -90,12 +90,20 @@
 <body>
   <!-- 헤더 -->
   <div class="user-menu">
-      <a href="/login1">로그인</a>
-      <a href="/register1">회원가입</a>
-      <a href="/mypage1">마이페이지</a>
-      <a href="/input">강의 영상 등록</a>
-      <a href="/input2">강사 등록</a>
-      <a href="/wr_notice">공지 등록</a>
+  	<c:choose>
+  	
+  		<c:when test="${empty sessionScope.member}">
+	      <a href="/login1">로그인</a>
+	      <a href="/register1">회원가입</a>
+      	</c:when>
+      	
+      	<c:otherwise>
+	      <a href="/mypage1">마이페이지</a>
+	      <a href="/input">강의 영상 등록</a>
+	      <a href="/input2">강사 등록</a>
+	      <a href="/wr_notice">공지 등록</a>
+      	</c:otherwise>
+      </c:choose>
   </div>
 
   <header>

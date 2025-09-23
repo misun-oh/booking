@@ -1,6 +1,7 @@
 package com.booking.boot.Dto;
 
 import java.io.ObjectInputFilter.Status;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CurrentTimestamp;
@@ -20,4 +21,6 @@ public class EnrollmentDto {
 	private int instructor_id;
 	private EnrollmentStatus status;
 	private LocalDateTime enrolled_at;
+	private CourseLevel level;
+	private BigDecimal price;
 }

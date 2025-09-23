@@ -18,7 +18,9 @@
     <h1>강의 등록 폼 (컨테이너 가로 1000px)</h1>
 
 <form id="productForm" action="/Lecturelist" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="instructor_id" value="${instructor_id != null ? instructor_id : ''}" />
 
+	
         <div class="media-box">
           <video id="preview" class="media-preview" controls>
             

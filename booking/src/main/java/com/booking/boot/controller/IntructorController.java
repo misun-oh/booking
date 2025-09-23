@@ -43,23 +43,25 @@ public class IntructorController {
 		
 	}
 	@PostMapping("/intructor/register_action")
-	private String register_action(Model model,  MultipartFile file, InstructorDto instructorDto) {
+	private String register_action(Model model,  MultipartFile file, InstructorDto instructorDto, HttpSession session) {
 		System.out.println("첨부파일이 잘 수집 되었는지 확인");
 		System.out.println(file.getOriginalFilename());
 		int seq = uploadService.getSeq();
 		System.out.println(file.getName());
-		int res = uploadService.insertUpload(file, seq);
+		uploadService.insertUpload(file, seq);
 		instructorDto.setFile_id(seq);
 		System.out.println("intructor : " + instructorDto);
 		int res1 = intructorMapper.insert(instructorDto);
 		
 		if(res1>0) {
-			
+			session.setAttribute("instructor_id", instructorDto.getInstructor_id());
+
+			int instructorId = instructorDto.getInstructor_id();
 			model.addAttribute("msg", "등록되었습니다");
-			
+			model.addAttribute("redirect", "/input?instructor_id=" + instructorId); // ✅ 리디렉트 경로 전달
 		}else {
 			model.addAttribute("msg", "등록 실패했습니다");
-			
+			model.addAttribute("redirect", "/intructor/register");
 		}
 		return "/common/msgbox2";
 	}
@@ -123,9 +125,6 @@ public class IntructorController {
 		
 		return result;
 	}
-	@GetMapping("/inserttest")
-	private String unsert_test() {
-		return "/edu/inserttest";
-	}
+	
 
 }

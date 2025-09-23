@@ -20,5 +20,5 @@ public class LessonDto {
 	private LocalDateTime fix_time;
 	private LocalDateTime delete_time;
 	private LocalDateTime registration_time;
-
+	private Integer instructor_id;
 }

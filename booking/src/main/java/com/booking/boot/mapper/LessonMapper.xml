@@ -14,8 +14,8 @@
 		using (file_id)
   	</select>
   	<insert id="insert" >
-  		insert into lesson ( course_id, lesson_name, lesson_order, lesson_explan, file_id, registration_time)
-  		values ( #{course_id}, #{lesson_name}, #{lesson_order}, #{lesson_explan}, #{file_id}, #{registration_time})
+  		insert into lesson ( course_id, lesson_name, lesson_order, lesson_explan, file_id, registration_time, instructor_id)
+  		values ( #{course_id}, #{lesson_name}, #{lesson_order}, #{lesson_explan}, #{file_id}, #{registration_time}, #{instructor_id})
   	</insert>
   	<!-- 
   	id : 메서드 이름

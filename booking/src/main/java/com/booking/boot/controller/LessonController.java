@@ -15,6 +15,8 @@ import com.booking.boot.mapper.LessonMapper;
 import com.booking.boot.service.LessonService;
 import com.booking.boot.service.UploadService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class LessonController {
 	
@@ -27,29 +29,38 @@ public class LessonController {
 	UploadService uploadS;
 	
 	@PostMapping("/Lecturelist")
-	private String register_action(Model model, MultipartFile file, LessonDto lessonD) {
-		
-		System.out.println("첨부파일 수집 확인 테스트");
-		System.out.println(file.getOriginalFilename());
-		int seq = uploadS.getSeq();
-		System.out.println(file.getName());
-		int res = uploadS.insertUpload(file, seq);
-		lessonD.setFile_id(seq);
-		System.out.println("lesson : " + lessonD);
-		int res1 = lm.insert(lessonD);
-		
-		if(res1 > 0) {
-			
-			model.addAttribute("msg", "등록되었습니다.");
-		
-		} else {
-			
-			model.addAttribute("msg", "등록 실패");
-		}
-		
-		return "/edu/Lecturelist";
+	private String register_action(Model model, MultipartFile file, LessonDto lessonD, HttpSession session) {
+	    
+	    // 세션에서 instructor_id 가져오기
+	    Integer instructorId = (Integer) session.getAttribute("instructor_id");
 
+	    // 로그로 확인
+	    System.out.println("세션에서 instructor_id: " + instructorId);
+
+	    if(instructorId == null) {
+	        model.addAttribute("msg", "강사 정보가 없습니다. 다시 로그인 해주세요.");
+	        return "/common/msgbox2";
+	    }
+
+	    lessonD.setInstructor_id(instructorId); // 🔥 핵심
+	    System.out.println("lesson : " + lessonD);
+
+	    // 업로드 처리
+	    int seq = uploadS.getSeq();
+	    int res = uploadS.insertUpload(file, seq);
+	    lessonD.setFile_id(seq);
+	    
+	    int res1 = lm.insert(lessonD);
+
+	    if(res1 > 0) {
+	        model.addAttribute("msg", "등록되었습니다.");
+	    } else {
+	        model.addAttribute("msg", "등록 실패");
+	    }
+
+	    return "/common/msgbox2"; // 성공/실패 메시지 페이지
 	}
+
 	
 	@GetMapping("Lecturelist")
 	public String msgList(Model model) {

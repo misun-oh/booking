@@ -15,7 +15,8 @@
 		join upload_file
 		using (file_id)
   	</select>
-  	<insert id="insert">
+  	<insert id="insert" parameterType="com.booking.boot.Dto.InstructorDto"
+        useGeneratedKeys="true" keyProperty="instructor_id">
   		insert into instructor ( img, word, name, file_id, category_id, price, level)
 		values(#{img}, #{word}, #{name}, #{file_id}, #{category_id}, #{price}, #{level})
   	</insert>

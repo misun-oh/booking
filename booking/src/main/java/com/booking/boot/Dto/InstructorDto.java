@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class InstructorDto {
-	private int instructor_id;
+	private Integer instructor_id;
 	private String img;
 	private String word;
 	private String name;

@@ -40,7 +40,7 @@ public interface MemberMapper {
 	int checkId(MemberDto member);
 
 	// 로그인 실패 카운트 초기화
-	@Update("UPDATE MEMBER SET LOGIN_FAIL_COUNT = 0 WHERE USER_ID = #{user_id}")
+	@Update("UPDATE member SET LOGIN_FAIL_COUNT = 0 WHERE USER_ID = #{user_id}")
 	int update_fail_count_reset(MemberDto member);
 
 	String[] getRoles(MemberDto member);

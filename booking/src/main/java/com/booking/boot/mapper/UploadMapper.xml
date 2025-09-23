@@ -13,17 +13,17 @@
 
 	<select id="getFile">
 		SELECT  * 
-		FROM    UPLOAD_FILE 
+		FROM    upload_file 
 		WHERE   FILE_ID = #{file_id}
 		AND     ATTACH_IDX = #{attach_idx}
 	</select>
 	
 	<select id="getSeq">
-		select SEQ_UPLOAD_FILE.NEXTVAL from dual
+		select seq_upload_file.NEXTVAL from dual
 	</select>
 	
 	<insert id="insertUpload">
-	INSERT INTO UPLOAD_FILE (FILE_ID, ATTACH_IDX, ORIG_NAME, STORED_NAME, REL_PATH, 
+	INSERT INTO upload_file (FILE_ID, ATTACH_IDX, ORIG_NAME, STORED_NAME, REL_PATH, 
                             CONTENT_TYPE, FILE_SIZE, USER_ID )
                 VALUES (#{file_id}, #{attach_idx}, #{orig_name}, #{stored_name}, #{rel_path},
                         #{content_type}, #{file_size}, #{user_id})
@@ -36,7 +36,7 @@
 		                            , TO_CHAR(CREATED_AT, 'hh24:mi:ss')
 		                            , TO_CHAR(CREATED_AT, 'yyyy-mm-dd')) CREATED_AT
 		        , user_id
-		FROM UPLOAD_FILE
+		FROM upload_file
 		<where>
   			<!-- 검색어와 검색필드에 값이 입력된 경우
   				null 체크 하지 않은 이유 : searchDto객체의 필드가 빈 문자열로 초기화 됨 -->

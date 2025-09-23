@@ -14,7 +14,7 @@ public class LessonDto {
 	
 	private int lesson_id;
 	private int course_id;
-	private int instructor_id;
+	private Integer instructor_id;
 	private int file_id;
 	private String lesson_name;
 	private String lesson_order;

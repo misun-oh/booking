@@ -1,6 +1,7 @@
 package com.booking.boot.Dto;
 
-import java.time.LocalDateTime;
+
+import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,12 +14,15 @@ public class LessonDto {
 	
 	private int lesson_id;
 	private int course_id;
+	private int instructor_id;
 	private int file_id;
 	private String lesson_name;
 	private String lesson_order;
 	private String lesson_explan;
-	private LocalDateTime fix_time;
-	private LocalDateTime delete_time;
-	private LocalDateTime registration_time;
-	private Integer instructor_id;
+	private String rel_path;
+	private String stored_name; 
+	private Date fix_time;
+	private Date delete_time;
+	private Date registration_time;
+
 }

@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +33,9 @@ public class UploadController {
 
 	@Autowired
 	UploadService uploadService;
+	
+    @Value("${file.upload.upload_dir}")
+    private String uploadDir;
 	
 	@GetMapping("/upload_fetch")
 	private void upload_fetch(Model model, SearchDto searchDto) {
@@ -115,7 +119,7 @@ public class UploadController {
 			// file_id, attach_idx를 이용해서 1건에 대한 파일정보를 조회
 			dto = uploadService.getFile(dto);
 			
-			Path path = Paths.get("C:/dev/upload/" + dto.getStored_name()); // 서버에 저장된 파일의 위치
+			Path path = Paths.get(uploadDir + dto.getStored_name()); // 서버에 저장된 파일의 위치
 			String oname = dto.getOrig_name();
 			
 			//headers.set(Content-Type, "text/html; charset=UTF-8");
@@ -148,7 +152,7 @@ public class UploadController {
 		HttpHeaders headers = new HttpHeaders();
 		
 		try {
-			Path path = Paths.get("C:/dev/upload/" + dto.getStored_name()); // 서버에 저장된 파일의 위치
+			Path path = Paths.get(uploadDir + dto.getStored_name()); // 서버에 저장된 파일의 위치
 			String oname = dto.getOrig_name();
 			
 			//headers.set(Content-Type, "text/html; charset=UTF-8");

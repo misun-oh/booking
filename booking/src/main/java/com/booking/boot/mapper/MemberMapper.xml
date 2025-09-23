@@ -13,19 +13,25 @@
 
 	<!-- 업데이트 -->
 	<update id="updateMember">
-		UPDATE 	`MEMBER` 
+
+		UPDATE 	member 
+
 		SET		PASSWORD=#{password}, EMAIL=#{email}, PHONE_NUMBER=#{phone_number} 
 		WHERE 	USER_ID=#{user_id}
 	</update>
 	
 	<!-- 권한 추가 -->
 	<insert id="insertRole">
-		INSERT INTO MEMBER_ROLES VALUES (#{user_id}, 2, sysdate())
+
+		INSERT INTO member_roles VALUES (#{user_id}, 2, sysdate)
+
 	</insert>
 	
 	<!-- 사용자 등록 -->
 	<insert id="insertMember">
-		INSERT INTO `MEMBER` (
+
+		INSERT INTO member (
+
 		    USER_ID, USERNAME, PASSWORD, EMAIL, PHONE_NUMBER,
 		    PROFILE_IMAGE_URL, CREATED_AT, LAST_LOGIN_AT, LOGIN_FAIL_COUNT, ACCOUNT_LOCKED
 		) VALUES (
@@ -52,7 +58,7 @@
 	<!-- 권한 목록 조회 -->
 	<select id="getRoles">
 		SELECT 	ROLE_NAME
-		  FROM 	EDUDB.MEMBER M, MEMBER_ROLES MR, ROLES R
+		  FROM 	member M, member_roles MR, roles R
 		 WHERE 	M.USER_ID = MR.USER_ID
 		   AND 	MR.ROLE_ID = R.ROLE_ID
 		   AND 	M.USER_ID = #{user_id}
@@ -106,7 +112,9 @@
 	<!-- 추상메서드 -->
 	<update id="updateAccountLock">
 		<!-- 만약 N이면 Y로, Y이면 N으로 -->
-		UPDATE `MEMBER` SET ACCOUNT_LOCKED=#{account_locked} WHERE USER_ID=#{user_id}
+
+		UPDATE member SET ACCOUNT_LOCKED=#{account_locked} WHERE USER_ID=#{user_id}
+
 	</update>
 	
 </mapper> 

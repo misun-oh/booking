@@ -5,12 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>리스트 등록(List registration)</title>
-
 <link rel="stylesheet" href="/resources/css/input.css">
-
-
-  
-
+<script src="/resources/js/input.js"></script>
 </head>
 <body>
 <%@include file="/edu/header.jsp" %>
@@ -77,7 +73,6 @@
     </form>
   </div>
 
-<script src="/resources/js/input.js"></script>
 <%@include file="/edu/footer.jsp" %>
 </body>
 </html>

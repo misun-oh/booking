@@ -8,6 +8,34 @@
 	margin-bottom: 5px;
 }
 
+.book_registration {
+	height: 40px;
+	font-weight: bold;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	background: #fff;
+	color: #0C1D2E;
+}
+
+.bookdelete_btn {
+	height: 40px;
+	font-weight: bold;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	background: #c0c0c0;
+	color: #fff;
+}
+
+
+.download_btn {
+	height: 40px;
+	font-weight: bold;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	background: #0C1D2E;
+	color: #fff;
+}
+
 .toplist_table {
 	width: 1000px;
 }
@@ -19,18 +47,93 @@
 }
 
 .NoLecturelist_box {
-	margin: 20px auto;
+	padding: 20px 0;
 	text-align: center;
+	width: 100%;
 }
 
 .registration_box {
 	text-align: center;
+	border-bottom: 1px solid #ccc;
 }
 
 .registration_box td {
 	padding: 10px;
 }
 
+.play_btn {
+	height: 30px;
+	font-weight: bold;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	background: #fff;
+	color: #0C1D2E;
+}
+
+.close_btn {
+	text-align:center;
+	height: 25px;
+	font-weight: bold;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	background: #ff0000;
+	color: #fff;
+	font-size: 15px;
+}
+
+.video-area {
+	flex-direction:column;
+	display: flex;
+	justify-content: center;  
+  	align-items: center; 
+  	margin: 0 auto;
+  	
+}
+
+.hidden {
+	display: none !important;
+}
+
+.lessonVideo {
+	width: 700px;
+	height: 500px;
+}
+
 .bottombtn_box {
 	text-align: right;
+	margin-top: 5px;
+	
+}
+
+#reg,
+#before {
+	height: 40px;
+	font-weight: bold;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	background: #0C1D2E;
+	color: #fff;
+}
+
+#delete {
+	height: 40px;
+	font-weight: bold;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	background: #c0c0c0;
+	color: #fff;
+}
+
+#fix {
+	height: 40px;
+	font-weight: bold;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	background: #fff;
+	color: #0C1D2E;
+}
+
+.hidden {
+	/*display: none;*/
+	display: block;
 }

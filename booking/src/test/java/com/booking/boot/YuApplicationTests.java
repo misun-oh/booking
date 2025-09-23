@@ -1,6 +1,7 @@
 package com.booking.boot;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,8 @@ public class YuApplicationTests {
 		lessonD.setLesson_order("number");
 		lessonD.setLesson_explan("explan");
 		lessonD.setFile_id(3);
-		lessonD.setFix_time(LocalDateTime.now());
-		lessonD.setDelete_time(LocalDateTime.now());
+		lessonD.setFix_time(new Date());
+		lessonD.setDelete_time(new Date());
 		
 	}
 }

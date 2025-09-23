@@ -4,9 +4,10 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.booking.boot.mapper.LessonMapper">
   	<select id="getList">
-  		select * from edudb.lesson
-  		join upload_file
-  		using (file_id)
+  		select l.*, u.REL_PATH, u.STORED_NAME
+  		from edudb.lesson l
+  		join upload_file u using (file_id)
+  		where l.delete_time is null
   	</select>
   	<select id="getTotalCount">
   		SELECT count(*) FROM edudb.lesson
@@ -14,8 +15,8 @@
 		using (file_id)
   	</select>
   	<insert id="insert" >
-  		insert into lesson ( course_id, lesson_name, lesson_order, lesson_explan, file_id, registration_time)
-  		values ( #{course_id}, #{lesson_name}, #{lesson_order}, #{lesson_explan}, #{file_id}, #{registration_time})
+  		insert into lesson ( course_id, lesson_name, lesson_order, lesson_explan, file_id, registration_time, instructor_id)
+  		values ( #{course_id}, #{lesson_name}, #{lesson_order}, #{lesson_explan}, #{file_id}, #{registration_time}, #{instructor_id})
   	</insert>
   	<!-- 
   	id : 메서드 이름
@@ -27,4 +28,9 @@
   	 	from lesson
   	 	where lesson_id = #{lesson_id}
   	 </select>
+  	 <update id="deleteLesson">
+  	 	UPDATE lesson
+  	 	set delete_time = #{delete_time}
+  	 	where lesson_id = #{lesson_id}
+  	 </update>
   </mapper>

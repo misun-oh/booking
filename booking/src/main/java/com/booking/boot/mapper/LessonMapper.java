@@ -13,4 +13,5 @@ public interface LessonMapper {
 	int getTotalCount();
 	int insert(LessonDto lesson);
 	LessonDto findById(@Param("lesson_id") int lesson_id);
+	int deleteLesson(@Param("lesson_id") int lesson_id, @Param("delete_time") LocalDateTime delete_time);
 }

@@ -167,7 +167,7 @@ public class MemberController {
 		System.out.println("user_pw : " + user_pw);
 		session.setAttribute("user_id", user_id);
 
-		return "member/main";
+		return "/member/main";
 	}
 	
 	// 요청경로와 페이지경로가 다른경우

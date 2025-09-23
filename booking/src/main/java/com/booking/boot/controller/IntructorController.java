@@ -100,11 +100,20 @@ public class IntructorController {
 			
 			return result;
 		}
+		 InstructorDto instructor = intructorService.getInstructorById(instructor_id);
+		    if(instructor == null) {
+		        result.put("success", false);
+		        result.put("msg", "존재하지 않는 강사입니다.");
+		        return result;
+		    }
 		EnrollmentDto dto = new EnrollmentDto();
 		dto.setUser_id(Integer.parseInt(loginMember.getUser_id()));
 		dto.setInstructor_id(instructor_id);
 		dto.setStatus(EnrollmentStatus.ONGOING);
 		dto.setEnrolled_at(LocalDateTime.now().withNano(0));
+		
+		dto.setLevel(instructor.getLevel());
+	    dto.setPrice(instructor.getPrice());
 		
 		enrollmentMapper.insertEnrollment(dto);
 		

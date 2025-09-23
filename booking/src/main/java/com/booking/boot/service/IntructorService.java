@@ -58,7 +58,10 @@ public class IntructorService {
 	public List<InstructorDto> getListByMainCategory(int cateId) {
 	    return intructorMapper.selectByMainCategory(cateId);
 	}
-	
+	public InstructorDto getInstructorById(int instructorId) {
+	    return intructorMapper.findById(instructorId);
+	}
+
 
 
 }

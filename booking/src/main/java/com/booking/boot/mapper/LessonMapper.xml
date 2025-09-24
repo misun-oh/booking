@@ -15,7 +15,7 @@
 		using (file_id)
   	</select>
   	<select id="getLessonsByInstructorId" parameterType="int" resultType="com.booking.boot.Dto.LessonDto">
-    SELECT * FROM lesson WHERE instructor_id = #{instructorId} ORDER BY lesson_order
+    SELECT * FROM lesson WHERE instructor_id = #{instructor_id} ORDER BY lesson_order
 </select>
   	<insert id="insert" >
   		insert into lesson ( course_id, lesson_name, lesson_order, lesson_explan, file_id, registration_time, instructor_id)

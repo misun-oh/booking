@@ -75,7 +75,7 @@ public class LessonController {
 		return "redirect:/Lecturelist";
 
 	}
-	
+	/*
 	@GetMapping("Lecturelist")
 	public String msgList(Model model) {
 		
@@ -86,10 +86,25 @@ public class LessonController {
 		return "/edu/Lecturelist";
 
 	}
+	*/
+	@GetMapping("/Lecturelist")
+	public String lectureList(@RequestParam(name="instructor_id", required=false) Integer instructorId, Model model) {
+	    List<LessonDto> list;
+	    if (instructorId != null) {
+	        list = lm.getLessonsByInstructorId(instructorId);
+	    } else {
+	        list = lm.getList();
+	    }
+	    model.addAttribute("list", list);
+	    model.addAttribute("msg", "리스트 조회");
+	    return "/edu/Lecturelist";
+	}
 	
 	@GetMapping("/Media_Small")
 	private String edu_Media_Small() {
 		return "/edu/Media_Small";
 	}
+	
+	
 	
 }

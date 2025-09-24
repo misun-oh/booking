@@ -22,8 +22,6 @@
     gap: 40px;
   }
 
-  
-
   /* 좌측 이미지 */
   .product-image {
     flex: 1;
@@ -124,8 +122,8 @@
 </head>
 <body>
 
-
 <%@ include file="/edu/header.jsp" %>
+
 <div class="container">
 
   <!-- 강사 이미지 -->
@@ -209,7 +207,9 @@
   </div>
 
 </div>
-
+<c:if test="${not empty list}">
+    <%@ include file="Lecturelist.jsp" %>
+</c:if>
 <!-- 강의 영상 리스트 영역 -->
 <div id="vc" class="container2">
   <h2 style="margin-bottom:20px;">강의 영상 리스트</h2>

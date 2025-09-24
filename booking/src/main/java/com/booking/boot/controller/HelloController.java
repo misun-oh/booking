@@ -26,7 +26,12 @@ public class HelloController {
 		
 		model.addAttribute("list", ml.getList(new SearchDto()));
 		return "/edu/main";
-		
+
+	}
+	
+	@GetMapping("/ex")
+	private String cate() {
+		return "/edu/ex/cate";
 	}
 	
 	@GetMapping("/videoplay")

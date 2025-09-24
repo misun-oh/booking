@@ -23,11 +23,13 @@ import com.booking.boot.Dto.EnrollmentDto;
 import com.booking.boot.Dto.EnrollmentStatus;
 
 import com.booking.boot.Dto.InstructorDto;
+import com.booking.boot.Dto.LessonDto;
 import com.booking.boot.Dto.MemberDto;
 import com.booking.boot.Dto.SearchDto;
 import com.booking.boot.mapper.EnrollmentMapper;
 import com.booking.boot.mapper.IntructorMapper;
 import com.booking.boot.service.IntructorService;
+import com.booking.boot.service.LessonService;
 import com.booking.boot.service.UploadService;
 
 import jakarta.servlet.http.HttpSession;
@@ -42,6 +44,8 @@ public class IntructorController {
 	UploadService uploadService;
 	@Autowired
 	EnrollmentMapper enrollmentMapper;
+	@Autowired
+	LessonService lessonService;
 	@GetMapping("/intructor/register")
 	private void register() {
 		
@@ -87,6 +91,11 @@ public class IntructorController {
 	    }
 
 	    model.addAttribute("instructor", dto);
+	    
+	    List<LessonDto> lessonList = lessonService.getLessonsByInstructorId(id);
+	    model.addAttribute("list", lessonList);
+	    
+	    
 	    boolean isLogein = session.getAttribute("loginMember") != null;
 	    System.out.println("detail 컨트롤러: isLogein = " + isLogein);
 	    model.addAttribute("isLogein", isLogein);
@@ -115,7 +124,7 @@ public class IntructorController {
 		EnrollmentDto dto = new EnrollmentDto();
 		dto.setUser_id(loginMember.getUser_id());
 		dto.setInstructor_id(instructor_id);
-		dto.setStatus(EnrollmentStatus.ONGOING);
+		dto.setStatus(EnrollmentStatus.ongoing);
 		dto.setEnrolled_at(LocalDateTime.now().withNano(0));
 		
 		
@@ -125,6 +134,8 @@ public class IntructorController {
 		
 		enrollmentMapper.insertEnrollment(dto);
 		
+		
+		
 		result.put("success", true);
 		result.put("msg", "구독이 완료되었습니다");
 		result.put("redirect", "/intructor/detail?id=" + instructor_id);
@@ -132,5 +143,20 @@ public class IntructorController {
 		return result;
 	}
 	
+	@GetMapping("/enrollmentlist")
+	public String enrollmentlist(Model model){
+		List<EnrollmentDto> list = enrollmentMapper.getList(null);
+		model.addAttribute("list", list);
+		model.addAttribute("msg", "리스트 조회");
+		return "/edu/enrollmentlist";
+	}
+	@GetMapping("/instructorlist")
+	public String instructorlist(Model model) {
+		List<InstructorDto> list = intructorMapper.getList(null);
+		model.addAttribute("list", list);
+		model.addAttribute("msg", "리스트 조회");
+		
+		return "/edu/instructorlist";
+	}
 
 }

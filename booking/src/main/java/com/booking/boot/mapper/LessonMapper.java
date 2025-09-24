@@ -10,6 +10,7 @@ import com.booking.boot.Dto.LessonDto;
 public interface LessonMapper {
 
 	List<LessonDto> getList();
+	List<LessonDto> getLessonsByInstructorId(int instructorId);
 	int getTotalCount();
 	int insert(LessonDto lesson);
 	LessonDto findById(@Param("lesson_id") int lesson_id);

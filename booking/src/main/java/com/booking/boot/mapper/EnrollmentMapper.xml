@@ -7,4 +7,12 @@
   		insert into enrollment(enrollment_id, user_id, status, enrolled_at, instructor_id, level, price)
   		values (#{enrollment_id}, #{user_id}, #{status}, #{enrolled_at}, #{instructor_id}, #{level}, #{price})
   	</insert>
+  	<select id="getList">
+  		select *
+  		from enrollment
+  	</select>
+  	<select id="getTotalCount">
+  		select count(*)
+  		from enrollment
+  	</select>
   </mapper>

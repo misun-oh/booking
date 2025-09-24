@@ -28,4 +28,10 @@ public class HelloController {
 		return "/edu/main";
 		
 	}
+	
+	@GetMapping("/videoplay")
+	private String edu_VideoPlay(Model model) {
+		
+		return "/edu/videoplay";
+	}
 }

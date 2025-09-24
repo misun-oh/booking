@@ -22,6 +22,8 @@
     gap: 40px;
   }
 
+  
+
   /* 좌측 이미지 */
   .product-image {
     flex: 1;
@@ -98,13 +100,32 @@
     border-top: 1px solid #eee;
     margin: 20px 0;
   }
+  
+ 
+    .container2 {
+      max-width: 1500px;
+      margin: 40px auto;
+      gap: 40px;
+    }
+	
+	.video2 {
+	  display: grid;
+	  grid-template-columns: repeat(4, 1fr); /* 4개씩 1줄 */
+	  gap: 20px;
+	}
+	
+	.video3 {
+	  width: 100%;
+	  height: 200px;
+	  
+	}
 
 </style>
 </head>
 <body>
 
-<%@ include file="/edu/header.jsp" %>
 
+<%@ include file="/edu/header.jsp" %>
 <div class="container">
 
   <!-- 강사 이미지 -->
@@ -188,6 +209,37 @@
   </div>
 
 </div>
+
+<!-- 강의 영상 리스트 영역 -->
+<div id="vc" class="container2">
+  <h2 style="margin-bottom:20px;">강의 영상 리스트</h2>
+  <div class="video2">
+    <div class="video3">
+	    <a href="/videoplay">
+	      <img src="https://img.youtube.com/vi/2bmRT2JSc14/hqdefault.jpg" width="100%" height="200">
+	    </a>
+    </div>
+        <div class="video3">
+      <iframe width="100%" height="200" 
+              src="https://www.youtube.com/embed/2bmRT2JSc14" 
+              frameborder="0" allowfullscreen></iframe>
+    </div>
+        <div class="video3">
+      <iframe width="100%" height="200" 
+              src="https://www.youtube.com/embed/2bmRT2JSc14" 
+              frameborder="0" allowfullscreen></iframe>
+    </div>
+        <div class="video3">
+      <iframe width="100%" height="200" 
+              src="https://www.youtube.com/embed/2bmRT2JSc14" 
+              frameborder="0" allowfullscreen></iframe>
+    </div>
+
+
+    
+  </div>
+</div>
+<!-- 강의 영상 끝 -->
 
 <%@ include file="/edu/footer.jsp" %>
 

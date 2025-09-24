@@ -188,7 +188,9 @@
   </div>
 
 </div>
-<%@ include file="Lecturelist.jsp" %>
+<c:if test="${not empty list}">
+    <%@ include file="Lecturelist.jsp" %>
+</c:if>
 <%@ include file="/edu/footer.jsp" %>
 
 </body>

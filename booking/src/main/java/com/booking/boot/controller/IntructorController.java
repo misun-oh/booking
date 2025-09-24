@@ -93,7 +93,7 @@ public class IntructorController {
 	    model.addAttribute("instructor", dto);
 	    
 	    List<LessonDto> lessonList = lessonService.getLessonsByInstructorId(id);
-	    model.addAttribute("lessonList", lessonList);
+	    model.addAttribute("list", lessonList);
 	    
 	    
 	    boolean isLogein = session.getAttribute("loginMember") != null;

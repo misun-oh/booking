@@ -18,19 +18,6 @@ public class HelloController {
 	private String hello(Model model) {
 		
 		model.addAttribute("list", ml.getList(new SearchDto()));
-	private String hello(Model model) {
-		
-		model.addAttribute("list", ml.getList(new SearchDto()));
-		return "/edu/main";
-
-	}
-	@GetMapping("/main")
-	private String main(Model model) {
-		
-		model.addAttribute("list", ml.getList(new SearchDto()));
-	private String hello(Model model) {
-		
-		model.addAttribute("list", ml.getList(new SearchDto()));
 		return "/edu/main";
 
 	}
@@ -39,7 +26,8 @@ public class HelloController {
 		
 		model.addAttribute("list", ml.getList(new SearchDto()));
 		return "/edu/main";
-		
+
+	}
 	
 	@GetMapping("/ex")
 	private String cate() {

@@ -1,3 +1,4 @@
+
 CREATE TABLE lesson (
   lesson_id BIGINT AUTO_INCREMENT PRIMARY KEY, 
   course_id int,

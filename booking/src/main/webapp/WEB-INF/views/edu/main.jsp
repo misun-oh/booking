@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>내맘대로 EDU</title>
+
 <style>
 
 /* 헤더 맨 위에 그리기*/
@@ -13,171 +14,131 @@ header {
   z-index: 1000;       /* 배너보다 높은 값 */
 }
 
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns */
+            gap: 20px;
+            padding: 20px;
+        }
 
-/* 배너 화면 영역 */
-.banner {
-	position: relative;
-	width: 100%; /* 화면 전체 폭 */
-	max-width: 1920px; /* 필요시 최대 폭 */
-	overflow: hidden;
-	margin: 0 auto;
-	border: 1px solid #ccc; /* 확인용 */
-}
+        .item {
+            border: 1px solid #ccc;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            transition: box-shadow 0.3s;
+        }
 
-/* 슬라이드 컨테이너 */
-.slides {
-	display: flex;
-	transition: transform 1s ease;
-}
+        .item:hover {
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
 
-/* 슬라이드 이미지 */
-.slides img {
-	width: 100%; /* 부모 폭에 맞춤 */
-	object-fit: cover;
-	flex-shrink: 0;
-}
+        .item img {
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
 
-/* 좌우 버튼 */
-.prev, .next {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	background: rgba(0, 0, 0, 0.5);
-	color: #fff;
-	border: none;
-	font-size: 40px;
-	cursor: pointer;
-	padding: 10px 20px;
-	z-index: 10;
-}
+        .item h3 {
+            margin: 10px 0 5px;
+        }
 
-.prev {
-	left: 10px;
-}
+        .item p {
+            font-size: 14px;
+            color: #555;
+        }
 
-.next {
-	right: 10px;
-}
-
-/* 인디케이터 */
-.indicators {
-	position: absolute;
-	bottom: 20px;
-	left: 50%;
-	transform: translateX(-50%);
-	display: flex;
-	gap: 10px;
-}
-
-.indicators div {
-	width: 12px;
-	height: 12px;
-	background: rgba(255, 255, 255, 0.5);
-	border-radius: 50%;
-	cursor: pointer;
-}
-
-.indicators .active {
-	background: #fff;
-}
 </style>
 </head>
 <body>
 
 <%@ include file="/edu/header.jsp"%>
 
-	<div class="banner">
-		<div class="slides">
-			<img src="res/imgs/banner1.jpg" alt="배너1"> <img
-				src="res/imgs/banner2.jpg" alt="배너2"> <img
-				src="res/imgs/banner3.jpg" alt="배너3"> <img
-				src="res/imgs/banner4.jpg" alt="배너4"> <img
-				src="res/imgs/banner5.jpg" alt="배너5">
-		</div>
+<div class="container-fluid">
 
-		<!-- 좌우 버튼 -->
-		<button class="prev">&#10094;</button>
-		<button class="next">&#10095;</button>
-
-		<!-- 인디케이터 -->
-		<div class="indicators">
-			<div class="active"></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
+    
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+		<div class="carousel-indicators">
+		  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+		  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+		  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+		  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+		  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
 		</div>
+		<div class="carousel-inner">
+		  <div class="carousel-item active">
+		    <img src="res/imgs/banner1.jpg" class="d-block w-100" alt="...">
+		    <div class="carousel-caption d-none d-md-block">
+		      <h1 style="font-size: 45px; font-weight: 900; opacity: 0.5;">내맘대로</h1>
+		      <p style="font-size: 25px; font-weight: 200; opacity: 0.7;">교육은 내망대로 ...</p>
+		    </div>
+		  </div>
+		  <div class="carousel-item">
+		    <img src="/res/imgs/banner3.jpg" class="d-block w-100" alt="...">
+		    <div class="carousel-caption d-none d-md-block">
+		      <h1 style="font-size: 45px; font-weight: 900; opacity: 0.5;">내맘대로</h1>
+		      <p style="font-size: 25px; font-weight: 200; opacity: 0.7;">AI 교육은 내맘대로 ...</p>
+		    </div>
+		  </div>
+		  <div class="carousel-item">
+		    <img src="/res/imgs/banner4.jpg" class="d-block w-100" alt="...">
+		    <div class="carousel-caption d-none d-md-block">
+		      <h1 style="font-size: 45px; font-weight: 900; opacity: 0.5;">내맘대로</h1>
+		      <p style="font-size: 25px; font-weight: 200; opacity: 0.7;">취미는 내맘대로 ...</p>
+		    </div>
+		  </div>
+		   <div class="carousel-item">
+		    <img src="/res/imgs/banner5.jpg" class="d-block w-100" alt="...">
+		    <div class="carousel-caption d-none d-md-block">
+		      <h1 style="font-size: 45px; font-weight: 900; opacity: 0.5;">내맘대로</h1>
+		      <p style="font-size: 25px; font-weight: 200; opacity: 0.7;">운동은 내맘대로 ...</p>
+		    </div>
+		  </div>
+		  <div class="carousel-item">
+		    <img src="/res/imgs/banner6.jpg" class="d-block w-100" alt="...">
+		    <div class="carousel-caption d-none d-md-block">
+		      <h1 style="font-size: 45px; font-weight: 900; opacity: 0.5;">내맘대로</h1>
+		      <p style="font-size: 25px; font-weight: 200; opacity: 0.7;">요리는 내맘대로 ...</p>
+		    </div>
+		  </div>
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+		  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		  <span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+		  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		  <span class="visually-hidden">Next</span>
+		</button>
 	</div>
-
-	<script>
-  const banner = document.querySelector('.banner');
-  const slides = document.querySelector('.slides');
-  const indicators = document.querySelectorAll('.indicators div');
-  const prevBtn = document.querySelector('.prev');
-  const nextBtn = document.querySelector('.next');
-  const total = slides.children.length;
-  let index = 0;
-  let width = slides.children[0].clientWidth; // 첫 이미지 실제 폭 기준
-  let timer;
-
-  function updateWidth() {
-    width = slides.children[0].clientWidth; // 이미지 폭 갱신
-  }
-
-  function showSlide(i) {
-    index = i;
-    slides.style.transform = `translateX(-${width * index}px)`;
-    indicators.forEach((dot, idx) => dot.classList.toggle('active', idx === index));
-  }
-
-  function nextSlide() {
-    index = (index + 1) % total;
-    showSlide(index);
-  }
-
-  function prevSlide() {
-    index = (index - 1 + total) % total;
-    showSlide(index);
-  }
-
-  function startAutoSlide() {
-    timer = setInterval(nextSlide, 4000);
-  }
-
-  function stopAutoSlide() {
-    clearInterval(timer);
-  }
-
-  // 버튼 클릭 이벤트
-  nextBtn.addEventListener('click', () => {
-    nextSlide();
-    stopAutoSlide();
-    startAutoSlide();
-  });
-
-  prevBtn.addEventListener('click', () => {
-    prevSlide();
-    stopAutoSlide();
-    startAutoSlide();
-  });
-
-  // 인디케이터 클릭
-  indicators.forEach((dot, idx) => {
-    dot.addEventListener('click', () => {
-      showSlide(idx);
-      stopAutoSlide();
-      startAutoSlide();
-    });
-  });
-
-  // 초기 실행
-  updateWidth();
-  showSlide(0);
-  startAutoSlide();
+</div>
 
 
-</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
-	<%@ include file="/edu/footer.jsp"%>
+<%-- 원하는 instructor_id만 출력하기 위해 choose/if 사용 --%>
+<div class="grid-container">
+    <c:forEach var="instructor" items="${list}">
+        <c:if test="${instructor.instructor_id == 15
+        or instructor.instructor_id == 16
+        or instructor.instructor_id == 28
+        or instructor.instructor_id == 25}">
+	    	<a href="/intructor/detail?id=${instructor.instructor_id }" style="text-decoration: none; color: inherit;">
+		        <div class="item">
+		            <img src="/download/${instructor.file_id}/${instructor.attach_idx}" alt="${instructor.name} 이미지">
+		            <h3>${instructor.name}</h3>
+		            <p>${instructor.word}</p>
+		            <p>${instructor.price} 원</p>
+		        </div>
+        	</a>
+        </c:if>
+    </c:forEach>
+</div>
+
+
+<%@ include file="/edu/footer.jsp"%>
+
 </body>
 </html>

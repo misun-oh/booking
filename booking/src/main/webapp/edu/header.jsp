@@ -115,7 +115,7 @@ ${loginMember }
   </c:if>
   <c:if test="${loginMember eq null}">
       <a href="/login">로그인</a>
-      <a href="/register">회원가입</a>
+      <a href="/reg">회원가입</a>
   </c:if>
   	  <a href="/input">강의 영상 등록</a>
       <a href="/input2">강사 등록</a>

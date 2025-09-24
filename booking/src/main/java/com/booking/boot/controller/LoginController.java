@@ -59,10 +59,7 @@ public class LoginController {
 		
 		return "/edu/main";
 	}
-	@GetMapping("/main")
-	private String edu_mainget() {
-		return "/edu/main";
-	}
+
 	
 	
 	@GetMapping("/list")

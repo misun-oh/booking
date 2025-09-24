@@ -235,12 +235,6 @@ public class LoginController {
 		return "/edu/mypage";
 	}
 
-	@GetMapping("/input")
-	private String edu_input(Model model) {
-		
-		return "/edu/input";
-	}
-	
 	@GetMapping("/input2")
 	private String edu_input2(Model model) {
 		

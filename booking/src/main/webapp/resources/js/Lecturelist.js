@@ -59,4 +59,15 @@ document.addEventListener("DOMContentLoaded", function (){
 			});
 		});
 	});
+	
+	document.getElementById("fix").addEventListener("click", function () {
+		const selected = document.querySelector("input[name='lessonIds']:checked");
+		if (!selected) {
+			alert("수정할 강의를 선택해주세요");
+			return;
+		}
+		
+		const lessonId = selected.value;
+		window.location.href = `/input?lesson_id=${lessonId}`;
+	});
 });

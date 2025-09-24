@@ -188,7 +188,7 @@
   </div>
 
 </div>
-
+<%@ include file="Lecturelist.jsp" %>
 <%@ include file="/edu/footer.jsp" %>
 
 </body>

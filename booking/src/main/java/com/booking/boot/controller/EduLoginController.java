@@ -55,6 +55,6 @@ public class EduLoginController {
 		session.invalidate();
 		System.out.println("로그아웃");
 		
-		return "redirect:/login1"; // 클라이언트(웹브라우저)에게 /member/login 요청을 다시 하라고 전달 
+		return "redirect:/login"; // 클라이언트(웹브라우저)에게 /member/login 요청을 다시 하라고 전달 
 	}
 }

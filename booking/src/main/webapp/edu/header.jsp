@@ -112,15 +112,16 @@ ${loginMember }
 	      <a href="/input">강의 영상 등록</a>
 	      <a href="/input2">강사 등록</a>
 	  </c:if>
-  </c:if>
+	  <c:if test='${loginMember.hasRole("ADMIN")}'>
+	      <a href="/wr_notice">공지 등록</a>
+	      <a href="/test2">관리자 홈</a>
+	  </c:if> 	
+  </c:if>     
   <c:if test="${loginMember eq null}">
       <a href="/login">로그인</a>
       <a href="/register">회원가입</a>
   </c:if>
-  	  <a href="/input">강의 영상 등록</a>
-      <a href="/input2">강사 등록</a>
-      <a href="/wr_notice">공지 등록</a>
-      <a href="/test2">관리자 홈</a>
+  	  
   </div>
 
   

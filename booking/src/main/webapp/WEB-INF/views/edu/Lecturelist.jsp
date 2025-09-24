@@ -10,7 +10,6 @@
 <body>
 	${msg}
 	${list}
-    <%@include file="/edu/header.jsp" %>
 	
     <div class="Lecturelist_container">
         <div class="button_box">
@@ -93,7 +92,6 @@
 	  </div>
 	</div>
 
-    <%@include file="/edu/footer.jsp" %>
     
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="/resources/js/Lecturelist.js"></script>

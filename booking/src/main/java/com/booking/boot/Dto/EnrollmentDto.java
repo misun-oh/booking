@@ -16,11 +16,13 @@ import lombok.NoArgsConstructor;
 public class EnrollmentDto {
 
 	private int enrollment_id;
-	private int course_id;
-	private int user_id;
+	
+	private String user_id;
 	private int instructor_id;
 	private EnrollmentStatus status;
 	private LocalDateTime enrolled_at;
 	private CourseLevel level;
 	private BigDecimal price;
+	
+	
 }

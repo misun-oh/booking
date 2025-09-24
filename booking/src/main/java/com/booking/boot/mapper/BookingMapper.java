@@ -14,9 +14,11 @@ public interface BookingMapper {
 	
 	
 	@Select("""
-			select * from room
-			ORDER BY room_no DESC 
-			OFFSET (#{pageNo} - 1) * #{amount} ROWS FETCH NEXT #{amount} ROWS ONLY
+			SELECT *
+			FROM room
+			ORDER BY room_no DESC
+			LIMIT #{offset}, #{amount}
+
 			""")
 	List<RoomDto>  list(SearchDto searchDto);
 	

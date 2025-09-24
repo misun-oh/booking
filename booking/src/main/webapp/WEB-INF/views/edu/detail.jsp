@@ -146,7 +146,7 @@
 
    
     <script type="text/javascript">
-	  var isLogein = ${isLogein};
+	  var isLogein = ${isLogein ? 'true' : 'false'};
 	      console.log("JSP: isLogein 값 ->", isLogein);
 	    	function subscribe(instructor_id) {
 	    		 console.log("버튼 클릭 시 isLogein:", isLogein);

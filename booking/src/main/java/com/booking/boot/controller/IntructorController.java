@@ -150,5 +150,13 @@ public class IntructorController {
 		model.addAttribute("msg", "리스트 조회");
 		return "/edu/enrollmentlist";
 	}
+	@GetMapping("/instructorlist")
+	public String instructorlist(Model model) {
+		List<InstructorDto> list = intructorMapper.getList(null);
+		model.addAttribute("list", list);
+		model.addAttribute("msg", "리스트 조회");
+		
+		return "/edu/instructorlist";
+	}
 
 }

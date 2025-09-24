@@ -77,12 +77,12 @@
         <div class="card">
             <h2>구독회원 리스트</h2>
             <p>구독 회원 현황을 관리합니다.</p>
-            <a href="/admin/subscribers" class="btn">바로가기</a>
+            <a href="/enrollmentlist" class="btn">바로가기</a>
         </div>
         <div class="card">
             <h2>강사 가입 리스트</h2>
             <p>강사 신청 및 가입 정보를 확인합니다.</p>
-            <a href="/admin/instructors" class="btn">바로가기</a>
+            <a href="/instructorlist" class="btn">바로가기</a>
         </div>
     </div>
 

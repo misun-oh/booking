@@ -113,10 +113,12 @@ public class IntructorController {
 		        return result;
 		    }
 		EnrollmentDto dto = new EnrollmentDto();
-		dto.setUser_id(Integer.parseInt(loginMember.getUser_id()));
+		dto.setUser_id(loginMember.getUser_id());
 		dto.setInstructor_id(instructor_id);
 		dto.setStatus(EnrollmentStatus.ONGOING);
 		dto.setEnrolled_at(LocalDateTime.now().withNano(0));
+		
+		
 		
 		dto.setLevel(instructor.getLevel());
 	    dto.setPrice(instructor.getPrice());

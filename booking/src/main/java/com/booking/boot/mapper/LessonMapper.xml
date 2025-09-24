@@ -14,6 +14,9 @@
 		join upload_file
 		using (file_id)
   	</select>
+  	<select id="getLessonsByInstructorId" parameterType="int" resultType="com.booking.boot.Dto.LessonDto">
+    SELECT * FROM lesson WHERE instructor_id = #{instructorId} ORDER BY lesson_order
+</select>
   	<insert id="insert" >
   		insert into lesson ( course_id, lesson_name, lesson_order, lesson_explan, file_id, registration_time, instructor_id)
   		values ( #{course_id}, #{lesson_name}, #{lesson_order}, #{lesson_explan}, #{file_id}, #{registration_time}, #{instructor_id})
@@ -33,4 +36,5 @@
   	 	set delete_time = #{delete_time}
   	 	where lesson_id = #{lesson_id}
   	 </update>
+  	 
   </mapper>

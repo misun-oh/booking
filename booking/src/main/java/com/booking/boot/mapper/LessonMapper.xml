@@ -42,7 +42,7 @@
   	 		lesson_order = #{lesson_order},
   	 		lesson_explan = #{lesson_explan},
   	 		file_id = #{file_id},
-  	 		fix_time = NOW();
+  	 		fix_time = NOW()
   	 	WHERE lesson_id = #{lesson_id}
   	 </update>
   	 

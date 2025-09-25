@@ -11,6 +11,7 @@
     <div class="Lecturelist_container">
         
     <form action="/deleteLesson" method="post" id="deleteForm" enctype="multipart/form-data">
+    	<input type="hidden" name="instructor_id" value="${instructor.instructor_id }"/>
         <table class="toplist_table">
             <thead>
                 <tr class="top_list">

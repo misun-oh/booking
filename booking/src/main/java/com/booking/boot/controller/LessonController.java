@@ -24,6 +24,7 @@ public class LessonController {
 	@Autowired
 	LessonMapper lm;
 	
+	@Autowired
 	LessonService ls;
 	
 	@Autowired
@@ -86,9 +87,9 @@ public class LessonController {
 		return "redirect:/intructor/detail?id="+lessonD.getInstructor_id();
 
 	}
-	
-	@PostMapping({"/deleteLesson", "/intructor/deleteLesson"})
-	public String deleteLesson(@RequestParam("lessonIds") List<Integer> lessonIds, Model model) {
+	/*
+	@PostMapping("/deleteLesson")
+	public String deleteLesson(@RequestParam("lessonIds") List<Integer> lessonIds, Model model, LessonDto lessonD) {
 		LocalDateTime deleteTime = LocalDateTime.now();
 		
 		for(int lessonId : lessonIds) {
@@ -96,10 +97,26 @@ public class LessonController {
 		}
 		
 		model.addAttribute("msg", "선택한 강의가 삭제되었습니다.");
-		return "redirect:/Lecturelist";
+		return "redirect:/intructor/detail?id="+lessonD.getInstructor_id();
 
 	}
-	/*
+	*/
+	@PostMapping("/deleteLesson")
+	public String deleteLesson(
+	    @RequestParam("lessonIds") List<Integer> lessonIds,
+	    @RequestParam("instructor_id") int instructorId,
+	    RedirectAttributes redirectAttribute
+	) {
+	    LocalDateTime deleteTime = LocalDateTime.now();
+
+	    for (int lessonId : lessonIds) {
+	        lm.deleteLesson(lessonId, deleteTime);
+	    }
+
+	    redirectAttribute.addAttribute("msg", "선택한 강의가 삭제되었습니다.");
+	    return "redirect:/intructor/detail?id=" + instructorId;
+	}
+	
 	@GetMapping("Lecturelist")
 	public String msgList(Model model) {
 		
@@ -110,7 +127,7 @@ public class LessonController {
 		return "/edu/Lecturelist";
 
 	}
-	*/
+	
 	@GetMapping("/intructor/input")
 	public String editLesson(@RequestParam(value = "lesson_id", required = false) Integer lessonId, Model model) {
 		if (lessonId != null) {

@@ -45,7 +45,7 @@
                         <button type="button" class="close_btn">종료</button>
                     </td>
                     <td>0</td>
-                    <td><fmt:formatDate class="date" value="${lesson.registration_time}" pattern="yyyy-MM-dd"/></td>
+                    <td><fmt:formatDate value="${lesson.registration_time}" pattern="yyyy-MM-dd"/></td>
                 </tr> 
                 <tr>
                 	<td colspan="6">

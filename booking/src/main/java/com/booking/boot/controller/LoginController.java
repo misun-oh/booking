@@ -278,6 +278,13 @@ public class LoginController {
 	}
 	
 	
+	@GetMapping("/input3")
+	private String input3(Model model) {
+		
+		return "/edu/input3";
+	}
+	
+	
 	
 	@GetMapping("/register1")
 	private String booking_register(Model model) {

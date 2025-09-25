@@ -109,7 +109,7 @@
       <a href="/mypage1">마이페이지</a>
 	  <!-- 권한체크 -->
 	  <c:if test='${loginMember.hasRole("ADMIN") || loginMember.hasRole("PARTNER")}'>
-	      <a href="/input">강의 영상 등록</a>
+	      <a href="/input3">강의 영상 등록</a>
 	      <a href="/input2">강사 등록</a>
 	  </c:if>
 	  <c:if test='${loginMember.hasRole("ADMIN")}'>

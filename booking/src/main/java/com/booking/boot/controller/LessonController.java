@@ -120,6 +120,7 @@ public class LessonController {
 		return "/edu/input";
 	}
 	
+	
 	@GetMapping("/intructor/Lecturelist")
 	public String lectureList(@RequestParam(name="instructor_id", required=false) Integer instructorId, Model model) {
 	    List<LessonDto> list;

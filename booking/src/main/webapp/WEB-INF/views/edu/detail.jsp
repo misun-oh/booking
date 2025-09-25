@@ -213,6 +213,10 @@
 <!-- 강의 영상 리스트 영역 -->
 <div id="vc" class="container2">
   <h2 style="margin-bottom:20px;">강의 영상 리스트</h2>
+  <video width="100%" height="200" controls>
+        <source src="/download/37/0" type="video/mp4">
+        브라우저가 video 태그를 지원하지 않습니다.
+      </video>
   <div class="video2">
     <div class="video3">
 	    <a href="/videoplay">
@@ -220,9 +224,8 @@
 	    </a>
     </div>
         <div class="video3">
-      <iframe width="100%" height="200" 
-              src="https://www.youtube.com/embed/2bmRT2JSc14" 
-              frameborder="0" allowfullscreen></iframe>
+      <img src="https://img.youtube.com/vi/G8PLEm74oxU/maxresdefault.jpg
+" width="100%" height="200">
     </div>
         <div class="video3">
       <iframe width="100%" height="200" 

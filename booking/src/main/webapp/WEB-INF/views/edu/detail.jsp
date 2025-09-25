@@ -117,6 +117,23 @@
 	  height: 200px;
 	  
 	}
+	.buy-btn.subscribe {
+	  background-color: #cc0000; /* 유튜브 빨간색 */
+	  color: white;
+	  font-weight: bold;
+	  cursor: pointer;
+	  transition: background-color 0.3s ease;
+	}
+	
+	.buy-btn.subscribe:hover {
+	  background-color: #b30000;
+	}
+	.buy-btn.subscribed {
+	  background-color: #ccc;
+	  color: #666;
+	  cursor: default;
+	}
+	
 
 </style>
 </head>
@@ -148,26 +165,21 @@
     <div class="divider"></div>
 
     <div class="order-box">
-      <button class="buy-btn" onclick="subscribe(${instructor.instructor_id})">구독하기</button>
+      <button class="buy-btn subscribe" onclick="subscribe(${instructor.instructor_id}, this)">구독하기</button>
     </div>
 
     <!-- 숨겨진 영상 영역 -->
-    <div id="video-section" class="hidden" style="margin-top: 20px;">
-      <h3>강의 영상</h3>
-      <video width="640" height="360" controls>
-        <source src="/video/sample.mp4" type="video/mp4">
-        해당 브라우저는 video 태그를 지원하지 않습니다.
-      </video>
-    </div>
+    
   </div>
 
 </div>
 
    
     <script type="text/javascript">
-	  var isLogein = ${isLogein ? 'true' : 'false'};
+	  var isLogein = ${isLogein ? 'true' : 'false'} === true;
+	  	
 	      console.log("JSP: isLogein 값 ->", isLogein);
-	    	function subscribe(instructor_id) {
+	    	function subscribe(instructor_id, btnElement) {
 	    		 console.log("버튼 클릭 시 isLogein:", isLogein);
 	    		if(isLogein){
 	    			
@@ -181,11 +193,21 @@
 	    			})
 	    			.then(response => response.json())
 	    			.then(data => {
+	    				console.log("서버 응답:", data);  // ✅ 응답 구조 확인
 			            alert(data.msg);
 			            if(data.success) {
-			                document.getElementById("video-section").classList.remove("hidden");
+			            	if (btnElement) {
+			                    btnElement.textContent = "구독 완료";
+			                    btnElement.disabled = true;
+			                    btnElement.classList.remove("subscribe");
+			                    btnElement.classList.add("subscribed"); // 선택: CSS 스타일 추가
+			                  }
+			            	
 			                if(data.redirect) {
+			                	setTimeout(() => {
+			                		
 			                    window.location.href = data.redirect;
+			                	}, 1000000);
 			                }
 			            } else {
 			                if(data.redirect) {
@@ -203,8 +225,9 @@
 	    		      window.location.href = "/login1";
 	    		}
 			}
+	    	window.subscribe = subscribe;
     </script>
-  </div>
+  
 
 </div>
 <c:if test="${not empty list}">

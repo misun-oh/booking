@@ -44,17 +44,21 @@ public class LessonController {
 			lessonD.setFile_id(seq);
 		}
 		
-		if(lessonD.getLesson_id() > 0) {
+		if(lessonD.getLesson_id() != null && lessonD.getLesson_id() > 0) {
+			
 			//수정
 			if(seq == -1) {
 				// 기존 file_id 유지(DB에서 조회해서 설정하거나 클라이언트에서 보내기)
 				LessonDto existing = lm.findById(lessonD.getLesson_id());
 				lessonD.setFile_id(existing.getFile_id());
 			}
+			
 			lessonD.setFix_time(new Date());
 			lm.updateLesson(lessonD);
 			model.addAttribute("msg", "수정되었습니다.");
+			
 		} else {
+			
 			//새 등록
 			lessonD.setRegistration_time(new Date()); //등록 시간 설정 코드
 			lm.insert(lessonD);
@@ -79,11 +83,11 @@ public class LessonController {
 		List<LessonDto> list = lm.getList();
 		model.addAttribute("list", list);
 		
-		return "/edu/Lecturelist";
+		return "redirect:/intructor/detail?id="+lessonD.getInstructor_id();
 
 	}
 	
-	@PostMapping("/deleteLesson")
+	@PostMapping({"/deleteLesson", "/intructor/deleteLesson"})
 	public String deleteLesson(@RequestParam("lessonIds") List<Integer> lessonIds, Model model) {
 		LocalDateTime deleteTime = LocalDateTime.now();
 		
@@ -107,7 +111,7 @@ public class LessonController {
 
 	}
 	*/
-	@GetMapping("/input")
+	@GetMapping("/intructor/input")
 	public String editLesson(@RequestParam(value = "lesson_id", required = false) Integer lessonId, Model model) {
 		if (lessonId != null) {
 			LessonDto lesson = lm.findById(lessonId);
@@ -116,7 +120,7 @@ public class LessonController {
 		return "/edu/input";
 	}
 	
-	@GetMapping("/Lecturelist")
+	@GetMapping("/intructor/Lecturelist")
 	public String lectureList(@RequestParam(name="instructor_id", required=false) Integer instructorId, Model model) {
 	    List<LessonDto> list;
 	    if (instructorId != null) {
@@ -127,13 +131,5 @@ public class LessonController {
 	    model.addAttribute("list", list);
 	    model.addAttribute("msg", "리스트 조회");
 	    return "/edu/Lecturelist";
-	}
-	
-	@GetMapping("/Media_Small")
-	private String edu_Media_Small() {
-		return "/edu/Media_Small";
-	}
-	
-	
-	
+	}	
 }

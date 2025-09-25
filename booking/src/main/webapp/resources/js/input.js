@@ -52,17 +52,17 @@ function validate(){
   formMsg.textContent = '';
 
   if(title.value.trim().length === 0){
-    titleError.textContent = '상품명을 입력하세요.'; ok = false;
+    titleError.textContent = '강의명을 입력하세요.'; ok = false;
   }
   if(title.value.length > 100){
-    titleError.textContent = '상품명은 100자 이내여야 합니다.'; ok = false;
+    titleError.textContent = '강의명은 100자 이내여야 합니다.'; ok = false;
   }
   if(desc.value.length > 200){
     descError.textContent = '설명은 200자 이내여야 합니다.'; ok = false;
   }
   const f = mediaInput.files && mediaInput.files[0];
   if(!f){
-    mediaError.textContent = '상품 영상을 선택해주세요.'; ok = false;
+    mediaError.textContent = '강의 영상을 선택해주세요.'; ok = false;
   }
   return ok;
 }
@@ -88,7 +88,7 @@ form.addEventListener('submit', (e) => {
 
 resetBtn.addEventListener('click', () => {
   form.reset();
-  preview.querySelector('source').src = "";
+  preview.querySelector('Source').src = "";
   preview.load();
   updateCounters();
   mediaError.textContent = '';

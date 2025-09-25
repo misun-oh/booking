@@ -6,6 +6,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 public interface NoticeMapper {
 
-	@Insert("INSERT INTO notice (title, content) VALUES (#{title}, #{content})")
+	@Insert("insert into notice(title, content, writer) values (#{title}, #{content}, 'admin')")
 	int insert(@RequestParam String title, @RequestParam String content);
 }

@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class LessonDto {
 	
-	private int lesson_id;
+	private Integer lesson_id;
 	private int course_id;
 	private Integer instructor_id;
 	private int file_id;

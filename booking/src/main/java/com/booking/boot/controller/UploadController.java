@@ -141,7 +141,6 @@ public class UploadController {
 
 	}
 	
-	
 	// 파일명으로 다운로드 
 	@GetMapping("/download_filename")
 	private ResponseEntity<byte[]> download(UploadDto dto) {

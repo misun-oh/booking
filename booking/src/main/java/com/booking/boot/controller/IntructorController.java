@@ -67,7 +67,7 @@ public class IntructorController {
 
 			int instructorId = instructorDto.getInstructor_id();
 			model.addAttribute("msg", "등록되었습니다");
-			model.addAttribute("redirect", "/input?instructor_id=" + instructorId); // ✅ 리디렉트 경로 전달
+			model.addAttribute("redirect", "/intructor/detail?id=" + instructorId); // ✅ 리디렉트 경로 전달
 		}else {
 			model.addAttribute("msg", "등록 실패했습니다");
 			model.addAttribute("redirect", "/intructor/register");

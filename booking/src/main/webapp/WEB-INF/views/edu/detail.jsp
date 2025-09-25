@@ -230,9 +230,9 @@
   
 
 </div>
-<c:if test="${not empty list}">
+
     <%@ include file="Lecturelist.jsp" %>
-</c:if>
+
 <!-- 강의 영상 리스트 영역 -->
 <div id="vc" class="container2">
  

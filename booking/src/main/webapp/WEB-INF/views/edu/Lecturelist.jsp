@@ -37,13 +37,6 @@
                         <button type="button" class="play_btn" data-video-src="/download/${lesson.file_id }/0">재생</button>
                         <button type="button" class="close_btn">종료</button>
                     </td>
-                    <td>
-                        <button type="button" class="play_btn" data-video-src="/download/${lesson.file_id }/0">재생</button>
-                        <button type="button" class="close_btn">재생 종료</button><br>
-                        <small>최근 수강 : </small>
-                    </td>
-                    <td>0</td>
-                    <td><fmt:formatDate value="${lesson.registration_time}" pattern="yyyy-MM-dd"/></td>
 
                     <td id="Lcount">0</td>
                     <td class="Ldate"><fmt:formatDate value="${lesson.registration_time}" pattern="yyyy-MM-dd"/></td>

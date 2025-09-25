@@ -8,20 +8,13 @@
     <title>강의 페이지</title>
 </head>
 <body>
-	${msg}
-	${list}
-	
     <div class="Lecturelist_container">
-        <div class="button_box">
-        	<button class="book_registration">교안 등록</button>
-        	<button class="bookdelete_btn">교안 삭제</button>
-            <button class="download_btn">교안 다운로드</button>
-        </div>
+        
     <form action="/deleteLesson" method="post" id="deleteForm" enctype="multipart/form-data">
         <table class="toplist_table">
             <thead>
                 <tr class="top_list">
-                	<th></th>
+                	<th><input type="checkbox" name="selectAll" /></th><!-- 전체 선택 체크박스 -->
                     <th>순서</th>
                     <th>강의명</th>
                     <th class="Attend_class">수강하기</th>
@@ -37,19 +30,15 @@
             	</c:if>
             	<c:forEach var="lesson" items="${list}">
                 <tr class="registration_box">
-                	<td><input type="checkbox" name="lessonIds" value="${lesson.lesson_id}"></td>
-                    <td>${lesson.lesson_order}</td>
-                    <td>
-                        ${lesson.lesson_name}<br>
-                        <span>00:00</span> / 00:00 <br>
+                	<td id="LAllckeck"><input type="checkbox" name="lessonIds" value="${lesson.lesson_id}"></td>
+                    <td id="Lnumber">${lesson.lesson_order}</td>
+                    <td>${lesson.lesson_name}</td>
+                    <td id="play-close">
+                        <button type="button" class="play_btn" data-video-src="/download/${lesson.file_id }/0">재생</button>
+                        <button type="button" class="close_btn">종료</button>
                     </td>
-                    <td>
-                        <button type="button" class="play_btn" data-video-src="/upload/${lesson.stored_name}">재생</button>
-                        <button type="button" class="close_btn">X</button><br>
-                        <small>최근 수강 : </small>
-                    </td>
-                    <td>0</td>
-                    <td><fmt:formatDate value="${lesson.registration_time}" pattern="yyyy-MM-dd"/></td>
+                    <td id="Lcount">0</td>
+                    <td class="Ldate"><fmt:formatDate value="${lesson.registration_time}" pattern="yyyy-MM-dd"/></td>
                 </tr> 
                 <tr>
                 	<td colspan="6">
@@ -65,11 +54,11 @@
                 </c:forEach> 
             </tbody>
         </table>
+        
         <div class="bottombtn_box">
-            <button id="reg" type="button" onclick="location.href='input'">등록</button>
+            <c:if test='${loginMember.hasRole("ADMIN") || loginMember.hasRole("PARTNER")}'><button id="reg" type="button" onclick="location.href='input?instructor_id=${instructor.instructor_id}'">등록</button>
             <button id="fix" type="button">수정</button>
-            <button id="delete" type="submit">삭제</button>
-            <button id="before" type="button" onclick="location.href='intructorlist'">목록</button>
+            <button id="delete" type="submit">삭제</button></c:if>
         </div>
       </form>
     </div>
@@ -91,7 +80,6 @@
 	    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
 	  </div>
 	</div>
-
     
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="/resources/js/Lecturelist.js"></script>

@@ -1,6 +1,6 @@
 .Lecturelist_container {
-	margin: 30px auto;
-	max-width: 1000px;
+	margin: 20px auto;
+	max-width: 1100px;
 }
 
 .button_box {
@@ -37,7 +37,7 @@
 }
 
 .toplist_table {
-	width: 1000px;
+	width: 1100px;
 }
 
 .top_list {
@@ -53,12 +53,25 @@
 }
 
 .registration_box {
+	width:1100px;
 	text-align: center;
 	border-bottom: 1px solid #ccc;
 }
 
 .registration_box td {
 	padding: 10px;
+}
+
+#LAllckeck {
+	width: 80px;
+}
+
+#Lnumber {
+	width: 120px;
+}
+
+#play-close {
+	width: 150px;
 }
 
 .play_btn {
@@ -72,13 +85,20 @@
 
 .close_btn {
 	text-align:center;
-	height: 25px;
+	height: 30px;
 	font-weight: bold;
 	border-radius: 5px;
 	border: 1px solid #ccc;
 	background: #ff0000;
 	color: #fff;
-	font-size: 15px;
+}
+
+#Lcount {
+	width: 110px;
+}
+
+.Ldate {
+	width: 190px;
 }
 
 .video-area {
@@ -105,8 +125,7 @@
 	
 }
 
-#reg,
-#before {
+#reg {
 	height: 40px;
 	font-weight: bold;
 	border-radius: 5px;

@@ -1,4 +1,25 @@
 document.addEventListener("DOMContentLoaded", function (){
+	//전체 선택 체크박스
+	const selectAllCheckbox = document.querySelector("input[name='selectAll']");
+	const lessonCheckboxes = document.querySelectorAll("input[name='lessonIds']");
+	
+	// 전체 선택 체크박스를 클릭할때
+	selectAllCheckbox.addEventListener("change", function () {
+		lessonCheckboxes.forEach(function (checkbox) {
+			checkbox.checked = selectAllCheckbox.checked; //전체 선택 상태에 맞춰 체크박스 선택
+		});
+	});
+	
+	// 개별 체크박스를 클릭할 때
+	lessonCheckboxes.forEach(function (checkbox){
+		checkbox.addEventListener("change", function(){
+			//전체 선택 체크박스 상태 갱신
+			const allChecked = Array.from(lessonCheckboxes).every(function (checkbox){
+				return checkbox.checked;
+			});
+			selectAllCheckbox.checked = allChecked; //개별 체크박스들이 모두 선택되었으면 전체 체크박스를 선택
+		});
+	});
 	
 	//삭제 폼 체크
 	const deleteForm = document.getElementById("deleteForm");
@@ -68,6 +89,6 @@ document.addEventListener("DOMContentLoaded", function (){
 		}
 		
 		const lessonId = selected.value;
-		window.location.href = `/input?lesson_id=${lessonId}`;
+		window.location.href = `/intructor/input?lesson_id=${lessonId}`;
 	});
 });

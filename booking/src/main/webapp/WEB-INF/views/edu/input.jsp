@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>리스트 등록(List registration)</title>
 <link rel="stylesheet" href="/resources/css/input.css">
-<script src="/resources/js/input.js"></script>
 </head>
 <body>
 <%@include file="/edu/header.jsp" %>
@@ -15,15 +14,15 @@
 
 <form id="productForm" action="/Lecturelist" method="post" enctype="multipart/form-data">
 	<!-- 강사 ID -->
-	<input type="hidden" name="instructor_id" value="${instructor_id != null ? instructor_id : ''}" />
+	<input type="hidden" name="instructor_id" value="${instructor_id != null ? instructor_id : param.instructor_id != null ? param.instructor_id : ''}" />
 	
 	<!-- 수정일 경우 lesson_id 전달 -->
 	<input type="hidden" name="lesson_id" value="${lesson.lesson_id}" />
 	
         <div class="media-box">
           <video id="preview" class="media-preview" controls>
-            <c:if test="not empty lesson.stored_name}">
-            	<source src="/upload/${lesson.stored_name}" type="video/mp4" />
+            <c:if test="${not empty lesson.stored_name}">
+            	<source id="" src="/upload/${lesson.stored_name}" type="video/mp4" />
             </c:if>
             브라우저가 video 태그를 지원하지 않습니다.
           </video>
@@ -74,7 +73,7 @@
 	  </div>
     </form>
   </div>
-
+<script src="/resources/js/input.js"></script>
 <%@include file="/edu/footer.jsp" %>
 </body>
 </html>

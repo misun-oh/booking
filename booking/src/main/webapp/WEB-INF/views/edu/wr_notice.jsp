@@ -109,7 +109,7 @@
     <p style="font-size: 10px; font-weight: bold; color: #5c5c5c; margin-bottom: 15px;">
     운영에 관한 공지 및 셀러&수강생 분들을 위한 정보 확인. ⓒ 2025 내맘대로 E.D.U</p>
     </center>
-    <form action="/edu/notice" method="post">
+    <form action="/edu/wr_notice" method="post">
       
       <div class="form-group">
         <label for="title">제목</label>
@@ -125,7 +125,7 @@
 
 		<div class="button-group">
 		  <button type="submit" class="btn-edit">저장</button>
-		  <button type="button" onclick="location.href='list.jsp'" class="btn-back">목록</button>
+		  <button type="button" onclick="location.href='notice.jsp'" class="btn-back">목록</button>
 		</div>
     </form>
   </div>

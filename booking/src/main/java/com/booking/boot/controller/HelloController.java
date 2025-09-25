@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.booking.boot.Dto.SearchDto;
 import com.booking.boot.mapper.IntructorMapper;
+import com.booking.boot.mapper.LessonMapper;
 
 @Controller
 public class HelloController {
@@ -14,10 +15,14 @@ public class HelloController {
 	@Autowired
 	IntructorMapper ml;
 	
+	@Autowired
+	LessonMapper ll;
+	
 	@GetMapping("/")
 	private String hello(Model model) {
 		
 		model.addAttribute("list", ml.getList(new SearchDto()));
+		model.addAttribute("list2", ll.getList());
 		return "/edu/main";
 
 	}
@@ -25,6 +30,7 @@ public class HelloController {
 	private String main(Model model) {
 		
 		model.addAttribute("list", ml.getList(new SearchDto()));
+		model.addAttribute("list2", ll.getList());
 		return "/edu/main";
 
 	}

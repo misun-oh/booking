@@ -99,7 +99,7 @@
 </head>
 <body>
 <header>
-${loginMember }
+
   <!-- 헤더 -->
   <div class="user-menu">
   <c:if test="${loginMember ne null}">

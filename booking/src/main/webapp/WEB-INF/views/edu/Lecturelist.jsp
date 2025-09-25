@@ -44,7 +44,7 @@
                         <span>00:00</span> / 00:00 <br>
                     </td>
                     <td>
-                        <button type="button" class="play_btn" data-video-src="/upload/${lesson.stored_name}">재생</button>
+                        <button type="button" class="play_btn" data-video-src="/download/${lesson.file_id }/0">재생</button>
                         <button type="button" class="close_btn">재생 종료</button><br>
                         <small>최근 수강 : </small>
                     </td>

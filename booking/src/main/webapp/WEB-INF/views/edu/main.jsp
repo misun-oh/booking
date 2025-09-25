@@ -9,45 +9,73 @@
 <style>
 
 /* 헤더 맨 위에 그리기*/
-header {
-  position: relative;  /* 필요시 fixed도 가능 */
-  z-index: 1000;       /* 배너보다 높은 값 */
-}
+	header {
+	  position: relative;  /* 필요시 fixed도 가능 */
+	  z-index: 1000;       /* 배너보다 높은 값 */
+	}
 
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 columns */
-            gap: 20px;
-            padding: 20px;
-        }
 
-        .item {
-            border: 1px solid #ccc;
-            padding: 15px;
-            text-align: center;
-            border-radius: 8px;
-            transition: box-shadow 0.3s;
-        }
 
-        .item:hover {
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-        }
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 columns */
+        gap: 20px;
+        padding: 20px;
+    }
+    
 
-        .item img {
-            width: 400px;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 4px;
-        }
+        
 
-        .item h3 {
-            margin: 10px 0 5px;
-        }
+    .item {
+        border: 1px solid #ccc;
+        padding: 15px;
+        text-align: center;
+        border-radius: 8px;
+        transition: box-shadow 0.3s;
+        white-space: nowrap;        /* 줄바꿈 방지 */
+		overflow: hidden;           /* 넘치는 부분 숨김 */
+		text-overflow: ellipsis;    /* ... 표시 */
+    }
 
-        .item p {
-            font-size: 14px;
-            color: #555;
-        }
+    .item:hover {
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .item img {
+        width: 400px;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+    
+
+
+    .item h3 {
+        margin: 5px;
+    }
+
+    .item p {
+        font-size: 14px;
+        color: #555;
+    }
+    
+	.container2 {
+	max-width: 1800px;
+	margin: 40px auto;
+	gap: 40px;
+    }
+	
+	.video2 {
+	  display: grid;
+	  grid-template-columns: repeat(4, 1fr); /* 4개씩 1줄 */
+	  gap: 20px;
+	}
+	
+	.video3 {
+	  width: 100%;
+	  height: 270px;
+	  
+	}
 
 </style>
 </head>
@@ -117,13 +145,17 @@ header {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<br>
+<br>
 
 <%-- 원하는 instructor_id만 출력하기 위해 choose/if 사용 --%>
+<h1 style="text-align: center;">- 추천 강사 리스트 -</h1>
 <div class="grid-container">
+
     <c:forEach var="instructor" items="${list}">
         <c:if test="${instructor.instructor_id == 15
         or instructor.instructor_id == 16
-        or instructor.instructor_id == 28
+        or instructor.instructor_id == 26
         or instructor.instructor_id == 25}">
 	    	<a href="/intructor/detail?id=${instructor.instructor_id }" style="text-decoration: none; color: inherit;">
 		        <div class="item">
@@ -138,6 +170,31 @@ header {
 </div>
 
 
+<div class="container2">
+<h1 style="text-align: center;">- 추천 강좌 리스트 -</h1>
+	<div class="video2">
+	    <c:forEach var="lesson" items="${list2}">
+	        <c:if test="${lesson.file_id == 40
+	        or lesson.file_id == 50
+	        or lesson.file_id == 44
+	        or lesson.file_id == 45}">
+		    	
+		      <div class="video3">   
+           	  	<video width="100%" height="270" controls>
+			        <source src="/download/${lesson.file_id }/0" type="video/mp4">	        
+			    </video>
+					    
+	            <h4>${lesson.lesson_name}</h4>
+	            <p style="font-size: 12px;">${lesson.lesson_explan}</p>
+	          </div>
+	
+	        </c:if>
+	    </c:forEach>
+    </div>
+</div>
+<br>
+<br>
+<br>
 <%@ include file="/edu/footer.jsp"%>
 
 </body>

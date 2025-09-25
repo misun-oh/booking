@@ -200,7 +200,7 @@
 	    			})
 	    		}else{
 	    			 alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
-	    		      window.location.href = "/login1";
+	    		      window.location.href = "/login";
 	    		}
 			}
     </script>
@@ -212,34 +212,17 @@
 </c:if>
 <!-- 강의 영상 리스트 영역 -->
 <div id="vc" class="container2">
+ 
   <h2 style="margin-bottom:20px;">강의 영상 리스트</h2>
-  <video width="100%" height="200" controls>
-        <source src="/download/37/0" type="video/mp4">
-        브라우저가 video 태그를 지원하지 않습니다.
-      </video>
   <div class="video2">
-    <div class="video3">
-	    <a href="/videoplay">
-	      <img src="https://img.youtube.com/vi/2bmRT2JSc14/hqdefault.jpg" width="100%" height="200">
-	    </a>
-    </div>
-        <div class="video3">
-      <img src="https://img.youtube.com/vi/G8PLEm74oxU/maxresdefault.jpg
-" width="100%" height="200">
-    </div>
-        <div class="video3">
-      <iframe width="100%" height="200" 
-              src="https://www.youtube.com/embed/2bmRT2JSc14" 
-              frameborder="0" allowfullscreen></iframe>
-    </div>
-        <div class="video3">
-      <iframe width="100%" height="200" 
-              src="https://www.youtube.com/embed/2bmRT2JSc14" 
-              frameborder="0" allowfullscreen></iframe>
-    </div>
+<c:forEach var="lesson" items="${list}">
+ 	<div class="video3">
+	  	<video width="100%" height="200" controls>
+	        <source src="/download/${lesson.file_id }/0" type="video/mp4">	        
+	    </video>
+   	</div>
+</c:forEach>    	
 
-
-    
   </div>
 </div>
 <!-- 강의 영상 끝 -->
